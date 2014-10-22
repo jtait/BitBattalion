@@ -172,9 +172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fcb904fbf6503747b3ac3f47401c33b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strafeForce: 10
-  forwardVelocity: 5
-  velocityAddition: 2
+  strafeForce: 550
+  forwardVelocity: 2
+  velocityAddition: .5
 --- !u!1 &987248277
 GameObject:
   m_ObjectHideFlags: 0

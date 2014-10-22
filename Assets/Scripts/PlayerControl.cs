@@ -3,15 +3,13 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour
 {
-
+    // movement related variables
     public float strafeForce = 10f;
     private float strafeDirection;
-
     public float forwardVelocity = 5f;
     private float velocityDirection;
     public float velocityAddition = 2f;
     
-    // Use this for initialization
     void Start()
     {
         collider.enabled = false;
@@ -30,20 +28,18 @@ public class PlayerControl : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Shoot();
         }
-
     }
 
-    //
+    // create and launch projectile from ships location
     void Shoot()
     {
-
+        // generate a new object to fire, instantiate with velocity, power, etc.
     }
 
 }
