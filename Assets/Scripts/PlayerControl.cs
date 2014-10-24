@@ -6,7 +6,6 @@ public class PlayerControl : MonoBehaviour
     // movement related variables
     public float strafeForce = 10f;
     private float strafeDirection;
-    public float forwardVelocity = 5f;
     private float velocityDirection;
     public float velocityAddition = 2f;
     
@@ -24,7 +23,7 @@ public class PlayerControl : MonoBehaviour
 
         // forward / backward movement
         velocityDirection = Input.GetAxis("Vertical");
-        rigidbody.velocity = new Vector3(0, forwardVelocity + velocityAddition * velocityDirection, 0);
+        rigidbody.velocity = new Vector3(0, velocityAddition * velocityDirection, 0);
 
     }
 
