@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour
 {
+
     // movement related variables
     public float strafeForce = 10f;
     private float strafeDirection;
@@ -11,7 +12,7 @@ public class PlayerControl : MonoBehaviour
     
     void Start()
     {
-        collider.enabled = false;
+
     }
 
     void FixedUpdate()
@@ -19,7 +20,7 @@ public class PlayerControl : MonoBehaviour
 
         // strafing
         strafeDirection = Input.GetAxis("Horizontal");
-        rigidbody.AddForce(new Vector3((strafeDirection * strafeForce), 0, 0));
+        rigidbody.AddForce(new Vector3(strafeDirection * strafeForce, 0, 0));
 
         // forward / backward movement
         velocityDirection = Input.GetAxis("Vertical");
