@@ -10,20 +10,4 @@ public abstract class BitShip : MonoBehaviour {
 	
 	}
 	
-	// Update is called once per frame
-	void FixedUpdate () {
-        Move();
-        print("moved");
-	}
-
-    void Move()
-    {
-        
-    }
-
-    void Shoot()
-    {
-
-    }
-
 }

@@ -3,14 +3,14 @@ using System.Collections;
 
 public class BitShip_0 : BitShip {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
+    void FixedUpdate()
+    {
+        Move();
+    }
+
     protected void Move()
     {
-        rigidbody.velocity = new Vector3(0, forwardVelocity, 0);
+        rigidbody.velocity = new Vector3(0, -forwardVelocity, 0);
     }
 
 }
