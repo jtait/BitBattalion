@@ -28,6 +28,14 @@ public class PlayerControl : MonoBehaviour
 
     }
 
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.collider.tag == "Enemy")
+        {
+            PlayerDeath();
+        }
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -40,6 +48,11 @@ public class PlayerControl : MonoBehaviour
     void Shoot()
     {
         // generate a new object to fire, instantiate with velocity, power, etc.
+    }
+
+    void PlayerDeath()
+    {
+        print("died");
     }
 
 }

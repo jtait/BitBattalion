@@ -3,14 +3,15 @@ using System.Collections;
 
 public class BitShip_0 : BitShip {
 
-    void FixedUpdate()
+    /* override base class Move() function */
+    protected override void Move()
     {
-        Move();
+        base.Move();
     }
 
-    protected void Move()
+    protected override void Shoot()
     {
-        rigidbody.velocity = new Vector3(0, -forwardVelocity, 0);
+        //base.Shoot();
     }
 
 }
