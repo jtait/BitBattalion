@@ -42,7 +42,7 @@ public class BitSpawner : MonoBehaviour {
             {
                 if (destroyOnCompletion)
                 {
-                    Destroy(this);
+                    Destroy(gameObject);
                 }
                 else
                 {
