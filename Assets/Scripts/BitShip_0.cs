@@ -14,4 +14,10 @@ public class BitShip_0 : BitShip {
         //base.Shoot();
     }
 
+
+    protected override void SetScore()
+    {
+        pointValue = 200;
+    }
+
 }
