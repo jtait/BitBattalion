@@ -12,61 +12,66 @@ public class BitSpawner : MonoBehaviour {
     
     public float spawnFrequency = 0; // how many seconds are between spawns
     private float timer; // the timer for the spawner
-    public bool spawnRightAway = true; // does spawning start when the spawner is created?
     public float initialWaitTime = 0; // if spawning doesn't start right away, how long does the spawner wait?
 
-    public enum SpawnType {Normal, Alternating, Random};
+    public enum SpawnType {Normal, Reverse, Alternating, Random};
     public SpawnType spawnType;
 
     private bool specialSet = false;
 
 	void Start ()
     {
-        if (spawnRightAway)
-        {
-            timer = 0;
-        }
-        else
-        {
-            timer = initialWaitTime;
-        }
+        timer = initialWaitTime;
 	}
 
     void FixedUpdate()
     {
         if (spawn)
         {
-            timer -= Time.deltaTime;
-            if (timer < 0)
+            Spawn();
+        }
+    }
+
+    void Spawn()
+    {
+        timer -= Time.deltaTime;
+        if (timer < 0)
+        {
+            GameObject clone = GameObject.Instantiate(bitToSpawn, transform.position, Quaternion.identity) as GameObject;
+
+            if (spawnType == SpawnType.Reverse)
             {
-                GameObject clone = GameObject.Instantiate(bitToSpawn, transform.position, Quaternion.identity) as GameObject;
-
-                if (spawnType == SpawnType.Alternating){
-                    clone.GetComponent<BitShip>().special = specialSet;
-                    specialSet = !specialSet;
-                }
-
-                if (spawnType == SpawnType.Random)
-                {
-                    int rand = Random.Range(0, 2);
-                    if(rand == 1) clone.GetComponent<BitShip>().special = true;
-                }
-                
-                timer = spawnFrequency;
-                spawnedSoFar++;
+                clone.GetComponent<BitShip>().special = true;
             }
-            if (spawnedSoFar >= amountToSpawn)
+
+            if (spawnType == SpawnType.Alternating)
             {
-                if (destroyOnCompletion)
-                {
-                    Destroy(gameObject);
-                }
-                else
-                {
-                    spawn = false;
-                }
+                clone.GetComponent<BitShip>().special = specialSet;
+                specialSet = !specialSet;
+            }
+
+            if (spawnType == SpawnType.Random)
+            {
+                int rand = Random.Range(0, 2);
+                if (rand == 1) clone.GetComponent<BitShip>().special = true;
+            }
+
+            timer = spawnFrequency;
+            spawnedSoFar++;
+        }
+
+        if (spawnedSoFar >= amountToSpawn)
+        {
+            if (destroyOnCompletion)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                spawn = false;
             }
         }
+
     }
 
 }

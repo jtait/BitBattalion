@@ -52,6 +52,12 @@ public class PlayerControl : MonoBehaviour
 
     void PlayerDeath()
     {
+        /* destroy game object */
+
+        /* move player to last checkpoint */
+
+        /* recreate player ship */
+
         print("died");
     }
 
