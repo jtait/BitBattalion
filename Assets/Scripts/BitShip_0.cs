@@ -4,33 +4,40 @@ using System.Collections;
 public class BitShip_0 : BitShip {
 
     private int moveTimer = 100;
-    public float moveForce = 100f;
+    public float strafeForce = 100f;
 
     protected override void Start()
     {
-        pointValue = 200;
-        fireRate = baseFireRate * difficulty;
+        base.Start();
+        /* override all basic parameters */
+        health = 1;
+        pointValue = 200 * difficulty;
+        fireRate = fireRate * difficulty;
+        baseForwardVelocity = 2;
+
+        if (special) strafeForce *= -1f;
     }
 
     /* override base class Move() function */
     protected override void Move()
     {
-        base.Move();
+        rigidbody.velocity = Vector3.down * baseForwardVelocity;
 
-        if (moveTimer > 0)
+        if (triggered_2)
         {
-            moveTimer--;
-        }
-        else
-        {
-            rigidbody.AddForce(Vector3.right * moveForce);
+            rigidbody.AddForce(Vector3.right * strafeForce);
         }
 
     }
 
     protected override void Shoot()
     {
-        //base.Shoot();
+
+    }
+
+    protected override void Death()
+    {
+
     }
 
 }
