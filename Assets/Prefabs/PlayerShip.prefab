@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ID119
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   - 4: {fileID: 400002}
   - 33: {fileID: 3300002}
   - 23: {fileID: 2300002}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ID113
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - 4: {fileID: 400004}
   - 33: {fileID: 3300004}
   - 23: {fileID: 2300004}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ID107
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - 4: {fileID: 400006}
   - 33: {fileID: 3300006}
   - 23: {fileID: 2300006}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ID101
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - 4: {fileID: 400008}
   - 33: {fileID: 3300008}
   - 23: {fileID: 2300008}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ID95
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - 4: {fileID: 400010}
   - 33: {fileID: 3300010}
   - 23: {fileID: 2300010}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ID87
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   - 4: {fileID: 400012}
   - 33: {fileID: 3300012}
   - 23: {fileID: 2300012}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ID72
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - 4: {fileID: 400014}
   - 33: {fileID: 3300014}
   - 23: {fileID: 2300014}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ID66
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - 4: {fileID: 400016}
   - 33: {fileID: 3300016}
   - 23: {fileID: 2300016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ID60
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   - 4: {fileID: 400018}
   - 33: {fileID: 3300018}
   - 23: {fileID: 2300018}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ID54
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - 4: {fileID: 400020}
   - 33: {fileID: 3300020}
   - 23: {fileID: 2300020}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ID48
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - 4: {fileID: 400022}
   - 33: {fileID: 3300022}
   - 23: {fileID: 2300022}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ID42
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   - 4: {fileID: 400024}
   - 33: {fileID: 3300024}
   - 23: {fileID: 2300024}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ID34
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   - 4: {fileID: 400026}
   - 33: {fileID: 3300026}
   - 23: {fileID: 2300026}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ID26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - 4: {fileID: 400028}
   - 33: {fileID: 3300028}
   - 23: {fileID: 2300028}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ID18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   - 4: {fileID: 400030}
   - 33: {fileID: 3300030}
   - 23: {fileID: 2300030}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ID10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +284,7 @@ GameObject:
   - 23: {fileID: 2300032}
   - 95: {fileID: 9500000}
   - 108: {fileID: 10800000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,9 +489,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100032}
-  m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
-  m_LocalPosition: {x: -54.2627144, y: 61.2692604, z: -7.62939453e-06}
-  m_LocalScale: {x: .100000001, y: .100000001, z: .100000001}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -4.37113883e-08}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: .0299999993, y: .0299999993, z: .0299999993}
   m_Children:
   - {fileID: 400030}
   - {fileID: 400028}
@@ -996,7 +996,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.5
+  m_Intensity: .100000001
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
