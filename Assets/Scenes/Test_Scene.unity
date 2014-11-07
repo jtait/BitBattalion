@@ -116,7 +116,7 @@ Prefab:
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: bitToSpawn
       value: 
-      objectReference: {fileID: 100000, guid: e443158bfe930ee41a5db6d85eca10ae, type: 2}
+      objectReference: {fileID: 100002, guid: 1d616f7f9c0cd4bbb9de83a20fdf7201, type: 2}
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: spawn
       value: 1
@@ -131,7 +131,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: spawnType
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
@@ -172,7 +172,7 @@ MonoBehaviour:
   amountToSpawn: 8
   spawnFrequency: 1
   initialWaitTime: 0
-  spawnType: 1
+  spawnType: 2
 --- !u!4 &601059588
 Transform:
   m_ObjectHideFlags: 0
@@ -709,7 +709,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: spawnType
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
@@ -807,13 +807,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741be1ace04c3b54caa9311b82d6dc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bitToSpawn: {fileID: 100000, guid: e443158bfe930ee41a5db6d85eca10ae, type: 2}
+  bitToSpawn: {fileID: 100002, guid: 1d616f7f9c0cd4bbb9de83a20fdf7201, type: 2}
   destroyOnCompletion: 1
   spawn: 1
   amountToSpawn: 8
   spawnFrequency: 1
   initialWaitTime: 0
-  spawnType: 0
+  spawnType: 3
 --- !u!4 &1982777934
 Transform:
   m_ObjectHideFlags: 0
@@ -881,7 +881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc839a188d4cb74e978b313b298f10c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficulty: 0
+  difficulty: 1
 --- !u!4 &2078163928
 Transform:
   m_ObjectHideFlags: 0
