@@ -3,7 +3,6 @@ using System.Collections;
 
 public class BitShip_0 : BitShip {
 
-    private int moveTimer = 100;
     public float strafeForce = 100f;
 
     protected override void Start()
