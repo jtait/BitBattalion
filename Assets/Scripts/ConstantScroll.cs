@@ -14,4 +14,5 @@ public class ConstantScroll : MonoBehaviour {
 	void FixedUpdate () {
         transform.position = new Vector3(0, transform.position.y + scrollSpeed, 0);
 	}
+
 }

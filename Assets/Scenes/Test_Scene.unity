@@ -87,7 +87,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 22
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: m_LocalPosition.z
@@ -111,7 +111,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: bitToSpawn
@@ -119,7 +119,7 @@ Prefab:
       objectReference: {fileID: 100002, guid: 1d616f7f9c0cd4bbb9de83a20fdf7201, type: 2}
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: spawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: amountToSpawn
@@ -131,7 +131,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: spawnType
-      value: 3
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: destroyOnCompletion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
@@ -147,6 +159,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 601059588}
   - 114: {fileID: 601059587}
+  - 65: {fileID: 601059589}
   m_Layer: 0
   m_Name: BitSpawner
   m_TagString: Untagged
@@ -166,9 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741be1ace04c3b54caa9311b82d6dc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bitToSpawn: {fileID: 100000, guid: e443158bfe930ee41a5db6d85eca10ae, type: 2}
-  destroyOnCompletion: 1
-  spawn: 1
+  bitToSpawn: {fileID: 100002, guid: 1d616f7f9c0cd4bbb9de83a20fdf7201, type: 2}
+  destroyOnCompletion: 0
+  spawn: 0
   amountToSpawn: 8
   spawnFrequency: 1
   initialWaitTime: 0
@@ -180,11 +193,24 @@ Transform:
   m_PrefabInternal: {fileID: 1809502270}
   m_GameObject: {fileID: 601059586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12, y: 22, z: 0}
+  m_LocalPosition: {x: 12, y: 35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!65 &601059589
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6500000, guid: fcbf8971d45c0e34abf05aa2f579b7fb,
+    type: 2}
+  m_PrefabInternal: {fileID: 1809502270}
+  m_GameObject: {fileID: 601059586}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &691209848
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &691209849
 Renderer:
   m_ObjectHideFlags: 0
@@ -665,7 +691,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 22
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: m_LocalPosition.z
@@ -689,15 +715,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: bitToSpawn
       value: 
-      objectReference: {fileID: 100000, guid: e443158bfe930ee41a5db6d85eca10ae, type: 2}
+      objectReference: {fileID: 100002, guid: 1d616f7f9c0cd4bbb9de83a20fdf7201, type: 2}
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: spawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: amountToSpawn
@@ -710,6 +736,18 @@ Prefab:
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: spawnType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: destroyOnCompletion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
@@ -788,6 +826,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1982777934}
   - 114: {fileID: 1982777933}
+  - 65: {fileID: 1982777935}
   m_Layer: 0
   m_Name: BitSpawner
   m_TagString: Untagged
@@ -808,12 +847,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bitToSpawn: {fileID: 100002, guid: 1d616f7f9c0cd4bbb9de83a20fdf7201, type: 2}
-  destroyOnCompletion: 1
-  spawn: 1
+  destroyOnCompletion: 0
+  spawn: 0
   amountToSpawn: 8
   spawnFrequency: 1
   initialWaitTime: 0
-  spawnType: 3
+  spawnType: 2
 --- !u!4 &1982777934
 Transform:
   m_ObjectHideFlags: 0
@@ -821,11 +860,24 @@ Transform:
   m_PrefabInternal: {fileID: 391112924}
   m_GameObject: {fileID: 1982777932}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12, y: 22, z: 0}
+  m_LocalPosition: {x: -12, y: 35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!65 &1982777935
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6500000, guid: fcbf8971d45c0e34abf05aa2f579b7fb,
+    type: 2}
+  m_PrefabInternal: {fileID: 391112924}
+  m_GameObject: {fileID: 1982777932}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2038431780
 GameObject:
   m_ObjectHideFlags: 0

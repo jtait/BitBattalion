@@ -6,6 +6,7 @@ public class BitSpawner : MonoBehaviour {
     public GameObject bitToSpawn; // the bit prefab to spawn
     public bool destroyOnCompletion = true; // is the spawner destroyed when spawning is completed?
     public bool spawn = false; // is the spawner active?
+    private bool spawnComplete = false; // has the spawn operation completed? 
     
     public int amountToSpawn = 0; // the number of prefabs to spawn
     private int spawnedSoFar = 0; // the number of prefabs spawned so far
@@ -15,20 +16,35 @@ public class BitSpawner : MonoBehaviour {
     public float initialWaitTime = 0; // if spawning doesn't start right away, how long does the spawner wait?
 
     public enum SpawnType {Normal, Reverse, Alternating, Random};
-    public SpawnType spawnType;
+    public SpawnType spawnType; // the spawn setting for this spawner
 
-    private bool specialSet = false;
+    private bool specialSet = false; // a special bool to alter the spawned bit
+
+    private Transform lookAheadTrigger; // the transform of the look ahead trigger attached to the player
+    private float yPosition; // the y position of this spawner
+    private float yOffset = 30;
 
 	void Start ()
     {
+        lookAheadTrigger = GameObject.Find("Player").transform;
         timer = initialWaitTime;
+        yPosition = transform.position.y;
 	}
 
     void FixedUpdate()
     {
-        if (spawn)
+        if (!spawnComplete)
         {
-            Spawn();
+
+            if (spawn)
+            {
+                Spawn();
+            }
+
+            else if (lookAheadTrigger.position.y + yOffset > yPosition)
+            {
+                spawn = true;
+            }
         }
     }
 
@@ -69,9 +85,11 @@ public class BitSpawner : MonoBehaviour {
             else
             {
                 spawn = false;
+                spawnComplete = true;
             }
         }
 
     }
+
 
 }

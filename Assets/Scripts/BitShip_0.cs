@@ -22,7 +22,7 @@ public class BitShip_0 : BitShip {
     {
         rigidbody.velocity = Vector3.down * baseForwardVelocity;
 
-        if (triggered_2)
+        if (triggered_1)
         {
             rigidbody.AddForce(Vector3.right * strafeForce);
         }
