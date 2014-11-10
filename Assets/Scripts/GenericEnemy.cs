@@ -16,6 +16,11 @@ public abstract class GenericEnemy : MonoBehaviour {
     protected bool triggered_2 = false;
     protected bool triggered_3 = false;
 
+    protected virtual void Start()
+    {
+        difficulty = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>().difficulty;
+    }
+
     public void DoDamage(int damage)
     {
 

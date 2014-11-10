@@ -934,6 +934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc839a188d4cb74e978b313b298f10c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerLives: 5
   difficulty: 1
 --- !u!4 &2078163928
 Transform:
