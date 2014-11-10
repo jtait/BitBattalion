@@ -36,7 +36,7 @@ public class BitShip_0 : BitShip {
 
     protected override void Death()
     {
-
+        base.Death();
     }
 
 }

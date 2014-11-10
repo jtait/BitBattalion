@@ -7,11 +7,12 @@ public class GenericAmmo : MonoBehaviour {
     public float baseSpeed;
     private float destructionTime;
     public float timeToLive;
+    public int shotDamage;
 
 	// Use this for initialization
 	void Start () {
         shotVelocity = Vector3.up * baseSpeed;
-        destructionTime = Time.time + timeToLive; ;
+        destructionTime = Time.time + timeToLive;
 	}
 	
 	// Update is called once per frame
@@ -27,7 +28,7 @@ public class GenericAmmo : MonoBehaviour {
 
 	}
 
-    void OnCollisionEnter()
+    void OnCollisionEnter(Collision col)
     {
         Destroy(gameObject);
     }
