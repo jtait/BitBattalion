@@ -9,6 +9,7 @@ public class PlayerControl : MonoBehaviour
     private float strafeDirection;
     private float velocityDirection;
     public float velocityAddition = 2f;
+    public GameObject ammo;
     
     void Start()
     {
@@ -48,6 +49,9 @@ public class PlayerControl : MonoBehaviour
     void Shoot()
     {
         // generate a new object to fire, instantiate with velocity, power, etc.
+        Vector3 launchFrom = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+        GameObject clone = GameObject.Instantiate(ammo, launchFrom, Quaternion.identity) as GameObject;
+        clone.GetComponent<GenericAmmo>().shotVelocity += new Vector3(0, rigidbody.velocity.y, 0);
     }
 
     void PlayerDeath()
