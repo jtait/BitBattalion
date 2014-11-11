@@ -30,6 +30,6 @@ public class GenericAmmo : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
-        Destroy(gameObject);
+        if(col.collider.tag != "Weapon") Destroy(gameObject);
     }
 }

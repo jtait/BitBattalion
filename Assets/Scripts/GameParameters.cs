@@ -7,9 +7,13 @@ public class GameParameters : MonoBehaviour {
     public int difficulty;
     private long playerScore;
     private const long maxScore = 999999999999L;
+    public Vector3 lastCheckpoint;
 
     void Start()
     {
+
+        lastCheckpoint = Vector3.zero;
+
         difficulty = 1;
         playerScore = 0;
         playerLives = 5;
