@@ -311,8 +311,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   strafeForce: 550
   velocityAddition: 5
-  ammo: {fileID: 100000, guid: 7c30cfb2d461fce468ccbddd2c3632c9, type: 2}
-  fireRate: .5
 --- !u!1 &759823400
 GameObject:
   m_ObjectHideFlags: 0
