@@ -4,6 +4,10 @@ using System.Collections;
 public class PlayerControl : MonoBehaviour
 {
 
+    private const float BASE_FIRE_RATE = 0.5f;
+    private const float FIRE_RATE_PERK = 5f;
+    private const float MISSILE_FIRE_RATE = 1f;
+
     // movement
     public float strafeForce = 10f;
     private float strafeDirection;
@@ -11,18 +15,35 @@ public class PlayerControl : MonoBehaviour
     public float velocityAddition = 2f;
 
     // weapons
-    public GameObject ammo;
-    public float fireRate; // delay between shots
-    private float nextShot;
+    private GameObject ammo; // the ammo the player ship will fire
+    private GameObject specialWeapon; // the special weapon (bomb, missile, etc.) that the player ship has
+    private float fireRate; // delay between regular shots
+    private float nextShot; // delay until next regualer shot can be fired
+    private float specialFireRate; // delay between special shots
+    private float nextSpecial; // delay until next special shot can be fired
 
-
-
+    // persistent game parameters
     private GameParameters gameParams;
+
+    // types of available ammo
+    private enum WeaponType { laser, missile, bomb, none };
+    private GameObject laser;
+    private GameObject missile;
+    private GameObject bomb;
+
+    private bool shielded = false;
+    private WeaponType specialWeaponType;
 
     void Awake()
     {
+        laser = Resources.Load<GameObject>("Ammo/LaserShot");
+        missile = Resources.Load<GameObject>("Ammo/Missile");
+        bomb = Resources.Load<GameObject>("Ammo/Bomb");
+        ammo = laser;
         nextShot = 0f;
+        nextSpecial = 0f;
         gameParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
+        fireRate = BASE_FIRE_RATE;
     }
     
 
@@ -53,6 +74,10 @@ public class PlayerControl : MonoBehaviour
         {
             Shoot();
         }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            ShootSpecialWeapon();
+        }
     }
 
     // create and launch projectile from ships location
@@ -68,10 +93,38 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    // create and fire a special weapon if the player has one
+    void ShootSpecialWeapon()
+    {
+        if (specialWeapon != null)
+        {
+            if (Time.time > nextSpecial)
+            {
+                switch (specialWeaponType)
+                {
+                    case WeaponType.bomb:
+                        //TODO
+                        // launch bomb here
+                        break;
+                    case WeaponType.missile:
+                        // generate a new missile to fire, instantiate with velocity, power, etc.
+                        Vector3 launchFrom = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+                        GameObject clone = GameObject.Instantiate(ammo, launchFrom, Quaternion.identity) as GameObject;
+                        clone.GetComponent<GenericAmmo>().shotVelocity += new Vector3(0, rigidbody.velocity.y, 0);
+                        nextSpecial = Time.time + fireRate;
+                        break;
+                }
+            }
+        }
+    }
+
     void PlayerDeath()
     {
         /* decrease player lives */
         gameParams.playerLives--;
+
+        /* reset powerUp benefits */
+        PowerUpPickup(PowerUpType.None);
 
         if (gameParams.playerLives > 0)
         {
@@ -88,10 +141,9 @@ public class PlayerControl : MonoBehaviour
         }
         else
         {
+            //TODO
             /* GAME OVER */
         }
-        
-
 
     }
 
@@ -102,6 +154,35 @@ public class PlayerControl : MonoBehaviour
         {
             gameParams.lastCheckpoint = col.transform.position;
         }
+    }
+
+    public void PowerUpPickup(PowerUpType type)
+    {
+        switch(type){
+            case PowerUpType.None:
+                ammo = laser;
+                specialWeaponType = WeaponType.none;
+                shielded = false;
+                fireRate = BASE_FIRE_RATE;
+                break;
+            case PowerUpType.Missile:
+                specialWeaponType = WeaponType.missile;
+                specialFireRate = MISSILE_FIRE_RATE;
+                break;
+            case PowerUpType.Bomb:
+                specialWeaponType = WeaponType.bomb;
+                break;
+            case PowerUpType.ExtraLife:
+                gameParams.playerLives++;
+                break;
+            case PowerUpType.RapidFire:
+                fireRate *= FIRE_RATE_PERK;
+                break;
+            case PowerUpType.Shield:
+                shielded = true;
+                break;
+        }
+        
     }
 
 }

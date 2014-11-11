@@ -1,0 +1,1 @@
+﻿public enum PowerUpType { RapidFire, Shield, ExtraLife, Missile, Bomb, None };

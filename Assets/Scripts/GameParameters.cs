@@ -9,6 +9,11 @@ public class GameParameters : MonoBehaviour {
     private const long maxScore = 999999999999L;
     public Vector3 lastCheckpoint;
 
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     void Start()
     {
 
