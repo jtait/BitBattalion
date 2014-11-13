@@ -2391,6 +2391,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 550815696}
   - 95: {fileID: 550815697}
+  - 65: {fileID: 550815698}
   m_Layer: 0
   m_Name: PowerUp_Rapid
   m_TagString: Untagged
@@ -2428,6 +2429,19 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!65 &550815698
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6500000, guid: e0cec735ab80b4767949503c439b18b8,
+    type: 2}
+  m_PrefabInternal: {fileID: 743441943}
+  m_GameObject: {fileID: 550815695}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.70000005, y: 3.70000005, z: .200000003}
+  m_Center: {x: -.200000003, y: .200000003, z: 0}
 --- !u!1 &571114837
 GameObject:
   m_ObjectHideFlags: 0
@@ -3641,6 +3655,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 801103265}
   - 95: {fileID: 801103264}
+  - 65: {fileID: 801103266}
   m_Layer: 0
   m_Name: PowerUp_Shield
   m_TagString: Untagged
@@ -3678,6 +3693,19 @@ Transform:
   - {fileID: 2134259468}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!65 &801103266
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6500000, guid: 3c538451dfe7c4a95b789fac32ba9b49,
+    type: 2}
+  m_PrefabInternal: {fileID: 54113301}
+  m_GameObject: {fileID: 801103263}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.70000005, y: 3.70000005, z: .200000003}
+  m_Center: {x: -.200000003, y: .200000003, z: 0}
 --- !u!1 &829218503
 GameObject:
   m_ObjectHideFlags: 0
@@ -5196,6 +5224,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6500000, guid: 3cf562bd33f3a454498b4d1b0dbc559d, type: 2}
+      propertyPath: m_Size.x
+      value: 3.70000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500000, guid: 3cf562bd33f3a454498b4d1b0dbc559d, type: 2}
+      propertyPath: m_Size.y
+      value: 3.70000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500000, guid: 3cf562bd33f3a454498b4d1b0dbc559d, type: 2}
+      propertyPath: m_Size.z
+      value: .200000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500000, guid: 3cf562bd33f3a454498b4d1b0dbc559d, type: 2}
+      propertyPath: m_Center.x
+      value: -.200000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500000, guid: 3cf562bd33f3a454498b4d1b0dbc559d, type: 2}
+      propertyPath: m_Center.y
+      value: .200000003
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3cf562bd33f3a454498b4d1b0dbc559d, type: 2}
   m_RootGameObject: {fileID: 1544698519}
@@ -5502,6 +5550,7 @@ GameObject:
   - 33: {fileID: 1316851389}
   - 23: {fileID: 1316851388}
   - 95: {fileID: 1316851387}
+  - 65: {fileID: 1316851390}
   m_Layer: 0
   m_Name: Life_0
   m_TagString: Untagged
@@ -5585,6 +5634,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1653051214}
   m_GameObject: {fileID: 1316851385}
   m_Mesh: {fileID: 4300000, guid: 2436a38d0843c4e889844a0246958151, type: 3}
+--- !u!65 &1316851390
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1316851385}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.24803162, y: 5.24803305, z: .0708661154}
+  m_Center: {x: -.0669920444, y: .0415800922, z: .0354330577}
 --- !u!1 &1345955026
 GameObject:
   m_ObjectHideFlags: 0
@@ -5884,6 +5945,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1391987909}
   - 95: {fileID: 1391987910}
+  - 65: {fileID: 1391987911}
   m_Layer: 0
   m_Name: PowerUp_Missile
   m_TagString: Untagged
@@ -5921,6 +5983,19 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!65 &1391987911
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6500000, guid: e772e86af5fb545698f6c40bada31fb5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1853731376}
+  m_GameObject: {fileID: 1391987908}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.70000005, y: 3.70000005, z: .200000003}
+  m_Center: {x: -.200000003, y: .200000003, z: 0}
 --- !u!1 &1395142705
 GameObject:
   m_ObjectHideFlags: 0
@@ -6394,6 +6469,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1544698520}
   - 95: {fileID: 1544698521}
+  - 65: {fileID: 1544698522}
   m_Layer: 0
   m_Name: PowerUp_Bomb
   m_TagString: Untagged
@@ -6431,6 +6507,19 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!65 &1544698522
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6500000, guid: 3cf562bd33f3a454498b4d1b0dbc559d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1203058644}
+  m_GameObject: {fileID: 1544698519}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.70000005, y: 3.70000005, z: .200000003}
+  m_Center: {x: -.200000003, y: .200000003, z: 0}
 --- !u!1 &1560084113
 GameObject:
   m_ObjectHideFlags: 0
@@ -7383,6 +7472,10 @@ Prefab:
     - target: {fileID: 400060, guid: e772e86af5fb545698f6c40bada31fb5, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500000, guid: e772e86af5fb545698f6c40bada31fb5, type: 2}
+      propertyPath: m_Center.x
+      value: -.200000003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e772e86af5fb545698f6c40bada31fb5, type: 2}
