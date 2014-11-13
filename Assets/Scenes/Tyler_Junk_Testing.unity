@@ -3380,7 +3380,7 @@ Transform:
   - {fileID: 144194765}
   - {fileID: 2053648516}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!95 &550815697
 Animator:
   serializedVersion: 3
@@ -7422,7 +7422,7 @@ Transform:
   - {fileID: 782145659}
   - {fileID: 1427270260}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!95 &1316851387
 Animator:
   serializedVersion: 3
@@ -7916,7 +7916,7 @@ Transform:
   - {fileID: 521027672}
   - {fileID: 430672683}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!95 &1391987910
 Animator:
   serializedVersion: 3
@@ -8498,7 +8498,7 @@ Transform:
   - {fileID: 100575828}
   - {fileID: 1001638219}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!95 &1544698521
 Animator:
   serializedVersion: 3
@@ -10640,7 +10640,7 @@ Transform:
   - {fileID: 1627270910}
   - {fileID: 956275210}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
 --- !u!95 &1987871944
 Animator:
   serializedVersion: 3
@@ -11386,7 +11386,7 @@ Transform:
   - {fileID: 12938083}
   - {fileID: 1272122697}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!136 &2064328388
 CapsuleCollider:
   m_ObjectHideFlags: 0
