@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GenericAmmo : MonoBehaviour {
+public abstract class GenericAmmo : MonoBehaviour {
 
     public Vector3 shotVelocity;
     public float baseSpeed;
@@ -10,25 +10,22 @@ public class GenericAmmo : MonoBehaviour {
     public int shotDamage;
 
 	// Use this for initialization
-	void Start () {
+	protected virtual void Start () {
         shotVelocity = Vector3.up * baseSpeed;
         destructionTime = Time.time + timeToLive;
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	protected virtual void FixedUpdate () {
         rigidbody.velocity = shotVelocity;
 
         if (Time.time > destructionTime)
         {
             Destroy(gameObject);
         }
-
-
-
 	}
 
-    void OnCollisionEnter(Collision col)
+    protected virtual void OnCollisionEnter(Collision col)
     {
         if(col.collider.tag != "Weapon") Destroy(gameObject);
     }

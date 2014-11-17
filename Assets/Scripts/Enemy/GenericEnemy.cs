@@ -10,7 +10,7 @@ public abstract class GenericEnemy : MonoBehaviour {
     protected float baseForwardVelocity = 0f; // the base speed of the ship, before modifiers
     protected int difficulty; // the difficulty modifier of the enemy - useful for endless mode or repeating levels at higher difficulty
     protected GameObject ammunition; // the type of projectile the ship fires
-    protected int fireRate = 1; // how often the BitShip fires, after modifiers
+    protected float fireRate = 1; // how often the BitShip fires, after modifiers
 
     protected bool triggered_1 = false;
     protected bool triggered_2 = false;
