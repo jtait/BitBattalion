@@ -1099,6 +1099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointValue: 300
   health: 2
+  baseFireRate: 4
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

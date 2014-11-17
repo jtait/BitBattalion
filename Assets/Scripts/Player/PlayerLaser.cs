@@ -6,6 +6,7 @@ public class PlayerLaser : GenericAmmo {
     protected override void Start()
     {
         base.Start();
+        shotVelocity = Vector3.up * baseSpeed;
     }
 
     protected override void FixedUpdate()
