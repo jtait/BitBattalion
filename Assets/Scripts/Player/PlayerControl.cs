@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerControl : MonoBehaviour
 {
 
-    private const float BASE_FIRE_RATE = 0.5f;
+    private const float BASE_FIRE_RATE = 0.3f; // the base fire rate of the ship.  Lower is faster.
     private const float FIRE_RATE_PERK = 5f;
     private const float MISSILE_FIRE_RATE = 1f;
 

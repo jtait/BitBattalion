@@ -12,7 +12,7 @@ public class ConstantScroll : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        transform.position = new Vector3(0, transform.position.y + scrollSpeed, 0);
+        transform.position = new Vector3(transform.position.x, transform.position.y + scrollSpeed, transform.position.z);
 	}
 
 }
