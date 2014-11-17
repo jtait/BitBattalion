@@ -3,19 +3,21 @@ using System.Collections;
 
 public class Turret : GenericEnemy {
 
-    private const float BASE_FIRE_RATE = 1f; // the base fire rate of the turret.  Lower is faster.
+    private const float MIN_FIRE_RATE = 1f; // the base fire rate of the turret.  Lower is faster.
     private const float OFFSET_FROM_CENTER = 2f; // the offset so the turret shoots from the end of the barrel instead of the center of the transform
+    private const float MAX_START_DELAY = 5f;
 
     private Transform target;
     private float nextShot;
-    public float baseFireRate = 1;
+    public float minFireDelay = 1;
+    public float maxFireDelay = 3;
 
 	// Use this for initialization
 	void Start () {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         ammunition = Resources.Load<GameObject>("Ammo/EnemyLaser");
-        nextShot = 0f;
-        fireRate = BASE_FIRE_RATE * baseFireRate;
+        nextShot = StartOffset();
+        fireRate = StartFireRate();
 	}
 	
     void FixedUpdate()
@@ -48,6 +50,21 @@ public class Turret : GenericEnemy {
             ammo.timeToLive = ammo.timeToLive * 0.5f * difficulty;
             nextShot = Time.time + fireRate;
         }
+    }
+
+    protected override void Death()
+    {
+        base.Death();
+    }
+
+    private float StartOffset()
+    {
+        return Random.Range(0, MAX_START_DELAY);
+    }
+
+    private float StartFireRate()
+    {
+        return Random.Range(MIN_FIRE_RATE + minFireDelay, maxFireDelay);
     }
 
 }

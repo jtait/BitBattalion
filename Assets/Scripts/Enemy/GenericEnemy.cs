@@ -26,11 +26,6 @@ public abstract class GenericEnemy : MonoBehaviour {
         
     }
 
-    public void DoDamage(int damage)
-    {
-
-    }
-
     void Update()
     {
         Death();

@@ -64,7 +64,8 @@ public class PlayerControl : MonoBehaviour
     {
         if (col.collider.tag == "Enemy")
         {
-            PlayerDeath();
+            if (shielded) shielded = false;
+            else PlayerDeath();
         }
     }
 
