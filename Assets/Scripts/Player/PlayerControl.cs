@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour
     private const float BASE_FIRE_RATE = 0.3f; // the base fire rate of the ship.  Lower is faster.
     private const float FIRE_RATE_PERK = 5f;
     private const float MISSILE_FIRE_RATE = 1f;
+    private const float SHOT_OFFSET = 2.5f;
 
     // movement
     public float strafeForce = 10f;
@@ -33,7 +34,9 @@ public class PlayerControl : MonoBehaviour
 
     private bool shielded = false;
     private WeaponType specialWeaponType;
+    private int specialWeaponAmmoCount;
 
+    /* initialize parameters here */
     void Awake()
     {
         laser = Resources.Load<GameObject>("Ammo/LaserShot");
@@ -44,20 +47,19 @@ public class PlayerControl : MonoBehaviour
         nextSpecial = 0f;
         gameParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
         fireRate = BASE_FIRE_RATE;
+        specialWeaponType = WeaponType.none;
+        specialWeaponAmmoCount = 0;
     }
     
-
     void FixedUpdate()
     {
-
-        // strafing
+        /* strafing */
         strafeDirection = Input.GetAxis("Horizontal");
         rigidbody.AddForce(new Vector3(strafeDirection * strafeForce, 0, 0));
 
-        // forward / backward movement
+        /* forward and backward movement */
         velocityDirection = Input.GetAxis("Vertical");
         rigidbody.velocity = new Vector3(0, velocityAddition * velocityDirection, 0);
-
     }
 
     void OnCollisionEnter(Collision col)
@@ -77,48 +79,42 @@ public class PlayerControl : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            ShootSpecialWeapon();
+            ShootSpecialWeapon(specialWeapon);
         }
     }
 
-    // create and launch projectile from ships location
+    /* create and launch projectile from ships location */
     void Shoot()
     {
         if (Time.time > nextShot)
         {
             // generate a new object to fire, instantiate with velocity, power, etc.
-            Vector3 launchFrom = new Vector3(transform.position.x, transform.position.y + 2.5f, transform.position.z);
+            Vector3 launchFrom = new Vector3(transform.position.x, transform.position.y + SHOT_OFFSET, transform.position.z);
             GameObject clone = GameObject.Instantiate(ammo, launchFrom, Quaternion.identity) as GameObject;
             clone.GetComponent<GenericAmmo>().shotVelocity += new Vector3(0, rigidbody.velocity.y, 0);
             nextShot = Time.time + fireRate;
         }
     }
 
-    // create and fire a special weapon if the player has one
-    void ShootSpecialWeapon()
+    /* create and fire a special weapon if the player has one */
+    void ShootSpecialWeapon(GameObject type)
     {
         if (specialWeapon != null)
         {
             if (Time.time > nextSpecial)
             {
-                switch (specialWeaponType)
-                {
-                    case WeaponType.bomb:
-                        //TODO
-                        // launch bomb here
-                        break;
-                    case WeaponType.missile:
-                        // generate a new missile to fire, instantiate with velocity, power, etc.
-                        Vector3 launchFrom = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
-                        GameObject clone = GameObject.Instantiate(ammo, launchFrom, Quaternion.identity) as GameObject;
-                        clone.GetComponent<GenericAmmo>().shotVelocity += new Vector3(0, rigidbody.velocity.y, 0);
-                        nextSpecial = Time.time + fireRate;
-                        break;
-                }
+                Vector3 launchFrom = new Vector3(transform.position.x, transform.position.y + SHOT_OFFSET, transform.position.z);
+                GameObject clone = GameObject.Instantiate(type, launchFrom, Quaternion.identity) as GameObject;
+                clone.GetComponent<GenericAmmo>().shotVelocity += new Vector3(0, rigidbody.velocity.y, 0);
+                nextSpecial = Time.time + fireRate;
+                specialWeaponAmmoCount--;
+                if (specialWeaponAmmoCount <= 0)
+                    SetSpecialWeapon(WeaponType.none);
             }
         }
     }
 
+    /* called when a player dies */
     void PlayerDeath()
     {
         /* decrease player lives */
@@ -157,21 +153,45 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    /* set the special weapon parameters to the specified WeaponType */
+    private void SetSpecialWeapon(WeaponType weapon)
+    {
+        switch (weapon)
+        {
+            case WeaponType.none:
+                specialWeaponType = WeaponType.none;
+                specialWeapon = null;
+                specialWeaponAmmoCount = 0;
+                break;
+            case WeaponType.missile:
+                specialWeaponType = WeaponType.missile;
+                specialWeapon = missile;
+                specialWeaponAmmoCount = 3;
+                break;
+            case WeaponType.bomb:
+                specialWeaponType = WeaponType.bomb;
+                specialWeapon = bomb;
+                specialWeaponAmmoCount = 1;
+                break;
+        }
+    }
+
+    /* handle state changes when picking up a powerup */
     public void PowerUpPickup(PowerUpType type)
     {
         switch(type){
             case PowerUpType.None:
                 ammo = laser;
-                specialWeaponType = WeaponType.none;
+                SetSpecialWeapon(WeaponType.none);
                 shielded = false;
                 fireRate = BASE_FIRE_RATE;
                 break;
             case PowerUpType.Missile:
-                specialWeaponType = WeaponType.missile;
+                SetSpecialWeapon(WeaponType.missile);
                 specialFireRate = MISSILE_FIRE_RATE;
                 break;
             case PowerUpType.Bomb:
-                specialWeaponType = WeaponType.bomb;
+                SetSpecialWeapon(WeaponType.bomb);
                 break;
             case PowerUpType.ExtraLife:
                 gameParams.playerLives++;

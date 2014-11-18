@@ -4,6 +4,8 @@ using System.Collections;
 public class Capacitor : MonoBehaviour
 {
     private const float SPAWN_OFFSET = 10f;
+    public bool randomType = true;
+    public PowerUpType predeterminedType;
 
     private PowerUpType type;
     Vector3 spawnPosition;
@@ -11,7 +13,8 @@ public class Capacitor : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        type = RandomPowerUp();
+        if (randomType) type = RandomPowerUp();
+        else type = predeterminedType;
         spawnPosition = (transform.position + Vector3.back * SPAWN_OFFSET);
     }
 

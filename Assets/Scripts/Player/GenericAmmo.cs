@@ -5,7 +5,7 @@ public abstract class GenericAmmo : MonoBehaviour {
 
     public Vector3 shotVelocity;
     public float baseSpeed;
-    private float destructionTime;
+    protected float destructionTime;
     public float timeToLive;
     public int shotDamage;
 

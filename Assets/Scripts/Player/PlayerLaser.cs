@@ -14,7 +14,7 @@ public class PlayerLaser : GenericAmmo {
         base.FixedUpdate();
     }
 
-    protected virtual void OnCollisionEnter(Collision col)
+    protected override void OnCollisionEnter(Collision col)
     {
         if (col.collider.tag != "Enemy") Destroy(gameObject);
     }

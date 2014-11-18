@@ -1764,6 +1764,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 4907351f8e24c1447b15a79980600e27, type: 2}
+      propertyPath: active
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4907351f8e24c1447b15a79980600e27, type: 2}
   m_RootGameObject: {fileID: 1311329129}
@@ -3956,7 +3960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: .0500000007
-  active: 0
+  active: 1
 --- !u!1 &1313711957
 GameObject:
   m_ObjectHideFlags: 0
