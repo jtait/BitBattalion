@@ -3398,6 +3398,14 @@ Prefab:
       propertyPath: m_Name
       value: powerup_capacitor
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: c56a6b2c29b4142ae94920daa41e5c3a, type: 2}
+      propertyPath: randomType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: c56a6b2c29b4142ae94920daa41e5c3a, type: 2}
+      propertyPath: predeterminedType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c56a6b2c29b4142ae94920daa41e5c3a, type: 2}
   m_RootGameObject: {fileID: 1996659133}
@@ -5485,6 +5493,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0b9d0ee34cc85439e04b70233b011f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomType: 0
+  predeterminedType: 0
 --- !u!23 &1996659136
 Renderer:
   m_ObjectHideFlags: 0

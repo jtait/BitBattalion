@@ -5,9 +5,10 @@ public class PlayerControl : MonoBehaviour
 {
 
     private const float BASE_FIRE_RATE = 0.3f; // the base fire rate of the ship.  Lower is faster.
-    private const float FIRE_RATE_PERK = 5f;
-    private const float MISSILE_FIRE_RATE = 1f;
+    private const float FIRE_RATE_PERK = 0.1f; // the rapid fire rate of the ship
+    private const float MISSILE_FIRE_RATE = 1f; // the missile fire rate
     private const float SHOT_OFFSET = 2.5f;
+    private const float RAPID_FIRE_TIMER = 10f; // the length of time for rapid fire to last
 
     // movement
     public float strafeForce = 10f;
@@ -35,6 +36,8 @@ public class PlayerControl : MonoBehaviour
     private bool shielded = false;
     private WeaponType specialWeaponType;
     private int specialWeaponAmmoCount;
+    private bool rapidFireEnabled;
+    private float rapidFireTimer;
 
     /* initialize parameters here */
     void Awake()
@@ -49,6 +52,8 @@ public class PlayerControl : MonoBehaviour
         fireRate = BASE_FIRE_RATE;
         specialWeaponType = WeaponType.none;
         specialWeaponAmmoCount = 0;
+        rapidFireEnabled = false;
+        rapidFireTimer = 0f;
     }
     
     void FixedUpdate()
@@ -81,6 +86,17 @@ public class PlayerControl : MonoBehaviour
         {
             ShootSpecialWeapon(specialWeapon);
         }
+
+        if (rapidFireEnabled)
+        {
+            rapidFireTimer -= Time.deltaTime;
+            if (rapidFireTimer < 0)
+            {
+                SetRapidFire(false);
+            }
+        }
+
+
     }
 
     /* create and launch projectile from ships location */
@@ -176,6 +192,21 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    private void SetRapidFire(bool set)
+    {
+        rapidFireEnabled = set;
+        if (set)
+        {
+            fireRate = FIRE_RATE_PERK;
+            rapidFireTimer = RAPID_FIRE_TIMER;
+        }
+        else
+        {
+            fireRate = BASE_FIRE_RATE;
+            rapidFireTimer = 0;
+        }
+    }
+
     /* handle state changes when picking up a powerup */
     public void PowerUpPickup(PowerUpType type)
     {
@@ -184,7 +215,7 @@ public class PlayerControl : MonoBehaviour
                 ammo = laser;
                 SetSpecialWeapon(WeaponType.none);
                 shielded = false;
-                fireRate = BASE_FIRE_RATE;
+                SetRapidFire(false);
                 break;
             case PowerUpType.Missile:
                 SetSpecialWeapon(WeaponType.missile);
@@ -197,7 +228,7 @@ public class PlayerControl : MonoBehaviour
                 gameParams.playerLives++;
                 break;
             case PowerUpType.RapidFire:
-                fireRate *= FIRE_RATE_PERK;
+                SetRapidFire(true);
                 break;
             case PowerUpType.Shield:
                 shielded = true;
