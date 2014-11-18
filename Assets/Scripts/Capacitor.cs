@@ -10,12 +10,31 @@ public class Capacitor : MonoBehaviour
     private PowerUpType type;
     Vector3 spawnPosition;
 
+    void Awake()
+    {
+        float[] rotations = RandomRotation();
+        transform.localEulerAngles = new Vector3(rotations[0], rotations[1], 0);
+    }
+
     // Use this for initialization
     void Start()
     {
         if (randomType) type = RandomPowerUp();
         else type = predeterminedType;
         spawnPosition = (transform.position + Vector3.back * SPAWN_OFFSET);
+    }
+
+    private float[] RandomRotation()
+    {
+        float xRot = 0;
+        float yRot = 0;
+        while (xRot == 0 && yRot == 0)
+        {
+            xRot = Random.Range(-15, 15);
+            yRot = Random.Range(165, 195);
+        }
+        float[] rotations = {xRot, yRot};
+        return rotations;
     }
 
     private PowerUpType RandomPowerUp()
