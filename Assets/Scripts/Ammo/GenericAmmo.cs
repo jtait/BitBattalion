@@ -24,12 +24,4 @@ public abstract class GenericAmmo : MonoBehaviour {
         }
 	}
 
-    void OnTriggerEnter(Collider col)
-    {
-        if (col.name == "DestroyAmmo")
-        {
-            Destroy(gameObject);
-        }
-    }
-
 }
