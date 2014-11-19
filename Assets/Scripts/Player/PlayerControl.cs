@@ -78,11 +78,11 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             Shoot();
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             ShootSpecialWeapon(specialWeapon);
         }
