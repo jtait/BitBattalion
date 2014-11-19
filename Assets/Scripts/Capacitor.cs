@@ -16,7 +16,6 @@ public class Capacitor : MonoBehaviour
         transform.localEulerAngles = new Vector3(rotations[0], rotations[1], 0);
     }
 
-    // Use this for initialization
     void Start()
     {
         if (randomType) type = RandomPowerUp();

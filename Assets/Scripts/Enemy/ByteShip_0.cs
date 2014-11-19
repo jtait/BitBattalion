@@ -16,8 +16,9 @@ public class ByteShip_0 : GenericEnemy
 
     protected override void Start()
     {
-        base.Start();
+        /* flip the transform over */
         transform.localEulerAngles = new Vector3(0, 180, 0);
+
         /* override all basic parameters */
         health = 4;
         pointValue = 800 * difficulty;

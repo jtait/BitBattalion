@@ -8,7 +8,6 @@ public abstract class BitShip : GenericEnemy {
     void FixedUpdate()
     {
         Move();
-        Shoot();
     }
 	
 }

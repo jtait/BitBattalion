@@ -58,6 +58,7 @@ public abstract class GenericEnemy : MonoBehaviour {
         if (col.collider.tag == "Weapon")
         {
             health--;
+            Destroy(col.collider.gameObject);
         }
     }
 

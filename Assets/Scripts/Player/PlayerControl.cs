@@ -87,6 +87,7 @@ public class PlayerControl : MonoBehaviour
             ShootSpecialWeapon(specialWeapon);
         }
 
+        /* rapid fire timer */
         if (rapidFireEnabled)
         {
             rapidFireTimer -= Time.deltaTime;
@@ -95,11 +96,9 @@ public class PlayerControl : MonoBehaviour
                 SetRapidFire(false);
             }
         }
-
-
     }
 
-    /* create and launch projectile from ships location */
+    /* create and launch projectile from ship's location */
     void Shoot()
     {
         if (Time.time > nextShot)
@@ -192,6 +191,7 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    /* set rapid fire parameters */
     private void SetRapidFire(bool set)
     {
         rapidFireEnabled = set;

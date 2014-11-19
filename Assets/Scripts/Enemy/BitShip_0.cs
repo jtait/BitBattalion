@@ -7,8 +7,7 @@ public class BitShip_0 : BitShip {
 
     protected override void Start()
     {
-        base.Start();
-        /* override all basic parameters */
+        /* set all basic parameters */
         health = 1;
         pointValue = 200 * difficulty;
         fireRate = fireRate * difficulty;
@@ -27,10 +26,6 @@ public class BitShip_0 : BitShip {
             rigidbody.AddForce(Vector3.right * strafeForce);
         }
 
-    }
-
-    protected override void Shoot()
-    {
     }
 
     protected override void Death()

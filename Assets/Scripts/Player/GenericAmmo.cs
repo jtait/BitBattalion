@@ -3,11 +3,11 @@ using System.Collections;
 
 public abstract class GenericAmmo : MonoBehaviour {
 
-    public Vector3 shotVelocity;
-    public float baseSpeed;
-    protected float destructionTime;
-    public float timeToLive;
-    public int shotDamage;
+    public Vector3 shotVelocity; // the velocity of the projectile
+    public float baseSpeed; // the baseSpeed of the projectile (allows velocity to have modifiers)
+    protected float destructionTime; // the actual time to live
+    public float timeToLive; // the unmodified time to live
+    public int shotDamage; // the damage the shot does
 
 	// Use this for initialization
 	protected virtual void Start ()
@@ -26,8 +26,6 @@ public abstract class GenericAmmo : MonoBehaviour {
         }
 	}
 
-    protected virtual void OnCollisionEnter(Collision col)
-    {
-        
-    }
+    protected virtual void OnCollisionEnter(Collision col){}
+
 }
