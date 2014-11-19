@@ -18,23 +18,23 @@ public abstract class GenericEnemy : MonoBehaviour {
 
     void Awake()
     {
-        difficulty = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>().difficulty;
+        difficulty = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>().difficulty; // set the difficulty parameter of the enemy to the difficulty of the game when the enemy is created
     }
 
     protected virtual void Start()
     {
-        
+        /* initialization is done in child classes */
     }
 
     void Update()
     {
-        Death();
+        Death(); // check for death condition every frame
     }
 
     /* basic Move function - moves ship forward (down) at baseForwardVelocity */
     protected virtual void Move()
     {
-
+        /* movement of enemies is done in child classes */
     }
 
     /* basic shoot function - spawns new projectile */
@@ -55,13 +55,15 @@ public abstract class GenericEnemy : MonoBehaviour {
     /* check for collisions with projectiles */
     void OnCollisionEnter(Collision col)
     {
+        /* detect when an enemy is hit by a player weapon */
         if (col.collider.tag == "Weapon")
         {
             health--;
-            Destroy(col.collider.gameObject);
+            Destroy(col.collider.gameObject); // destroy the weapon that hit the enemy
         }
     }
 
+    /* set trigger values as they are encountered */
     void OnTriggerEnter(Collider col)
     {
         if (col.name == "Trigger1")

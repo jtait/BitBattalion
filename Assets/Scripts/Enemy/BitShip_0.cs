@@ -19,11 +19,11 @@ public class BitShip_0 : BitShip {
     /* override base class Move() function */
     protected override void Move()
     {
-        rigidbody.velocity = Vector3.down * baseForwardVelocity;
+        rigidbody.velocity = Vector3.down * baseForwardVelocity; // move forward at constant velocity
 
         if (triggered_1)
         {
-            rigidbody.AddForce(Vector3.right * strafeForce);
+            rigidbody.AddForce(Vector3.right * strafeForce); // strafe when triggered
         }
 
     }
