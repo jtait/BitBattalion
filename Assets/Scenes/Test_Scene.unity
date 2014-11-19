@@ -714,6 +714,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 601145851}
   m_GameObject: {fileID: 235734782}
   m_Mesh: {fileID: 4300032, guid: 7f643061701a04bf4ae57d4e58e4f86c, type: 3}
+--- !u!1 &241134709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 241134710}
+  m_Layer: 0
+  m_Name: Capacitors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &241134710
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 241134709}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1018699072}
+  m_Father: {fileID: 2038431781}
+  m_RootOrder: 5
 --- !u!1 &256503991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,6 +1332,46 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1694041741}
   m_GameObject: {fileID: 407064128}
   m_Mesh: {fileID: 4300020, guid: 91b9aeaae82804d23a0e4c29a1ea6dc0, type: 3}
+--- !u!1 &434914763
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 434914764}
+  - 65: {fileID: 434914765}
+  m_Layer: 0
+  m_Name: DestroyAmmo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &434914764
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 434914763}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1762210084}
+  m_RootOrder: 4
+--- !u!65 &434914765
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 434914763}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 80, y: 0, z: 10}
+  m_Center: {x: 0, y: 5, z: 0}
 --- !u!1 &459518462
 GameObject:
   m_ObjectHideFlags: 0
@@ -2229,7 +2297,7 @@ Transform:
   m_Children:
   - {fileID: 2078163928}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &792008734
 GameObject:
   m_ObjectHideFlags: 0
@@ -3366,7 +3434,7 @@ GameObject:
   - 114: {fileID: 1018699074}
   - 136: {fileID: 1018699073}
   m_Layer: 0
-  m_Name: PowerUp_Capacitor
+  m_Name: Capacitor_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3379,7 +3447,7 @@ Transform:
   m_PrefabInternal: {fileID: 1190720801}
   m_GameObject: {fileID: 1018699071}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -4.37113883e-08}
-  m_LocalPosition: {x: -.260204762, y: 29.7274246, z: 10}
+  m_LocalPosition: {x: 4.23979521, y: 29.7274246, z: 10}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 953273693}
@@ -3389,7 +3457,7 @@ Transform:
   - {fileID: 862420342}
   - {fileID: 719627905}
   - {fileID: 1715812102}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 241134710}
   m_RootOrder: 0
 --- !u!136 &1018699073
 CapsuleCollider:
@@ -3843,11 +3911,11 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 241134710}
     m_Modifications:
     - target: {fileID: 400014, guid: c56a6b2c29b4142ae94920daa41e5c3a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -.260204762
+      value: 4.23979521
       objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: c56a6b2c29b4142ae94920daa41e5c3a, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3876,6 +3944,10 @@ Prefab:
     - target: {fileID: 400014, guid: c56a6b2c29b4142ae94920daa41e5c3a, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: c56a6b2c29b4142ae94920daa41e5c3a, type: 2}
+      propertyPath: m_Name
+      value: Capacitor_01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c56a6b2c29b4142ae94920daa41e5c3a, type: 2}
@@ -4193,7 +4265,7 @@ Transform:
   - {fileID: 987248282}
   - {fileID: 34443666}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!114 &1311329131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4807,7 +4879,7 @@ Transform:
   m_PrefabInternal: {fileID: 1831543767}
   m_GameObject: {fileID: 1690205195}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 20, z: 0}
+  m_LocalPosition: {x: 0, y: 34.5118828, z: 0}
   m_LocalScale: {x: 28, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 459518463}
@@ -5196,6 +5268,7 @@ Transform:
   - {fileID: 1363745641}
   - {fileID: 854790490}
   - {fileID: 2079812758}
+  - {fileID: 434914764}
   m_Father: {fileID: 1311329130}
   m_RootOrder: 0
 --- !u!65 &1762210085
@@ -5463,7 +5536,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cac041ca652777e4f90eb2e703e85b2d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 20
+      value: 34.5118828
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cac041ca652777e4f90eb2e703e85b2d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5779,8 +5852,9 @@ Transform:
   - {fileID: 1282127722}
   - {fileID: 459518463}
   - {fileID: 54473734}
+  - {fileID: 241134710}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &2056170496
 GameObject:
   m_ObjectHideFlags: 0

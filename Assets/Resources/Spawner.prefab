@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 65: {fileID: 6500000}
   m_Layer: 0
-  m_Name: BitSpawner
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741be1ace04c3b54caa9311b82d6dc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bitToSpawn: {fileID: 0}
+  enemyToSpawn: {fileID: 0}
   destroyOnCompletion: 0
   spawn: 0
   amountToSpawn: 0

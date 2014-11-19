@@ -13,7 +13,7 @@ public class Turret : GenericEnemy {
     public float maxFireDelay = 3;
 
 	// Use this for initialization
-	void Start () {
+	protected override void Start () {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         ammunition = Resources.Load<GameObject>("Ammo/EnemyLaser");
         nextShot = StartOffset();

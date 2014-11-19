@@ -9,13 +9,11 @@ public abstract class GenericAmmo : MonoBehaviour {
     public float timeToLive; // the unmodified time to live
     public int shotDamage; // the damage the shot does
 
-	// Use this for initialization
 	protected virtual void Start ()
     {
         destructionTime = Time.time + timeToLive;
 	}
 	
-	// Update is called once per frame
 	protected virtual void FixedUpdate ()
     {
         rigidbody.velocity = shotVelocity;
@@ -26,6 +24,12 @@ public abstract class GenericAmmo : MonoBehaviour {
         }
 	}
 
-    protected virtual void OnCollisionEnter(Collision col){}
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.name == "DestroyAmmo")
+        {
+            Destroy(gameObject);
+        }
+    }
 
 }

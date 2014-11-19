@@ -12,6 +12,8 @@ public abstract class GenericEnemy : MonoBehaviour {
     public GameObject ammunition; // the type of projectile the ship fires
     protected float fireRate = 1; // how often the BitShip fires, after modifiers
 
+    public bool special = false; // a special parameter - the use is defined by the child class to set a given condition
+
     protected bool triggered_1 = false;
     protected bool triggered_2 = false;
     protected bool triggered_3 = false;

@@ -4,7 +4,7 @@ using System.Collections;
 public class Bomb : GenericAmmo {
 
 	// Use this for initialization
-	void Start () {
+	protected override void Start () {
         shotVelocity = Vector3.up * baseSpeed;
         rigidbody.velocity = shotVelocity;
 	}
