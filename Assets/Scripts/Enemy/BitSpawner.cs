@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BitSpawner : MonoBehaviour {
 
-    public GameObject bitToSpawn; // the bit prefab to spawn
+    public GameObject enemyToSpawn; // the bit prefab to spawn
     public bool destroyOnCompletion = true; // is the spawner destroyed when spawning is completed?
     public bool spawn = false; // is the spawner active?
     private bool spawnComplete = false; // has the spawn operation completed? 
@@ -20,13 +20,13 @@ public class BitSpawner : MonoBehaviour {
 
     private bool specialSet = false; // a special bool to alter the spawned bit
 
-    private Transform lookAheadTrigger; // the transform of the look ahead trigger attached to the player
+    private Transform playerTransformLocation; // the transform of the player
     private float yPosition; // the y position of this spawner
     private float yOffset = 30;
 
 	void Start ()
     {
-        lookAheadTrigger = GameObject.Find("Player").transform;
+        playerTransformLocation = GameObject.Find("Player").transform;
         timer = initialWaitTime;
         yPosition = transform.position.y;
 	}
@@ -41,7 +41,7 @@ public class BitSpawner : MonoBehaviour {
                 Spawn();
             }
 
-            else if (lookAheadTrigger.position.y + yOffset > yPosition)
+            else if (playerTransformLocation.position.y + yOffset > yPosition)
             {
                 spawn = true;
             }
@@ -53,7 +53,7 @@ public class BitSpawner : MonoBehaviour {
         timer -= Time.deltaTime;
         if (timer < 0)
         {
-            GameObject clone = GameObject.Instantiate(bitToSpawn, transform.position, Quaternion.identity) as GameObject;
+            GameObject clone = GameObject.Instantiate(enemyToSpawn, transform.position, Quaternion.identity) as GameObject;
 
             if (spawnType == SpawnType.Reverse)
             {

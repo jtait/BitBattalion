@@ -31,7 +31,6 @@ public class BitShip_0 : BitShip {
 
     protected override void Shoot()
     {
-
     }
 
     protected override void Death()

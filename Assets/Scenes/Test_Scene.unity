@@ -246,6 +246,67 @@ Transform:
   - {fileID: 851832441}
   m_Father: {fileID: 2038431781}
   m_RootOrder: 4
+--- !u!1 &87457261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+  m_PrefabInternal: {fileID: 918040259}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 87457262}
+  - 114: {fileID: 87457264}
+  - 65: {fileID: 87457263}
+  m_Layer: 0
+  m_Name: ByteSpawner_01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &87457262
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+  m_PrefabInternal: {fileID: 918040259}
+  m_GameObject: {fileID: 87457261}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 17.3370075, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1282127722}
+  m_RootOrder: 2
+--- !u!65 &87457263
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6500000, guid: fcbf8971d45c0e34abf05aa2f579b7fb,
+    type: 2}
+  m_PrefabInternal: {fileID: 918040259}
+  m_GameObject: {fileID: 87457261}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &87457264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb,
+    type: 2}
+  m_PrefabInternal: {fileID: 918040259}
+  m_GameObject: {fileID: 87457261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 741be1ace04c3b54caa9311b82d6dc64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyToSpawn: {fileID: 100036, guid: 9f961640406da44f680c476b5cb87722, type: 2}
+  destroyOnCompletion: 0
+  spawn: 0
+  amountToSpawn: 1
+  spawnFrequency: 1
+  initialWaitTime: 0
+  spawnType: 0
 --- !u!1 &132238013
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +523,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: cd491854cc39ba346882ad2e53792172, type: 2}
+  - {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1076,6 +1137,10 @@ Prefab:
       propertyPath: m_Name
       value: BitSpawner_01
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 100002, guid: 1d616f7f9c0cd4bbb9de83a20fdf7201, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
   m_RootGameObject: {fileID: 1982777932}
@@ -1693,7 +1758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741be1ace04c3b54caa9311b82d6dc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bitToSpawn: {fileID: 100002, guid: 1d616f7f9c0cd4bbb9de83a20fdf7201, type: 2}
+  enemyToSpawn: {fileID: 100002, guid: 1d616f7f9c0cd4bbb9de83a20fdf7201, type: 2}
   destroyOnCompletion: 0
   spawn: 0
   amountToSpawn: 8
@@ -2501,6 +2566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointValue: 300
   health: 2
+  ammunition: {fileID: 0}
   minFireDelay: 1
   maxFireDelay: 3
 --- !u!65 &851832443
@@ -2721,6 +2787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointValue: 300
   health: 2
+  ammunition: {fileID: 0}
   minFireDelay: 1
   maxFireDelay: 3
 --- !u!4 &887784157
@@ -2794,6 +2861,94 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1694041741}
   m_GameObject: {fileID: 905811740}
   m_Mesh: {fileID: 4300034, guid: 91b9aeaae82804d23a0e4c29a1ea6dc0, type: 3}
+--- !u!1001 &918040259
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1282127722}
+    m_Modifications:
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 17.3370075
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: bitToSpawn
+      value: 
+      objectReference: {fileID: 100002, guid: 1d616f7f9c0cd4bbb9de83a20fdf7201, type: 2}
+    - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: spawn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: amountToSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: spawnFrequency
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: spawnType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: destroyOnCompletion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_Name
+      value: ByteSpawner_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 100036, guid: 9f961640406da44f680c476b5cb87722, type: 2}
+    - target: {fileID: 6500000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+  m_RootGameObject: {fileID: 87457261}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &920162120
 GameObject:
   m_ObjectHideFlags: 0
@@ -3224,7 +3379,7 @@ Transform:
   m_PrefabInternal: {fileID: 1094371318}
   m_GameObject: {fileID: 1018699071}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -4.37113883e-08}
-  m_LocalPosition: {x: 3.80055285, y: 4.16717434, z: 10}
+  m_LocalPosition: {x: 3.80055285, y: 7.87674236, z: 10}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 953273693}
@@ -3262,7 +3417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0b9d0ee34cc85439e04b70233b011f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomType: 1
+  randomType: 0
   predeterminedType: 0
 --- !u!23 &1018699075
 Renderer:
@@ -3521,7 +3676,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: c56a6b2c29b4142ae94920daa41e5c3a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.16717434
+      value: 7.87674236
       objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: c56a6b2c29b4142ae94920daa41e5c3a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3545,6 +3700,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: c56a6b2c29b4142ae94920daa41e5c3a, type: 2}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: c56a6b2c29b4142ae94920daa41e5c3a, type: 2}
+      propertyPath: randomType
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3812,6 +3971,7 @@ Transform:
   m_Children:
   - {fileID: 1982777934}
   - {fileID: 601059588}
+  - {fileID: 87457262}
   m_Father: {fileID: 2038431781}
   m_RootOrder: 2
 --- !u!1 &1290733128
@@ -4094,7 +4254,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: cd491854cc39ba346882ad2e53792172, type: 2}
+  - {fileID: 2100000, guid: 5d69df9d9d11e49d110086ba44295342, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -5285,6 +5445,10 @@ Prefab:
       propertyPath: m_Name
       value: BitSpawner_02
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 100002, guid: 1d616f7f9c0cd4bbb9de83a20fdf7201, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
   m_RootGameObject: {fileID: 601059586}
@@ -5557,7 +5721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741be1ace04c3b54caa9311b82d6dc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bitToSpawn: {fileID: 100002, guid: 1d616f7f9c0cd4bbb9de83a20fdf7201, type: 2}
+  enemyToSpawn: {fileID: 100002, guid: 1d616f7f9c0cd4bbb9de83a20fdf7201, type: 2}
   destroyOnCompletion: 0
   spawn: 0
   amountToSpawn: 8
