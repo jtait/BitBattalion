@@ -10150,6 +10150,7 @@ MonoBehaviour:
   playerLives: 5
   difficulty: 1
   lastCheckpoint: {x: 0, y: 0, z: 0}
+  speedMultiplier: 1
 --- !u!4 &2078163928
 Transform:
   m_ObjectHideFlags: 0

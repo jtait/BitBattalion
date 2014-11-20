@@ -10,6 +10,15 @@ public class ConstantScroll : MonoBehaviour {
     private float xPos;
     private float zPos;
 
+    private float speedMultiplier;
+
+    void Awake()
+    {
+        speedMultiplier = (float) GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>().speedMultiplier; // set the difficulty parameter of the enemy to the difficulty of the game when the enemy is created
+        scrollSpeed = scrollSpeed * speedMultiplier;
+        print(speedMultiplier);
+    }
+
 	// Use this for initialization
 	void Start () {
         xPos = transform.position.x;

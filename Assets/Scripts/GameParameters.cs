@@ -8,6 +8,7 @@ public class GameParameters : MonoBehaviour {
     private long playerScore;
     private const long maxScore = 999999999999L;
     public Vector3 lastCheckpoint;
+    public int speedMultiplier = 1;
 
     void Awake()
     {
