@@ -141,11 +141,7 @@ public class PlayerControl : MonoBehaviour
         if (gameParams.playerLives > 0)
         {
             /* destroy all enemies */
-            GameObject[] toDestroy = GameObject.FindGameObjectsWithTag("Enemy");
-            foreach (GameObject enemy in toDestroy)
-            {
-                Destroy(enemy);
-            }
+            DestroyAllEnemies();
 
             /* move player to last checkpoint */
             transform.parent.position = gameParams.lastCheckpoint;
@@ -157,6 +153,15 @@ public class PlayerControl : MonoBehaviour
             /* GAME OVER */
         }
 
+    }
+
+    void DestroyAllEnemies()
+    {
+        GameObject[] toDestroy = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in toDestroy)
+        {
+            Destroy(enemy);
+        }
     }
 
     void OnTriggerEnter(Collider col)

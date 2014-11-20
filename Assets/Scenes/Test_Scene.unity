@@ -935,7 +935,7 @@ MonoBehaviour:
   destroyOnCompletion: 0
   spawn: 0
   amountToSpawn: 5
-  spawnFrequency: 2
+  spawnFrequency: 1
   initialWaitTime: 0
   spawnType: 3
 --- !u!1001 &230846927
@@ -3177,7 +3177,7 @@ GameObject:
   - 114: {fileID: 677957912}
   - 65: {fileID: 677957911}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: BitSpawner_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3211,7 +3211,7 @@ MonoBehaviour:
   enemyToSpawn: {fileID: 100002, guid: 1d616f7f9c0cd4bbb9de83a20fdf7201, type: 2}
   destroyOnCompletion: 0
   spawn: 0
-  amountToSpawn: 10
+  amountToSpawn: 5
   spawnFrequency: 1
   initialWaitTime: 0
   spawnType: 1
@@ -3222,11 +3222,11 @@ Transform:
   m_PrefabInternal: {fileID: 1509420450}
   m_GameObject: {fileID: 677957910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 75, z: 0}
+  m_LocalPosition: {x: 9.5, y: 75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_Father: {fileID: 1282127722}
+  m_RootOrder: 6
 --- !u!1 &685787965
 GameObject:
   m_ObjectHideFlags: 0
@@ -3651,7 +3651,7 @@ Transform:
   m_Children:
   - {fileID: 2078163928}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1001 &773341414
 Prefab:
   m_ObjectHideFlags: 0
@@ -3705,7 +3705,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: spawnFrequency
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: spawnType
@@ -4261,15 +4261,23 @@ Prefab:
       objectReference: {fileID: 100002, guid: 1d616f7f9c0cd4bbb9de83a20fdf7201, type: 2}
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: amountToSpawn
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: spawnFrequency
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: m_Name
       value: BitSpawner_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: destroyOnCompletion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: spawn
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
@@ -6731,6 +6739,7 @@ Transform:
   - {fileID: 218455647}
   - {fileID: 522369790}
   - {fileID: 1693068012}
+  - {fileID: 677957913}
   m_Father: {fileID: 2038431781}
   m_RootOrder: 2
 --- !u!1001 &1284524442
@@ -7062,7 +7071,7 @@ Transform:
   - {fileID: 987248282}
   - {fileID: 34443666}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!114 &1311329131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7935,11 +7944,11 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1282127722}
     m_Modifications:
     - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 9.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: m_LocalPosition.y
@@ -7967,7 +7976,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: enemyToSpawn
@@ -7975,7 +7984,7 @@ Prefab:
       objectReference: {fileID: 100002, guid: 1d616f7f9c0cd4bbb9de83a20fdf7201, type: 2}
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: amountToSpawn
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: spawnFrequency
@@ -7984,6 +7993,10 @@ Prefab:
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: spawnType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_Name
+      value: BitSpawner_06
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
@@ -8622,8 +8635,8 @@ MonoBehaviour:
   enemyToSpawn: {fileID: 100002, guid: 1d616f7f9c0cd4bbb9de83a20fdf7201, type: 2}
   destroyOnCompletion: 0
   spawn: 0
-  amountToSpawn: 10
-  spawnFrequency: 2
+  amountToSpawn: 5
+  spawnFrequency: 1
   initialWaitTime: 0
   spawnType: 0
 --- !u!1001 &1694041741
@@ -9990,7 +10003,7 @@ Transform:
   - {fileID: 54473734}
   - {fileID: 241134710}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &2056170496
 GameObject:
   m_ObjectHideFlags: 0
