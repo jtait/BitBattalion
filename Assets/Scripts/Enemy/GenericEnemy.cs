@@ -66,6 +66,11 @@ public abstract class GenericEnemy : MonoBehaviour {
             health--;
             Destroy(col.collider.gameObject); // destroy the weapon that hit the enemy
         }
+        /* if the enemy hits a player, destroy the enemy  - don't increase score*/
+        if (col.collider.tag == "Player")
+        {
+            Destroy(gameObject);
+        }
     }
 
     /* set trigger values as they are encountered */

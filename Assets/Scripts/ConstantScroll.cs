@@ -6,16 +6,18 @@ public class ConstantScroll : MonoBehaviour {
     public float scrollSpeed = 0.05f; // how fast the object moves in the y direction
 
     public bool isActive = true; // if the scroll is active or not
+    public bool endlessMode = false;
 
     private float xPos;
     private float zPos;
-
-    private float speedMultiplier;
-
+    
     void Awake()
     {
-        speedMultiplier = (float) GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>().speedMultiplier; // set the difficulty parameter of the enemy to the difficulty of the game when the enemy is created
-        scrollSpeed = scrollSpeed * speedMultiplier;
+        if (endlessMode)
+        {
+            float speedMultiplier = (float)GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>().speedMultiplier; // set the difficulty parameter of the enemy to the difficulty of the game when the enemy is created
+            scrollSpeed = scrollSpeed * speedMultiplier;
+        }
     }
 
 	// Use this for initialization
