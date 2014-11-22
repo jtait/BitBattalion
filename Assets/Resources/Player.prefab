@@ -230,7 +230,6 @@ GameObject:
   - 20: {fileID: 2000000}
   - 92: {fileID: 9200000}
   - 124: {fileID: 12400000}
-  - 81: {fileID: 8100000}
   - 45: {fileID: 4500000}
   m_Layer: 0
   m_Name: Main Camera
@@ -351,6 +350,7 @@ GameObject:
   - 4: {fileID: 400040}
   - 54: {fileID: 5400000}
   - 114: {fileID: 11400000}
+  - 81: {fileID: 8100000}
   m_Layer: 8
   m_Name: PlayerShip
   m_TagString: Player
@@ -1679,7 +1679,7 @@ AudioListener:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100026}
+  m_GameObject: {fileID: 100040}
   m_Enabled: 1
 --- !u!92 &9200000
 Behaviour:
@@ -1729,6 +1729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: .0500000007
   isActive: 1
+  endlessMode: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -23,7 +23,6 @@ public class BGSpawnAndMove : MonoBehaviour {
             GameObject clone = Instantiate(backgroundPrefab, transform.position + new Vector3(0, CAMERA_FRAME_HEIGHT, 0), Quaternion.identity) as GameObject;
             clone.transform.parent = transform.parent;
             clone.transform.localScale = Vector3.one;
-            print(clone.transform.parent.name);
         }
 	}
 }

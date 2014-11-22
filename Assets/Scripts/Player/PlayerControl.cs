@@ -39,10 +39,14 @@ public class PlayerControl : MonoBehaviour
     private bool rapidFireEnabled;
     private float rapidFireTimer;
 
+    /* sound */
+    AudioClip laserSound;
+
     /* initialize parameters here */
     void Awake()
     {
         laser = Resources.Load<GameObject>("Ammo/LaserShot");
+        laserSound = Resources.Load<AudioClip>("SoundFX/laser/railgun");
         missile = Resources.Load<GameObject>("Ammo/Missile");
         bomb = Resources.Load<GameObject>("Ammo/Bomb");
         ammo = laser;
@@ -108,6 +112,7 @@ public class PlayerControl : MonoBehaviour
             GameObject clone = GameObject.Instantiate(ammo, launchFrom, Quaternion.identity) as GameObject;
             clone.GetComponent<GenericAmmo>().shotVelocity += new Vector3(0, rigidbody.velocity.y, 0);
             nextShot = Time.time + fireRate;
+            AudioSource.PlayClipAtPoint(laserSound, transform.position, 0.4f);
         }
     }
 

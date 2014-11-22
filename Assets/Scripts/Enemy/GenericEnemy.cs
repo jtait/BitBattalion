@@ -19,10 +19,14 @@ public abstract class GenericEnemy : MonoBehaviour {
     protected bool triggered_2 = false;
     protected bool triggered_3 = false;
 
+    /* sounds */
+    AudioClip damageSound;
+
     void Awake()
     {
         gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
         difficulty = gParams.difficulty; // set the difficulty parameter of the enemy to the difficulty of the game when the enemy is created
+        damageSound = Resources.Load<AudioClip>("SoundFX/hit/hit");
     }
 
     protected virtual void Start()
@@ -65,6 +69,7 @@ public abstract class GenericEnemy : MonoBehaviour {
         {
             health--;
             Destroy(col.collider.gameObject); // destroy the weapon that hit the enemy
+            AudioSource.PlayClipAtPoint(damageSound, transform.position, 2);
         }
         /* if the enemy hits a player, destroy the enemy  - don't increase score*/
         if (col.collider.tag == "Player")
