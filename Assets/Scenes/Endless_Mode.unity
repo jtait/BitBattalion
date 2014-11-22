@@ -171,6 +171,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 95f5a604529936b47bb6e26097703fba, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6500000, guid: 95f5a604529936b47bb6e26097703fba, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 95f5a604529936b47bb6e26097703fba, type: 2}
@@ -850,6 +854,8 @@ MonoBehaviour:
   difficulty: 1
   lastCheckpoint: {x: 0, y: 0, z: 0}
   speedMultiplier: 1
+  endlessModeTurrets: 0
+  endlessMode: 0
 --- !u!1001 &670039476
 Prefab:
   m_ObjectHideFlags: 0

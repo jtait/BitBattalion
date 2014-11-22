@@ -10,6 +10,9 @@ public class GameParameters : MonoBehaviour {
     public Vector3 lastCheckpoint;
     public float speedMultiplier = 1;
 
+    public int endlessModeTurrets = 0;
+    public bool endlessMode = false;
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);

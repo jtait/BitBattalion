@@ -54,7 +54,14 @@ public class Turret : GenericEnemy {
 
     protected override void Death()
     {
-        base.Death();
+        if (health <= 0)
+        {
+            if (gParams.endlessMode)
+            {
+                gParams.endlessModeTurrets--;
+            }
+            Destroy(gameObject);
+        }
     }
 
     private float StartOffset()

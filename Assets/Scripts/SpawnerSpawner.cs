@@ -6,40 +6,40 @@ public class SpawnerSpawner : MonoBehaviour {
 
     private const int NUMBER_OF_LOCATIONS = 3; // the number of spawner locations in the world
     private const int SPAWNER_OFFSET_FROM_CENTER = 10; // the offset from the center for the spawner positions
-    private const float INITIAL_SPAWN_FREQUENCY = 11;
-    private const float DIFFICULTY_MULTIPLIER = 0.25f;
+    private const float INITIAL_SPAWN_FREQUENCY = 5; // the starting spawn frequency in seconds
+    private const float DIFFICULTY_MULTIPLIER = 0.25f; // the multiplier applied to the difficulty level
     private int NUMBER_OF_COMBINATIONS = (int) Mathf.Pow(2, NUMBER_OF_LOCATIONS); // the number of possible position combinations
 
-    private GameObject[] spawners; // spawners
+    private Vector3[] turretPositionOffset; // the offset to position the turret on the screen
+    private bool spawningTurrets = false;
+
     private Vector3[] spawnerLocations; // possible locations for spawners
 
     private float spawnFrequency; // how many seconds are between spawns
-    private float timer; // the timer for the spawner
+    private float spawnTimer; // the timer for the spawner
+    private int spawnedSoFar = 0; // counter for the wave number
 
-    private GameObject bit_0, byte_0;
+    private GameObject bit_0, byte_0, turret_0; // references to possible enemies to spawn
+    
+    GameParameters gParams; // reference to the global game parameters
+    GameObject genericSpawner; // the spawner to create
+    BitSpawner spawnerParams; // the spawner parameters
 
-    private int spawnedSoFar = 0;
-
-    GameParameters gParams;
-
-    GameObject[] nextSetToSpawn;
-
-    GameObject genericSpawner;
-    BitSpawner spawnerParams;
-
-    private static Array possibleSpawnTypes;
+    private static Array possibleSpawnTypes; // the special enumerator for the spawner
     private static int numberOfSpawnTypes;
     
     void Awake()
     {
         spawnFrequency = INITIAL_SPAWN_FREQUENCY;
         gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
+        gParams.endlessMode = true;
         possibleSpawnTypes = Enum.GetValues(typeof(BitSpawner.SpawnType));
         numberOfSpawnTypes = possibleSpawnTypes.Length;
 
         /* load enemies into variables */
         bit_0 = Resources.Load<GameObject>("Enemies/BitShip_0");
         byte_0 = Resources.Load<GameObject>("Enemies/ByteShip_0");
+        turret_0 = Resources.Load<GameObject>("Enemies/Turret_0");
 
         /* load generic spawner */
         genericSpawner = Resources.Load<GameObject>("Spawner");
@@ -47,34 +47,60 @@ public class SpawnerSpawner : MonoBehaviour {
         
         /* initialize array of locations */
         spawnerLocations = new Vector3[NUMBER_OF_LOCATIONS];
+        turretPositionOffset = new Vector3[NUMBER_OF_LOCATIONS];
         spawnerLocations[0] = new Vector3(-SPAWNER_OFFSET_FROM_CENTER, 0, 0) + transform.position;
+        turretPositionOffset[0] = new Vector3(-2f, -4f, 0);
         spawnerLocations[1] = transform.position;
+        turretPositionOffset[1] = new Vector3(0, -8f, 0);
         spawnerLocations[2] = new Vector3(SPAWNER_OFFSET_FROM_CENTER, 0, 0) + transform.position;
+        turretPositionOffset[2] = new Vector3(2f, -4f, 0);
         
     }
 
 	void Update () {
         Spawn();
-        print(gParams.difficulty);
 	}
+
+    private void SpawnTurrets(GameObject[] set)
+    {
+        for (int i = 0; i < NUMBER_OF_LOCATIONS; i++)
+        {
+            if (set[i] != null)
+            {
+                GameObject.Instantiate(set[i], spawnerLocations[i] + turretPositionOffset[i], Quaternion.identity);
+                gParams.endlessModeTurrets++;
+            }
+        }
+    }
+
+    private void SpawnShips(GameObject[] set)
+    {
+        for (int i = 0; i < NUMBER_OF_LOCATIONS; i++)
+        {
+            if (set[i] != null)
+            {
+                GameObject.Instantiate(set[i], spawnerLocations[i], Quaternion.identity);
+            }
+        }
+    }
 
     /* handles spawning */
     private void Spawn()
     {
-        timer -= Time.deltaTime;
+        spawnTimer -= Time.deltaTime;
 
         /* if timer has expired, spawn spawners */
-        if (timer < 0)
+        if (spawnTimer < 0)
         {
-            GameObject[] set = GenerateSpawnerSet();
+            GameObject[] set = GenerateSpawnerSet();            
 
-            for (int i = 0; i < NUMBER_OF_LOCATIONS; i++)
-            {
-                if(set[i] != null)
-                    GameObject.Instantiate(set[i], spawnerLocations[i], Quaternion.identity);
-            }
+            if (spawningTurrets)
+                SpawnTurrets(set);
+            else
+                SpawnShips(set);
 
-            timer = spawnFrequency;
+            spawningTurrets = false;
+            spawnTimer = spawnFrequency;
             spawnedSoFar++;
             if (spawnedSoFar > 10)
             {
@@ -107,12 +133,18 @@ public class SpawnerSpawner : MonoBehaviour {
     /* generates a random positioning of a random spawner */
     private GameObject[] GenerateSpawnerSet()
     {
-        GameObject[] set = new GameObject[NUMBER_OF_LOCATIONS]; // the empty set of spawners
+        GameObject[] set = new GameObject[NUMBER_OF_LOCATIONS + 1]; // the empty set of spawners
         
         GameObject enemyToSpawn = RandomEnemy(); // the enemy to spawn
+
         if (enemyToSpawn == byte_0)
         {
             spawnerParams.initForEndless(byte_0, 1, 1, BitSpawner.SpawnType.Normal);
+        }
+        else if (enemyToSpawn == turret_0)
+        {
+            spawningTurrets = true;
+            spawnerParams.initForEndless(turret_0, 1, 1, BitSpawner.SpawnType.Normal);
         }
         else
         {
@@ -139,9 +171,11 @@ public class SpawnerSpawner : MonoBehaviour {
     /* picks a random enemy to spawn */
     private GameObject RandomEnemy()
     {
-        int random = UnityEngine.Random.Range(0, 5);
+        int random = UnityEngine.Random.Range(0, 6);
         if (random < 4)
             return bit_0;
+        if (random < 5 && gParams.endlessModeTurrets <= 0)
+            return turret_0;
         else
             return byte_0;
     }
