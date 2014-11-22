@@ -13,6 +13,10 @@ public class GameParameters : MonoBehaviour {
     public int endlessModeTurrets = 0;
     public bool endlessMode = false;
 
+    /* parameters for HUD */
+    public GUIText livesString;
+    public GUIText scoreString;
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -26,6 +30,9 @@ public class GameParameters : MonoBehaviour {
         difficulty = 1;
         playerScore = 0;
         playerLives = 5;
+
+        UpdateScore(0);
+        SetLivesText();
     }
 
     /* update the player's score - return true if score has changed */
@@ -33,15 +40,19 @@ public class GameParameters : MonoBehaviour {
     {
         long oldScore = playerScore;
         playerScore += points;
-
+        scoreString.text = playerScore.ToString(); // update the display string
         return (playerScore != oldScore);
-
     }
 
     /* return the player's score */
     public long getPlayerScore()
     {
         return playerScore;
+    }
+
+    public void SetLivesText()
+    {
+        livesString.text = playerLives.ToString();
     }
 
 }

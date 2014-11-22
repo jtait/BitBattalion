@@ -60,6 +60,7 @@ public class Turret : GenericEnemy {
             {
                 gParams.endlessModeTurrets--;
             }
+            gParams.UpdateScore(pointValue);
             Destroy(gameObject);
         }
     }

@@ -52,6 +52,7 @@ public abstract class GenericEnemy : MonoBehaviour {
     {
         if (health <= 0)
         {
+            gParams.UpdateScore(pointValue);
             Destroy(gameObject);
         }
     }

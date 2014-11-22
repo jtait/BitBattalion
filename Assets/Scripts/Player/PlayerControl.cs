@@ -25,7 +25,7 @@ public class PlayerControl : MonoBehaviour
     private float nextSpecial; // delay until next special shot can be fired
 
     // persistent game parameters
-    private GameParameters gameParams;
+    private GameParameters gParams;
 
     // types of available ammo
     private enum WeaponType { laser, missile, bomb, none };
@@ -48,7 +48,7 @@ public class PlayerControl : MonoBehaviour
         ammo = laser;
         nextShot = 0f;
         nextSpecial = 0f;
-        gameParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
+        gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
         fireRate = BASE_FIRE_RATE;
         specialWeaponType = WeaponType.none;
         specialWeaponAmmoCount = 0;
@@ -133,19 +133,19 @@ public class PlayerControl : MonoBehaviour
     void PlayerDeath()
     {
         /* decrease player lives */
-        gameParams.playerLives--;
+        gParams.playerLives--;
+        gParams.SetLivesText();
 
         /* reset powerUp benefits */
         PowerUpPickup(PowerUpType.None);
 
-        if (gameParams.playerLives > 0)
+        if (gParams.playerLives > 0)
         {
             /* destroy all enemies */
             DestroyAllEnemies();
 
             /* move player to last checkpoint */
-            transform.parent.position = gameParams.lastCheckpoint;
-
+            transform.parent.position = gParams.lastCheckpoint;
         }
         else
         {
@@ -169,7 +169,7 @@ public class PlayerControl : MonoBehaviour
         /* update checkpoints as the player reaches them */
         if (col.tag == "CheckPoint")
         {
-            gameParams.lastCheckpoint = col.transform.position;
+            gParams.lastCheckpoint = col.transform.position;
         }
     }
 
@@ -230,7 +230,7 @@ public class PlayerControl : MonoBehaviour
                 SetSpecialWeapon(WeaponType.bomb);
                 break;
             case PowerUpType.ExtraLife:
-                gameParams.playerLives++;
+                gParams.playerLives++;
                 break;
             case PowerUpType.RapidFire:
                 SetRapidFire(true);
