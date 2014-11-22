@@ -39,12 +39,20 @@ public class PlayerControl : MonoBehaviour
     private bool rapidFireEnabled;
     private float rapidFireTimer;
 
+    /* renderer and collider*/
+    private MeshRenderer playerRenderer;
+    private MeshCollider playerCollider;
+
     /* sound */
-    AudioClip laserSound;
+    private AudioClip playerExplosionSound;
+    private AudioClip laserSound;
 
     /* initialize parameters here */
     void Awake()
     {
+        playerRenderer = GameObject.Find("PlayerShip_0").GetComponent<MeshRenderer>();
+        playerCollider = GameObject.Find("PlayerCollider").GetComponent<MeshCollider>();
+        playerExplosionSound = Resources.Load<AudioClip>("SoundFX/playerExplosion/explodey");
         laser = Resources.Load<GameObject>("Ammo/LaserShot");
         laserSound = Resources.Load<AudioClip>("SoundFX/laser/railgun");
         missile = Resources.Load<GameObject>("Ammo/Missile");
@@ -137,6 +145,8 @@ public class PlayerControl : MonoBehaviour
     /* called when a player dies */
     void PlayerDeath()
     {
+        AudioSource.PlayClipAtPoint(playerExplosionSound, transform.position, 1f);
+
         /* decrease player lives */
         gParams.playerLives--;
         gParams.SetLivesText();
@@ -149,8 +159,9 @@ public class PlayerControl : MonoBehaviour
             /* destroy all enemies */
             DestroyAllEnemies();
 
-            /* move player to last checkpoint */
-            transform.parent.position = gParams.lastCheckpoint;
+            /* respawn player at last checkpoint */
+            StartCoroutine(WaitForRespawn(2));
+            DisablePlayer();
         }
         else
         {
@@ -245,6 +256,26 @@ public class PlayerControl : MonoBehaviour
                 break;
         }
         
+    }
+
+    IEnumerator WaitForRespawn(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        transform.parent.position = gParams.lastCheckpoint;
+        EnablePlayer();
+    }
+
+    void DisablePlayer()
+    {
+        playerRenderer.active = false;
+        playerCollider.enabled = false;
+    }
+
+    void EnablePlayer()
+    {
+        transform.position = Vector3.zero;
+        playerRenderer.active = true;
+        playerCollider.enabled = true;
     }
 
 }
