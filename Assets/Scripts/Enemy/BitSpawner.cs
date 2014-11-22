@@ -15,7 +15,7 @@ public class BitSpawner : MonoBehaviour {
     private float timer; // the timer for the spawner
     public float initialWaitTime = 0; // if spawning doesn't start right away, how long does the spawner wait?
 
-    public enum SpawnType {Normal, Reverse, Alternating, Random};
+    public enum SpawnType {Normal = 0, Reverse = 1, Alternating = 2, Random = 3};
     public SpawnType spawnType; // the spawn setting for this spawner
 
     private bool specialSet = false; // a special bool to alter the spawned bit
@@ -89,6 +89,17 @@ public class BitSpawner : MonoBehaviour {
             }
         }
 
+    }
+
+    /* initialize parameters in spawner, used for endless mode */
+    public void initForEndless(GameObject enemyToSpawn, int amount, float spawnFrequency, SpawnType mode)
+    {
+        this.enemyToSpawn = enemyToSpawn;
+        this.destroyOnCompletion = true;
+        this.spawn = true;
+        this.amountToSpawn = amount;
+        this.spawnFrequency = spawnFrequency;
+        this.spawnType = mode;
     }
 
 
