@@ -5,32 +5,38 @@ using System;
 public class SpawnerSpawner : MonoBehaviour {
 
     private const int NUMBER_OF_LOCATIONS = 3; // the number of spawner locations in the world
-    //private const int NUMBER_OF_SPAWNERS = 5; // the number of different spawners
     private const int SPAWNER_OFFSET_FROM_CENTER = 10; // the offset from the center for the spawner positions
+    private const float INITIAL_SPAWN_FREQUENCY = 11;
+    private const float DIFFICULTY_MULTIPLIER = 0.25f;
     private int NUMBER_OF_COMBINATIONS = (int) Mathf.Pow(2, NUMBER_OF_LOCATIONS); // the number of possible position combinations
 
     private GameObject[] spawners; // spawners
     private Vector3[] spawnerLocations; // possible locations for spawners
 
-    private float spawnFrequency = 10; // how many seconds are between spawns
+    private float spawnFrequency; // how many seconds are between spawns
     private float timer; // the timer for the spawner
 
     private GameObject bit_0, byte_0;
 
     private int spawnedSoFar = 0;
 
-    GameParameters gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
+    GameParameters gParams;
 
     GameObject[] nextSetToSpawn;
 
     GameObject genericSpawner;
     BitSpawner spawnerParams;
 
-    private static Array possibleSpawnTypes = Enum.GetValues(typeof(BitSpawner.SpawnType));
-    private static int numberOfSpawnTypes = possibleSpawnTypes.Length;
+    private static Array possibleSpawnTypes;
+    private static int numberOfSpawnTypes;
     
     void Awake()
     {
+        spawnFrequency = INITIAL_SPAWN_FREQUENCY;
+        gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
+        possibleSpawnTypes = Enum.GetValues(typeof(BitSpawner.SpawnType));
+        numberOfSpawnTypes = possibleSpawnTypes.Length;
+
         /* load enemies into variables */
         bit_0 = Resources.Load<GameObject>("Enemies/BitShip_0");
         byte_0 = Resources.Load<GameObject>("Enemies/ByteShip_0");
@@ -49,6 +55,7 @@ public class SpawnerSpawner : MonoBehaviour {
 
 	void Update () {
         Spawn();
+        print(gParams.difficulty);
 	}
 
     /* handles spawning */
@@ -73,6 +80,7 @@ public class SpawnerSpawner : MonoBehaviour {
             {
                 spawnedSoFar = 0; // reset counter
                 gParams.difficulty++; // increase difficulty
+                spawnFrequency -= gParams.difficulty * DIFFICULTY_MULTIPLIER;
             }
         }
 
