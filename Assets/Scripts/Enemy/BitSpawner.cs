@@ -6,7 +6,7 @@ public class BitSpawner : MonoBehaviour {
     public GameObject enemyToSpawn; // the bit prefab to spawn
     public bool destroyOnCompletion = true; // is the spawner destroyed when spawning is completed?
     public bool spawn = false; // is the spawner active?
-    private bool spawnComplete = false; // has the spawn operation completed? 
+    private bool spawnComplete = false; // has the spawn operation completed?
     
     public int amountToSpawn = 0; // the number of prefabs to spawn
     private int spawnedSoFar = 0; // the number of prefabs spawned so far

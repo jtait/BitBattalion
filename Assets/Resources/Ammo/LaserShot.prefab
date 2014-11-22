@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotVelocity: {x: 0, y: 0, z: 0}
-  baseSpeed: 12
-  timeToLive: .800000012
+  baseSpeed: 16
+  timeToLive: .600000024
   shotDamage: 1
 --- !u!136 &13600000
 CapsuleCollider:
