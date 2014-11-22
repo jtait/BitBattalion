@@ -273,7 +273,7 @@ public class PlayerControl : MonoBehaviour
 
     void EnablePlayer()
     {
-        transform.position = Vector3.zero;
+        transform.position = gParams.lastCheckpoint;
         playerRenderer.active = true;
         playerCollider.enabled = true;
     }

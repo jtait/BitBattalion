@@ -14,12 +14,19 @@ public class GameParameters : MonoBehaviour {
     public bool endlessMode = false;
 
     /* parameters for HUD */
-    public GUIText livesString;
-    public GUIText scoreString;
+    private GUIText livesString;
+    private GUIText scoreString;
 
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        GameObject hud = GameObject.Find("HUD");
+        if (hud != null)
+        {
+            GUIText[] guiStrings = hud.GetComponentsInChildren<GUIText>();
+            livesString = guiStrings[0];
+            scoreString = guiStrings[1];
+        }
     }
 
     void Start()
@@ -32,7 +39,8 @@ public class GameParameters : MonoBehaviour {
         playerLives = 5;
 
         UpdateScore(0);
-        SetLivesText();
+        if(livesString != null)
+            SetLivesText();
     }
 
     /* update the player's score - return true if score has changed */
@@ -40,7 +48,8 @@ public class GameParameters : MonoBehaviour {
     {
         long oldScore = playerScore;
         playerScore += points;
-        scoreString.text = playerScore.ToString(); // update the display string
+        if(scoreString != null)
+            scoreString.text = playerScore.ToString(); // update the display string
         return (playerScore != oldScore);
     }
 
