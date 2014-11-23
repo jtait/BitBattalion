@@ -17,9 +17,15 @@ public class GameParameters : MonoBehaviour {
     private GUIText livesString;
     private GUIText scoreString;
 
+    /* table of all enemies on screen */
+    private ArrayList enemyList;
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
+
+        enemyList = new ArrayList();
+
         GameObject hud = GameObject.Find("HUD");
         if (hud != null)
         {
@@ -59,9 +65,34 @@ public class GameParameters : MonoBehaviour {
         return playerScore;
     }
 
+    /* update the life display */
     public void SetLivesText()
     {
         livesString.text = playerLives.ToString();
+    }
+
+    /* add enemy to list of enemies on screen */
+    public void AddEnemyToList(GameObject enemy)
+    {
+        enemyList.Add(enemy);
+    }
+
+    /* remove enemy from list of enemies on screen */
+    public void RemoveEnemyFromList(GameObject enemy)
+    {
+        enemyList.Remove(enemy);
+    }
+
+    /* destroy all the enemies in the list */
+    public void DestroyAllEnemiesInList()
+    {
+        /* loop through list and destroy all enemies in the list */
+        foreach (GameObject enemy in enemyList)
+        {
+            if(enemy != null)
+                Destroy(enemy);
+        }
+        enemyList = new ArrayList(); // reset the list
     }
 
 }

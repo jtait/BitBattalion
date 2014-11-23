@@ -86,9 +86,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotVelocity: {x: 0, y: 0, z: 0}
-  baseSpeed: 0
-  timeToLive: 0
-  shotDamage: 0
+  baseSpeed: 3000
+  timeToLive: 1
+  shotDamage: 9
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -1099,7 +1099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointValue: 300
   health: 2
-  ammunition: {fileID: 0}
+  ammunition: {fileID: 100000, guid: 949bb68e4ceb09144820a9ca5a2d34b3, type: 2}
   special: 0
   minFireDelay: 1
   maxFireDelay: 3

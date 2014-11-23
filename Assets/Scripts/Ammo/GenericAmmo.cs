@@ -24,4 +24,14 @@ public abstract class GenericAmmo : MonoBehaviour {
         }
 	}
 
+    protected virtual void Update()
+    {
+
+    }
+
+    protected virtual void OnCollisionEnter(Collision col)
+    {
+        if (col.collider.tag != "Player") Destroy(gameObject);
+    }
+
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TurretAmmo : GenericAmmo {
+public class EnemyLaser : GenericAmmo {
 
     protected override void Start()
     {
@@ -13,8 +13,8 @@ public class TurretAmmo : GenericAmmo {
         base.FixedUpdate();
     }
 
-    protected virtual void OnCollisionEnter(Collision col)
+    protected override void OnCollisionEnter(Collision col)
     {
-        if(col.collider.tag != "Player") Destroy(gameObject);
+        base.OnCollisionEnter(col);
     }
 }

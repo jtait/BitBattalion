@@ -81,8 +81,13 @@ public class PlayerControl : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.collider.tag == "Enemy")
+        if (col.collider.tag == "Enemy" || col.collider.tag == "EnemyWeapon")
         {
+            if (col.collider.tag == "EnemyWeapon")
+            {
+                Destroy(col.gameObject);
+            }
+
             if (shielded) shielded = false;
             else PlayerDeath();
         }
@@ -157,7 +162,7 @@ public class PlayerControl : MonoBehaviour
         if (gParams.playerLives > 0)
         {
             /* destroy all enemies */
-            DestroyAllEnemies();
+            //DestroyAllEnemies();
 
             /* respawn player at last checkpoint */
             StartCoroutine(WaitForRespawn(2));
