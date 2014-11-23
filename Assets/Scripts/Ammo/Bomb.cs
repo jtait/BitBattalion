@@ -6,9 +6,13 @@ public class Bomb : GenericAmmo {
     // persistent game parameters
     private GameParameters gParams;
 
+    /* sounds */
+    AudioClip bombSound;
+
     void Awake()
     {
         gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
+        bombSound = Resources.Load<AudioClip>("SoundFX/bomb/103014__zgump__club-kick-0711");
     }
 
 	protected override void Start () {
@@ -19,13 +23,10 @@ public class Bomb : GenericAmmo {
 
     protected override void FixedUpdate()
     {
-
-        //rigidbody.velocity = shotVelocity;
-
+        
         if (Time.time > destructionTime)
         {
             Explode();
-            Destroy(gameObject);
         }
     }
 
@@ -38,6 +39,8 @@ public class Bomb : GenericAmmo {
     /* explode and destroy all enemies on screen */
     private void Explode()
     {
+        AudioSource.PlayClipAtPoint(bombSound, transform.position, 1f);
         gParams.DestroyAllEnemiesInList();
+        Destroy(gameObject);
     }
 }
