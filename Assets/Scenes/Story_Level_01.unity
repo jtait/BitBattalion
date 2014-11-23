@@ -395,7 +395,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 87457262}
   - 114: {fileID: 87457264}
-  - 65: {fileID: 87457263}
   m_Layer: 0
   m_Name: ByteSpawner_01
   m_TagString: Spawner
@@ -415,19 +414,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1282127722}
   m_RootOrder: 2
---- !u!65 &87457263
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6500000, guid: fcbf8971d45c0e34abf05aa2f579b7fb,
-    type: 2}
-  m_PrefabInternal: {fileID: 918040259}
-  m_GameObject: {fileID: 87457261}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &87457264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,6 +433,7 @@ MonoBehaviour:
   spawnFrequency: 1
   initialWaitTime: 0
   spawnType: 0
+  bossAreaSpawner: 0
 --- !u!1 &107287800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1032,7 +1019,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 218455647}
   - 114: {fileID: 218455649}
-  - 65: {fileID: 218455648}
   m_Layer: 0
   m_Name: BitSpawner_03
   m_TagString: Spawner
@@ -1052,19 +1038,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1282127722}
   m_RootOrder: 3
---- !u!65 &218455648
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6500000, guid: fcbf8971d45c0e34abf05aa2f579b7fb,
-    type: 2}
-  m_PrefabInternal: {fileID: 773341414}
-  m_GameObject: {fileID: 218455646}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &218455649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1084,6 +1057,7 @@ MonoBehaviour:
   spawnFrequency: 1
   initialWaitTime: 0
   spawnType: 1
+  bossAreaSpawner: 0
 --- !u!1 &226352979
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,6 +1413,8 @@ Transform:
   m_Children:
   - {fileID: 1608659677}
   - {fileID: 1298402723}
+  - {fileID: 960355483}
+  - {fileID: 1373539841}
   m_Father: {fileID: 2038431781}
   m_RootOrder: 6
 --- !u!1 &288617331
@@ -2850,7 +2826,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 522369790}
   - 114: {fileID: 522369792}
-  - 65: {fileID: 522369791}
   m_Layer: 0
   m_Name: BitSpawner_04
   m_TagString: Spawner
@@ -2870,19 +2845,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1282127722}
   m_RootOrder: 4
---- !u!65 &522369791
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6500000, guid: fcbf8971d45c0e34abf05aa2f579b7fb,
-    type: 2}
-  m_PrefabInternal: {fileID: 2116115246}
-  m_GameObject: {fileID: 522369789}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &522369792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2902,6 +2864,7 @@ MonoBehaviour:
   spawnFrequency: 1
   initialWaitTime: 0
   spawnType: 0
+  bossAreaSpawner: 0
 --- !u!1 &528297256
 GameObject:
   m_ObjectHideFlags: 0
@@ -3335,7 +3298,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 577893297}
   - 114: {fileID: 577893299}
-  - 65: {fileID: 577893298}
   m_Layer: 0
   m_Name: ByteSpawner_02
   m_TagString: Spawner
@@ -3355,19 +3317,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1282127722}
   m_RootOrder: 7
---- !u!65 &577893298
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6500000, guid: fcbf8971d45c0e34abf05aa2f579b7fb,
-    type: 2}
-  m_PrefabInternal: {fileID: 1015447447}
-  m_GameObject: {fileID: 577893296}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &577893299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3387,6 +3336,7 @@ MonoBehaviour:
   spawnFrequency: 5
   initialWaitTime: 0
   spawnType: 0
+  bossAreaSpawner: 0
 --- !u!1001 &588905153
 Prefab:
   m_ObjectHideFlags: 0
@@ -3515,7 +3465,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 601059588}
   - 114: {fileID: 601059587}
-  - 65: {fileID: 601059589}
   m_Layer: 0
   m_Name: BitSpawner_02
   m_TagString: Spawner
@@ -3542,6 +3491,7 @@ MonoBehaviour:
   spawnFrequency: 1
   initialWaitTime: 0
   spawnType: 2
+  bossAreaSpawner: 0
 --- !u!4 &601059588
 Transform:
   m_ObjectHideFlags: 0
@@ -3554,19 +3504,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1282127722}
   m_RootOrder: 1
---- !u!65 &601059589
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6500000, guid: fcbf8971d45c0e34abf05aa2f579b7fb,
-    type: 2}
-  m_PrefabInternal: {fileID: 1809502270}
-  m_GameObject: {fileID: 601059586}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &604881338
 GameObject:
   m_ObjectHideFlags: 0
@@ -3720,7 +3657,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 677957913}
   - 114: {fileID: 677957912}
-  - 65: {fileID: 677957911}
   m_Layer: 0
   m_Name: BitSpawner_06
   m_TagString: Spawner
@@ -3728,19 +3664,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &677957911
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6500000, guid: fcbf8971d45c0e34abf05aa2f579b7fb,
-    type: 2}
-  m_PrefabInternal: {fileID: 1509420450}
-  m_GameObject: {fileID: 677957910}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &677957912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3760,6 +3683,7 @@ MonoBehaviour:
   spawnFrequency: 1
   initialWaitTime: 0
   spawnType: 1
+  bossAreaSpawner: 0
 --- !u!4 &677957913
 Transform:
   m_ObjectHideFlags: 0
@@ -5447,6 +5371,74 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1239203009}
   m_GameObject: {fileID: 863226984}
   m_Mesh: {fileID: 4300002, guid: 7f643061701a04bf4ae57d4e58e4f86c, type: 3}
+--- !u!1001 &883998341
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 273725227}
+    m_Modifications:
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 11.6999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: bossAreaSpawner
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 100090, guid: e9392ab924ac6d24aa12066b56c4df09, type: 2}
+    - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: spawnFrequency
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_Name
+      value: BossBitSpawner_01
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+  m_RootGameObject: {fileID: 960355481}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &887784152
 GameObject:
   m_ObjectHideFlags: 0
@@ -5851,7 +5843,7 @@ Prefab:
       propertyPath: enemyToSpawn
       value: 
       objectReference: {fileID: 100036, guid: 9f961640406da44f680c476b5cb87722, type: 2}
-    - target: {fileID: 6500000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -6031,7 +6023,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 949920147}
   - 114: {fileID: 949920149}
-  - 65: {fileID: 949920148}
   m_Layer: 0
   m_Name: ByteSpawner_03
   m_TagString: Spawner
@@ -6051,19 +6042,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1282127722}
   m_RootOrder: 8
---- !u!65 &949920148
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6500000, guid: fcbf8971d45c0e34abf05aa2f579b7fb,
-    type: 2}
-  m_PrefabInternal: {fileID: 1340830419}
-  m_GameObject: {fileID: 949920146}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &949920149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6083,6 +6061,7 @@ MonoBehaviour:
   spawnFrequency: 5
   initialWaitTime: 0
   spawnType: 0
+  bossAreaSpawner: 0
 --- !u!1 &953273692
 GameObject:
   m_ObjectHideFlags: 0
@@ -6200,6 +6179,54 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1678574177}
   m_GameObject: {fileID: 958594058}
   m_Mesh: {fileID: 4300012, guid: 91b9aeaae82804d23a0e4c29a1ea6dc0, type: 3}
+--- !u!1 &960355481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+  m_PrefabInternal: {fileID: 883998341}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 960355483}
+  - 114: {fileID: 960355482}
+  m_Layer: 0
+  m_Name: BossBitSpawner_01
+  m_TagString: Spawner
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &960355482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb,
+    type: 2}
+  m_PrefabInternal: {fileID: 883998341}
+  m_GameObject: {fileID: 960355481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 741be1ace04c3b54caa9311b82d6dc64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyToSpawn: {fileID: 100090, guid: e9392ab924ac6d24aa12066b56c4df09, type: 2}
+  destroyOnCompletion: 0
+  spawn: 0
+  amountToSpawn: 0
+  spawnFrequency: 5
+  initialWaitTime: 0
+  spawnType: 0
+  bossAreaSpawner: 1
+--- !u!4 &960355483
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+  m_PrefabInternal: {fileID: 883998341}
+  m_GameObject: {fileID: 960355481}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.5, y: 11.6999998, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 273725227}
+  m_RootOrder: 2
 --- !u!1 &967082349
 GameObject:
   m_ObjectHideFlags: 0
@@ -8680,7 +8707,7 @@ GameObject:
   - 114: {fileID: 1298402728}
   m_Layer: 0
   m_Name: boss_tube
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9161,6 +9188,122 @@ MeshFilter:
   m_PrefabInternal: {fileID: 731997923}
   m_GameObject: {fileID: 1366497057}
   m_Mesh: {fileID: 4300004, guid: 91b9aeaae82804d23a0e4c29a1ea6dc0, type: 3}
+--- !u!1001 &1367844749
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 273725227}
+    m_Modifications:
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 11.6999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: bossAreaSpawner
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: enemyToSpawn
+      value: 
+      objectReference: {fileID: 100090, guid: e9392ab924ac6d24aa12066b56c4df09, type: 2}
+    - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: spawnFrequency
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_Name
+      value: BossBitSpawner_02
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+  m_RootGameObject: {fileID: 1373539840}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
+--- !u!1 &1373539840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+  m_PrefabInternal: {fileID: 1367844749}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1373539841}
+  - 114: {fileID: 1373539842}
+  m_Layer: 0
+  m_Name: BossBitSpawner_02
+  m_TagString: Spawner
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1373539841
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+  m_PrefabInternal: {fileID: 1367844749}
+  m_GameObject: {fileID: 1373539840}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .5, y: 11.6999998, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 273725227}
+  m_RootOrder: 3
+--- !u!114 &1373539842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb,
+    type: 2}
+  m_PrefabInternal: {fileID: 1367844749}
+  m_GameObject: {fileID: 1373539840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 741be1ace04c3b54caa9311b82d6dc64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyToSpawn: {fileID: 100090, guid: e9392ab924ac6d24aa12066b56c4df09, type: 2}
+  destroyOnCompletion: 0
+  spawn: 0
+  amountToSpawn: 0
+  spawnFrequency: 5
+  initialWaitTime: 0
+  spawnType: 0
+  bossAreaSpawner: 1
 --- !u!1 &1411681958
 GameObject:
   m_ObjectHideFlags: 0
@@ -10664,7 +10807,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1693068012}
   - 114: {fileID: 1693068014}
-  - 65: {fileID: 1693068013}
   m_Layer: 0
   m_Name: BitSpawner_05
   m_TagString: Spawner
@@ -10684,19 +10826,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1282127722}
   m_RootOrder: 5
---- !u!65 &1693068013
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6500000, guid: fcbf8971d45c0e34abf05aa2f579b7fb,
-    type: 2}
-  m_PrefabInternal: {fileID: 824755186}
-  m_GameObject: {fileID: 1693068011}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1693068014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10716,6 +10845,7 @@ MonoBehaviour:
   spawnFrequency: 1
   initialWaitTime: 0
   spawnType: 0
+  bossAreaSpawner: 0
 --- !u!1001 &1694041741
 Prefab:
   m_ObjectHideFlags: 0
@@ -11522,7 +11652,7 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6500000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -12018,7 +12148,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1982777934}
   - 114: {fileID: 1982777933}
-  - 65: {fileID: 1982777935}
   m_Layer: 0
   m_Name: BitSpawner_01
   m_TagString: Spawner
@@ -12045,6 +12174,7 @@ MonoBehaviour:
   spawnFrequency: 1
   initialWaitTime: 0
   spawnType: 2
+  bossAreaSpawner: 0
 --- !u!4 &1982777934
 Transform:
   m_ObjectHideFlags: 0
@@ -12057,19 +12187,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1282127722}
   m_RootOrder: 0
---- !u!65 &1982777935
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6500000, guid: fcbf8971d45c0e34abf05aa2f579b7fb,
-    type: 2}
-  m_PrefabInternal: {fileID: 391112924}
-  m_GameObject: {fileID: 1982777932}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2012474213
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,17 +18,21 @@ public class BitSpawner : MonoBehaviour {
     public enum SpawnType {Normal = 0, Reverse = 1, Alternating = 2, Random = 3};
     public SpawnType spawnType; // the spawn setting for this spawner
 
-    private bool specialSet = false; // a special bool to alter the spawned bit
+    protected bool specialSet = false; // a special bool to alter the spawned bit
 
     private Transform playerTransformLocation; // the transform of the player
     private float yPosition; // the y position of this spawner
-    protected float yOffset = 30; // the distance to the player when activated
+    private float yOffset; // the distance to the player when activated
+
+    public bool bossAreaSpawner = false;
 
 	void Start ()
     {
         playerTransformLocation = GameObject.Find("Player").transform;
         timer = initialWaitTime;
         yPosition = transform.position.y;
+        if (bossAreaSpawner) yOffset = 0;
+        else yOffset = 30;
 	}
 
     void FixedUpdate()
@@ -76,7 +80,7 @@ public class BitSpawner : MonoBehaviour {
             spawnedSoFar++;
         }
 
-        if (spawnedSoFar >= amountToSpawn)
+        if (spawnedSoFar >= amountToSpawn && !bossAreaSpawner)
         {
             if (destroyOnCompletion)
             {
