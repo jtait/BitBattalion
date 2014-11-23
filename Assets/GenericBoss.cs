@@ -6,23 +6,27 @@ public abstract class GenericBoss : MonoBehaviour {
     protected int health;
     protected GameParameters gParams;
     protected const float WAIT_TIME_FOR_LEVEL_LOAD = 4;
+    protected Transform playerTransform; // the transform of the player
 
     void Awake()
     {
         gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
+        playerTransform = GameObject.Find("Player").transform;
     }
 
-	protected virtual void Start () {
+	protected virtual void Start ()
+    {
 	
 	}
 	
-	protected virtual void Update () {
+	protected virtual void Update ()
+    {
         DeathCheck();
 	}
 
     protected virtual void OnCollisionEnter(Collision col)
     {
-        if (col.collider.tag != "Weapon")
+        if (col.collider.tag == "Weapon")
         {
             health--;
         }
@@ -56,4 +60,5 @@ public abstract class GenericBoss : MonoBehaviour {
     {
 
     }
+
 }

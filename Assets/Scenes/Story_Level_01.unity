@@ -7908,6 +7908,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6500000, guid: 25e9ddfa2d90647c7bc518d86bc81bed, type: 2}
+      propertyPath: m_Size.z
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500000, guid: 25e9ddfa2d90647c7bc518d86bc81bed, type: 2}
+      propertyPath: m_Center.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500000, guid: 25e9ddfa2d90647c7bc518d86bc81bed, type: 2}
+      propertyPath: m_Size.y
+      value: 250
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25e9ddfa2d90647c7bc518d86bc81bed, type: 2}
   m_RootGameObject: {fileID: 1298402722}
@@ -8698,8 +8710,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 150, y: 200, z: 115.748062}
-  m_Center: {x: 0, y: 40, z: 0}
+  m_Size: {x: 150, y: 250, z: 40}
+  m_Center: {x: 0, y: 40, z: 10}
 --- !u!95 &1298402725
 Animator:
   serializedVersion: 3

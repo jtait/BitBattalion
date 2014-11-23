@@ -148,7 +148,7 @@ public class PlayerControl : MonoBehaviour
     }
 
     /* called when a player dies */
-    void PlayerDeath()
+    public void PlayerDeath()
     {
         AudioSource.PlayClipAtPoint(playerExplosionSound, transform.position, 1f);
 
