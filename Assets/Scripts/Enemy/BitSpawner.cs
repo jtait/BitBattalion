@@ -22,7 +22,7 @@ public class BitSpawner : MonoBehaviour {
 
     private Transform playerTransformLocation; // the transform of the player
     private float yPosition; // the y position of this spawner
-    private float yOffset = 30;
+    private float yOffset = 30; // the distance to the player when activated
 
 	void Start ()
     {
