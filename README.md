@@ -1,4 +1,4 @@
-GaemDesign_Project
+GameDesign_Project
 ==================
 
 Group Project for Game Design Class
