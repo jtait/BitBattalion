@@ -12,7 +12,7 @@ public class BGSpawnAndMove : MonoBehaviour {
 
 	void Start () {
         startingYPosition = transform.position.y;
-        backgroundPrefab = Resources.Load<GameObject>("Backgrounds/Moving_Panel");	
+        backgroundPrefab = Resources.Load<GameObject>("Backgrounds/Endless_Moving_Panel");	
 	}
 	
 	void Update () {
