@@ -39,18 +39,6 @@ public abstract class GenericEnemy : MonoBehaviour {
         Death(); // check for death condition every frame
     }
 
-    /* basic Move function - moves ship forward (down) at baseForwardVelocity */
-    protected virtual void Move()
-    {
-        /* movement of enemies is done in child classes */
-    }
-
-    /* basic shoot function - spawns new projectile */
-    protected virtual void Shoot()
-    {
-        /* spawn a new projectile */
-    }
-
     /* check for death condition met */
     protected virtual void Death()
     {
@@ -65,7 +53,11 @@ public abstract class GenericEnemy : MonoBehaviour {
     void OnCollisionEnter(Collision col)
     {
         /* detect when an enemy is hit by a player weapon */
-        if (col.collider.tag == "Weapon")
+        if (col.collider.name == "Bomb")
+        {
+            AudioSource.PlayClipAtPoint(damageSound, transform.position, 2);
+        }
+        else if (col.collider.tag == "Weapon")
         {
             health--;
             Destroy(col.collider.gameObject); // destroy the weapon that hit the enemy

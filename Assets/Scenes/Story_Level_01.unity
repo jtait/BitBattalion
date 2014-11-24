@@ -213,7 +213,7 @@ Transform:
   m_PrefabInternal: {fileID: 1239203009}
   m_GameObject: {fileID: 21644460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5, y: 0, z: 0}
+  m_LocalPosition: {x: -4.5, y: 250, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2045314457}
@@ -5425,7 +5425,7 @@ Prefab:
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: enemyToSpawn
       value: 
-      objectReference: {fileID: 100090, guid: e9392ab924ac6d24aa12066b56c4df09, type: 2}
+      objectReference: {fileID: 100090, guid: 87a1058216b839b4d9e1ccba7b7c3481, type: 2}
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: spawnFrequency
       value: 5
@@ -5433,6 +5433,10 @@ Prefab:
     - target: {fileID: 100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: m_Name
       value: BossBitSpawner_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_TagString
+      value: Spawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
@@ -6207,7 +6211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741be1ace04c3b54caa9311b82d6dc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawn: {fileID: 100090, guid: e9392ab924ac6d24aa12066b56c4df09, type: 2}
+  enemyToSpawn: {fileID: 100090, guid: 87a1058216b839b4d9e1ccba7b7c3481, type: 2}
   destroyOnCompletion: 0
   spawn: 0
   amountToSpawn: 0
@@ -8157,7 +8161,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: 4907351f8e24c1447b15a79980600e27, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 400042, guid: 4907351f8e24c1447b15a79980600e27, type: 2}
       propertyPath: m_LocalPosition.z
@@ -9242,7 +9246,7 @@ Prefab:
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: enemyToSpawn
       value: 
-      objectReference: {fileID: 100090, guid: e9392ab924ac6d24aa12066b56c4df09, type: 2}
+      objectReference: {fileID: 100090, guid: 87a1058216b839b4d9e1ccba7b7c3481, type: 2}
     - target: {fileID: 11400000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: spawnFrequency
       value: 5
@@ -9250,6 +9254,10 @@ Prefab:
     - target: {fileID: 100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
       propertyPath: m_Name
       value: BossBitSpawner_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
+      propertyPath: m_TagString
+      value: Spawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcbf8971d45c0e34abf05aa2f579b7fb, type: 2}
@@ -9296,7 +9304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741be1ace04c3b54caa9311b82d6dc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawn: {fileID: 100090, guid: e9392ab924ac6d24aa12066b56c4df09, type: 2}
+  enemyToSpawn: {fileID: 100090, guid: 87a1058216b839b4d9e1ccba7b7c3481, type: 2}
   destroyOnCompletion: 0
   spawn: 0
   amountToSpawn: 0

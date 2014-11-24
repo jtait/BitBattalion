@@ -43,10 +43,9 @@ public abstract class GenericBoss : MonoBehaviour {
     /* called if the player wins and the boss dies */
     protected virtual void DeathSequence()
     {
-        /* override in child */
+        /* override in child - call base at the begining of the death sequence */
+        StartCoroutine(WaitForLevelLoad(WAIT_TIME_FOR_LEVEL_LOAD));
 
-        /* call base at the end of the death sequence */
-        StartCoroutine(WaitForLevelLoad(WAIT_TIME_FOR_LEVEL_LOAD));  
     }
 
     protected IEnumerator WaitForLevelLoad(float waitTime)
@@ -59,6 +58,22 @@ public abstract class GenericBoss : MonoBehaviour {
     protected virtual void LoseSequence()
     {
 
+    }
+
+    protected void DestroyAllEnemiesAndSpawners()
+    {
+        DestroyGameObjectsInArray(GameObject.FindGameObjectsWithTag("Enemy"));
+        DestroyGameObjectsInArray(GameObject.FindGameObjectsWithTag("Spawner"));
+        DestroyGameObjectsInArray(GameObject.FindGameObjectsWithTag("EnemyWeapon"));        
+    }
+
+    private void DestroyGameObjectsInArray(GameObject[] array)
+    {
+        foreach (GameObject enemy in array)
+        {
+            if (enemy != null)
+                Destroy(enemy);
+        }
     }
 
 }

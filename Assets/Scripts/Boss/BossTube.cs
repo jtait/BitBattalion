@@ -9,7 +9,7 @@ public class BossTube : GenericBoss {
 
 	protected override void Start () {
         health = BASE_HEALTH * gParams.difficulty / 2; // multiply boss health by difficulty level
-        allowableEscapedBits = 19; // arbitrary number
+        allowableEscapedBits = 19 * (1 / gParams.difficulty); // arbitrary number
 	}
 
     protected override void Update()
@@ -28,11 +28,10 @@ public class BossTube : GenericBoss {
 
     protected override void DeathSequence()
     {
+        base.DeathSequence();
         renderer.active = false;
         collider.enabled = false;
-        
-        // last thing
-        base.DeathSequence();
+        base.DestroyAllEnemiesAndSpawners();
     }
 
     protected override void OnCollisionEnter(Collision col)

@@ -35,7 +35,7 @@ public class BitSpawner : MonoBehaviour {
         else yOffset = 30;
 	}
 
-    void FixedUpdate()
+    void Update()
     {
         if (!spawnComplete)
         {
@@ -61,19 +61,19 @@ public class BitSpawner : MonoBehaviour {
 
             if (spawnType == SpawnType.Reverse)
             {
-                clone.GetComponent<BitShip>().special = true;
+                clone.GetComponent<GenericEnemy>().special = true;
             }
 
             if (spawnType == SpawnType.Alternating)
             {
-                clone.GetComponent<BitShip>().special = specialSet;
+                clone.GetComponent<GenericEnemy>().special = specialSet;
                 specialSet = !specialSet;
             }
 
             if (spawnType == SpawnType.Random)
             {
                 int rand = Random.Range(0, 2);
-                if (rand == 1) clone.GetComponent<BitShip>().special = true;
+                if (rand == 1) clone.GetComponent<GenericEnemy>().special = true;
             }
 
             timer = spawnFrequency;

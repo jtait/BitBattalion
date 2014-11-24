@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BitShip_1 : BitShip {
+public class BitShip_1 : GenericEnemy {
 
     private Transform targetTransform;
-    private Vector3 targetPosition;
 
     protected override void Start()
     {
         targetTransform = GameObject.FindGameObjectWithTag("Boss").transform;
-
+        
         /* set all basic parameters */
         health = 1;
         pointValue = 200 * difficulty;
@@ -17,11 +16,16 @@ public class BitShip_1 : BitShip {
         baseForwardVelocity = 2;
     }
 
+    void FixedUpdate()
+    {
+        Move();
+    }
+
     /* override base class Move() function */
-    protected override void Move()
+    void Move()
     {
         float step = baseForwardVelocity * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
+        transform.position = Vector3.MoveTowards(transform.position, targetTransform.position, step);
     }
 
     protected override void Death()

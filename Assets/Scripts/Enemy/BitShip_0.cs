@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BitShip_0 : BitShip {
+public class BitShip_0 : GenericEnemy {
 
     public float strafeForce = 100f;
 
@@ -16,8 +16,13 @@ public class BitShip_0 : BitShip {
         if (special) strafeForce *= -1f;
     }
 
+    void FixedUpdate()
+    {
+        this.Move();
+    }
+
     /* override base class Move() function */
-    protected override void Move()
+    void Move()
     {
         rigidbody.velocity = Vector3.down * baseForwardVelocity; // move forward at constant velocity
 

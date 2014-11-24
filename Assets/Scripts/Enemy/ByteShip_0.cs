@@ -10,8 +10,8 @@ public class ByteShip_0 : GenericEnemy
 
     void FixedUpdate()
     {
-        Move();
-        Shoot();
+        this.Move();
+        this.Shoot();
     }
 
     protected override void Start()
@@ -28,12 +28,12 @@ public class ByteShip_0 : GenericEnemy
     }
 
     /* override base class Move() function */
-    protected override void Move()
+    void Move()
     {
         rigidbody.velocity = Vector3.down * baseForwardVelocity;
     }
 
-    protected override void Shoot()
+    void Shoot()
     {
         if (ammunition == null) return;
 

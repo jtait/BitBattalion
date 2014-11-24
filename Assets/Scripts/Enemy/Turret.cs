@@ -26,14 +26,14 @@ public class Turret : GenericEnemy {
         Shoot();
     }
 
-    protected override void Move()
+    void Move()
     {
         transform.LookAt(target, Vector3.back);
     }
 
 
     /* basic shoot function - spawns new projectile */
-    protected override void Shoot()
+    void Shoot()
     {
         if (Time.time > nextShot)
         {
