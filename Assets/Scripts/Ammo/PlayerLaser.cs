@@ -15,7 +15,7 @@ public class PlayerLaser : GenericAmmo {
         base.FixedUpdate();
     }
 
-    void OnCollisionEnter(Collision col)
+    protected override void OnCollisionEnter(Collision col)
     {
         if (col.collider.tag != "Enemy" && col.collider.name != "LaserShot") Destroy(gameObject); // destroy self if it collides with anything except enemy or another laser
     }

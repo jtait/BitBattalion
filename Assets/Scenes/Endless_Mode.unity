@@ -543,7 +543,7 @@ GameObject:
   - 114: {fileID: 185552223}
   - 114: {fileID: 185552227}
   m_Layer: 0
-  m_Name: Moving_Panel
+  m_Name: Endless_Moving_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -601,7 +601,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: ed9868041b80f984bb9121fa1f6a0e6d, type: 2}
+  - {fileID: 2100000, guid: a3fda6ae26be91f46973e2da63b4daba, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -728,7 +728,7 @@ GameObject:
   - 65: {fileID: 328658796}
   - 114: {fileID: 328658795}
   m_Layer: 0
-  m_Name: DestroyAmmo
+  m_Name: BottomOfCameraView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -745,7 +745,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1179420396}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!114 &328658795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -755,7 +755,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 328658793}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b395c586ffa80954cb13e2d7fa60ba81, type: 3}
+  m_Script: {fileID: 11500000, guid: 34e5d1e1bff21c54da871a60ef1ef798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!65 &328658796
@@ -770,7 +770,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 40, y: 0, z: 10}
-  m_Center: {x: 0, y: 5, z: 0}
+  m_Center: {x: 0, y: -5, z: 0}
 --- !u!1 &342094629
 GameObject:
   m_ObjectHideFlags: 0
@@ -1597,6 +1597,7 @@ Transform:
   - {fileID: 93356976}
   - {fileID: 1066002695}
   - {fileID: 1460266327}
+  - {fileID: 1646367022}
   - {fileID: 328658794}
   m_Father: {fileID: 1076751552}
   m_RootOrder: 0
@@ -2212,7 +2213,7 @@ Transform:
   m_PrefabInternal: {fileID: 1987141536}
   m_GameObject: {fileID: 1573073678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18, y: 0, z: -5}
+  m_LocalPosition: {x: 17.9799995, y: 0, z: -5}
   m_LocalScale: {x: 9, y: 20, z: 1}
   m_Children: []
   m_Father: {fileID: 1076751552}
@@ -2304,6 +2305,60 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1987141536}
   m_GameObject: {fileID: 1644168476}
   m_Mesh: {fileID: 4300012, guid: 7f643061701a04bf4ae57d4e58e4f86c, type: 3}
+--- !u!1 &1646367021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100062, guid: 4907351f8e24c1447b15a79980600e27, type: 2}
+  m_PrefabInternal: {fileID: 1987141536}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1646367022}
+  - 65: {fileID: 1646367024}
+  - 114: {fileID: 1646367023}
+  m_Layer: 0
+  m_Name: TopOfCameraView
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1646367022
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400062, guid: 4907351f8e24c1447b15a79980600e27, type: 2}
+  m_PrefabInternal: {fileID: 1987141536}
+  m_GameObject: {fileID: 1646367021}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1179420396}
+  m_RootOrder: 4
+--- !u!114 &1646367023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: 4907351f8e24c1447b15a79980600e27,
+    type: 2}
+  m_PrefabInternal: {fileID: 1987141536}
+  m_GameObject: {fileID: 1646367021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b395c586ffa80954cb13e2d7fa60ba81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1646367024
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6500018, guid: 4907351f8e24c1447b15a79980600e27,
+    type: 2}
+  m_PrefabInternal: {fileID: 1987141536}
+  m_GameObject: {fileID: 1646367021}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 40, y: 0, z: 10}
+  m_Center: {x: 0, y: 5, z: 0}
 --- !u!1 &1671953346
 GameObject:
   m_ObjectHideFlags: 0
@@ -2512,8 +2567,6 @@ MonoBehaviour:
   speedMultiplier: 1
   endlessModeTurrets: 0
   endlessMode: 0
-  livesString: {fileID: 1029585220}
-  scoreString: {fileID: 1332205057}
 --- !u!4 &1785811308
 Transform:
   m_ObjectHideFlags: 0
