@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BitSpawner : MonoBehaviour {
+public class Spawner : MonoBehaviour {
 
     public GameObject enemyToSpawn; // the bit prefab to spawn
     public bool destroyOnCompletion = true; // is the spawner destroyed when spawning is completed?

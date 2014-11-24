@@ -15,6 +15,8 @@ public class PlayerControl : MonoBehaviour
     private float strafeDirection;
     private float velocityDirection;
     public float velocityAddition = 2f;
+    public bool moveOverride = false;
+    public Vector3 movementOverrideVector;
 
     // weapons
     private GameObject ammo; // the ammo the player ship will fire
@@ -77,6 +79,12 @@ public class PlayerControl : MonoBehaviour
         /* forward and backward movement */
         velocityDirection = Input.GetAxis("Vertical");
         rigidbody.velocity = new Vector3(0, velocityAddition * velocityDirection, 0);
+
+        /* movement override control */
+        if (moveOverride)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, movementOverrideVector, 0.1f);
+        }
     }
 
     void OnCollisionEnter(Collision col)

@@ -23,7 +23,7 @@ public class SpawnerSpawner : MonoBehaviour {
     
     GameParameters gParams; // reference to the global game parameters
     GameObject genericSpawner; // the spawner to create
-    BitSpawner spawnerParams; // the spawner parameters
+    Spawner spawnerParams; // the spawner parameters
 
     private static Array possibleSpawnTypes; // the special enumerator for the spawner
     private static int numberOfSpawnTypes;
@@ -33,7 +33,7 @@ public class SpawnerSpawner : MonoBehaviour {
         spawnFrequency = INITIAL_SPAWN_FREQUENCY;
         gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
         gParams.endlessMode = true;
-        possibleSpawnTypes = Enum.GetValues(typeof(BitSpawner.SpawnType));
+        possibleSpawnTypes = Enum.GetValues(typeof(Spawner.SpawnType));
         numberOfSpawnTypes = possibleSpawnTypes.Length;
 
         /* load enemies into variables */
@@ -43,7 +43,7 @@ public class SpawnerSpawner : MonoBehaviour {
 
         /* load generic spawner */
         genericSpawner = Resources.Load<GameObject>("Spawner");
-        spawnerParams = genericSpawner.GetComponent<BitSpawner>();
+        spawnerParams = genericSpawner.GetComponent<Spawner>();
         
         /* initialize array of locations */
         spawnerLocations = new Vector3[NUMBER_OF_LOCATIONS];
@@ -139,17 +139,17 @@ public class SpawnerSpawner : MonoBehaviour {
 
         if (enemyToSpawn == byte_0)
         {
-            spawnerParams.initForEndless(byte_0, 1, 1, BitSpawner.SpawnType.Normal);
+            spawnerParams.initForEndless(byte_0, 1, 1, Spawner.SpawnType.Normal);
         }
         else if (enemyToSpawn == turret_0)
         {
             spawningTurrets = true;
-            spawnerParams.initForEndless(turret_0, 1, 1, BitSpawner.SpawnType.Normal);
+            spawnerParams.initForEndless(turret_0, 1, 1, Spawner.SpawnType.Normal);
         }
         else
         {
             int type = UnityEngine.Random.Range(0, numberOfSpawnTypes);
-            spawnerParams.initForEndless(bit_0, 5, 1, (BitSpawner.SpawnType)possibleSpawnTypes.GetValue(type));
+            spawnerParams.initForEndless(bit_0, 5, 1, (Spawner.SpawnType)possibleSpawnTypes.GetValue(type));
         }
         
         int[] isActive = genarateActiveSpawnersForThisRound();

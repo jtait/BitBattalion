@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BossTube : GenericBoss {
 
-    private const int BASE_HEALTH = 10; // the base health of the tube
+    private const int BASE_HEALTH = 50; // the base health of the tube
     private int allowableEscapedBits; // the number of bits that can escape before the player loses
     private int escapedBits = 0; // keeps track of the number of escaped bits
 
@@ -29,9 +29,6 @@ public class BossTube : GenericBoss {
     protected override void DeathSequence()
     {
         base.DeathSequence();
-        renderer.active = false;
-        collider.enabled = false;
-        base.DestroyAllEnemiesAndSpawners();
     }
 
     protected override void OnCollisionEnter(Collision col)
@@ -48,7 +45,7 @@ public class BossTube : GenericBoss {
     
     protected override void LoseSequence()
     {
-        playerTransform.GetComponent<PlayerControl>().PlayerDeath();
+        base.LoseSequence();
     }
 
 }

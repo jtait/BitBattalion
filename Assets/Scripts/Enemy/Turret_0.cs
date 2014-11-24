@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Turret : GenericEnemy {
+public class Turret_0 : GenericEnemy {
 
     private const float MIN_FIRE_RATE = 1f; // the base fire rate of the turret.  Lower is faster.
     private const float OFFSET_FROM_CENTER = 3.7f; // the offset so the turret shoots from the end of the barrel instead of the center of the transform

@@ -7,10 +7,13 @@ public abstract class GenericBoss : MonoBehaviour {
     protected GameParameters gParams;
     protected const float WAIT_TIME_FOR_LEVEL_LOAD = 4;
     protected Transform playerTransform; // the transform of the player
+    protected int difficulty;
+    protected bool bossActive = false; // is the boss active?
 
     void Awake()
     {
         gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
+        difficulty = gParams.difficulty;
         playerTransform = GameObject.Find("Player").transform;
     }
 
@@ -45,6 +48,9 @@ public abstract class GenericBoss : MonoBehaviour {
     {
         /* override in child - call base at the begining of the death sequence */
         StartCoroutine(WaitForLevelLoad(WAIT_TIME_FOR_LEVEL_LOAD));
+        renderer.active = false;
+        collider.enabled = false;
+        DestroyAllEnemiesAndSpawners();
 
     }
 
@@ -57,7 +63,7 @@ public abstract class GenericBoss : MonoBehaviour {
     /* called if the player loses the fight */
     protected virtual void LoseSequence()
     {
-
+        playerTransform.GetComponentInChildren<PlayerControl>().PlayerDeath();
     }
 
     protected void DestroyAllEnemiesAndSpawners()
