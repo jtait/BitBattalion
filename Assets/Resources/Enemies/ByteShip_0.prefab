@@ -1112,7 +1112,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 274.127716, y: 237.401581, z: 40.5511818}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -.599578857, y: 0, z: 20.2755909}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1127,6 +1127,7 @@ MonoBehaviour:
   pointValue: 0
   health: 1
   ammunition: {fileID: 100000, guid: 949bb68e4ceb09144820a9ca5a2d34b3, type: 2}
+  special: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

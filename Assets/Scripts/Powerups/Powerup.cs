@@ -5,6 +5,12 @@ public class Powerup : MonoBehaviour {
 
     public PowerUpType type;
 
+    void Start()
+    {
+        /* flip the transform over */
+        transform.localEulerAngles = new Vector3(0, 180, 0);
+    }
+
     void OnTriggerEnter(Collider col)
     {
         if (col.tag == "Player")
