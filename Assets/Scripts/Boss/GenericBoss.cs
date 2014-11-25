@@ -26,11 +26,11 @@ public abstract class GenericBoss : MonoBehaviour {
 	protected virtual void Update ()
     {
         DeathCheck();
-        if (!bossActive && playerTransform.position.y > transform.position.y - activateDistance)
+        if (playerTransform.position.y > transform.position.y - activateDistance)
         {
             bossActive = true;
         }
-        else if (bossActive && playerTransform.position.y < transform.position.y - activateDistance)
+        else if (playerTransform.position.y < transform.position.y - activateDistance)
         {
             bossActive = false;
         }

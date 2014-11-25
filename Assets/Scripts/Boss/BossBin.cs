@@ -63,7 +63,14 @@ public class BossBin : GenericBoss
         playerControl.moveOverride = true;
         playerControl.movementOverrideVector = transform.position;
         yield return new WaitForSeconds(duration);
-        playerControl.movementOverrideVector = transform.position;
+        playerControl.movementOverrideVector = Vector3.zero;
+        playerControl.moveOverride = false;
+    }
+
+    /* called if the player loses the fight */
+    public void LoseSequence()
+    {
+        playerTransform.GetComponent<PlayerControl>().PlayerDeath();
         playerControl.moveOverride = false;
     }
 
