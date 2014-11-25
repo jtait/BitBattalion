@@ -39,7 +39,7 @@ public class Turret_0 : GenericEnemy {
         {
 
             // generate a new object to fire, instantiate with velocity, power, etc.
-            Vector3 launchFrom = transform.position + transform.forward * OFFSET_FROM_CENTER;// new Vector3(transform.position.x, transform.position.y + 2.5f, transform.position.z);
+            Vector3 launchFrom = transform.position + transform.forward * OFFSET_FROM_CENTER;
 
 
             GameObject clone = GameObject.Instantiate(ammunition, launchFrom, Quaternion.identity) as GameObject;

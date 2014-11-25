@@ -21,5 +21,9 @@ public class StopScrollingProximity : MonoBehaviour {
         {
             playerTransform.GetComponent<ConstantScroll>().isActive = false;
         }
+        else
+        {
+            playerTransform.GetComponent<ConstantScroll>().isActive = true;
+        }
 	}
 }

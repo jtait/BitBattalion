@@ -289,6 +289,7 @@ public class PlayerControl : MonoBehaviour
         transform.position = gParams.lastCheckpoint;
         playerRenderer.active = true;
         playerCollider.enabled = true;
+        //transform.parent.GetComponent<ConstantScroll>().isActive = true;
     }
 
 }

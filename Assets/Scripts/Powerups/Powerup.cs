@@ -13,7 +13,7 @@ public class Powerup : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.tag == "Player")
+        if (col.tag == "PlayerCollider")
         {
             col.GetComponentInParent<PlayerControl>().PowerUpPickup(type); // trigger the powerup method on the player to assign a powerup
             Destroy(gameObject); // destroy the powerup object

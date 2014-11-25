@@ -10,6 +10,7 @@ public class BossTube : GenericBoss {
 	protected override void Start () {
         health = BASE_HEALTH * gParams.difficulty / 2; // multiply boss health by difficulty level
         allowableEscapedBits = 19 * (1 / gParams.difficulty); // arbitrary number
+        activateDistance = 10f;
 	}
 
     protected override void Update()
@@ -40,12 +41,6 @@ public class BossTube : GenericBoss {
             escapedBits++;
             Destroy(col.gameObject); // destroy the bit
         }
-    }
-
-    
-    protected override void LoseSequence()
-    {
-        base.LoseSequence();
     }
 
 }

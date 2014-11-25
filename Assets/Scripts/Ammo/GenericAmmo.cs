@@ -31,7 +31,7 @@ public abstract class GenericAmmo : MonoBehaviour {
 
     protected virtual void OnCollisionEnter(Collision col)
     {
-        if (col.collider.tag != "Player") Destroy(gameObject);
+        if (col.collider.tag != "PlayerCollider") Destroy(gameObject);
     }
 
 }

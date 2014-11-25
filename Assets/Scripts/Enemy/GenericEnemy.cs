@@ -64,7 +64,7 @@ public abstract class GenericEnemy : MonoBehaviour {
             AudioSource.PlayClipAtPoint(damageSound, transform.position, 2);
         }
         /* if the enemy hits a player, destroy the enemy  - don't increase score*/
-        if (col.collider.tag == "Player")
+        if (col.collider.tag == "PlayerCollider")
         {
             Destroy(gameObject);
         }

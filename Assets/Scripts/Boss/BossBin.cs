@@ -9,7 +9,6 @@ public class BossBin : GenericBoss
     private const float MAX_TIME_UNTIL_INHALE = 8;
     private const float MIN_INHALE_DURATION = 2.1f;
     private const float MAX_INHALE_DURATION = 4.3f;
-    private const float ACTIVATE_DISTANCE = 10f; // the proximity of the player before becoming active
 
     /* for inhale */
     private PlayerControl playerControl;
@@ -18,7 +17,8 @@ public class BossBin : GenericBoss
     protected override void Start()
     {
         health = BASE_HEALTH * gParams.difficulty / 2; // multiply boss health by difficulty level
-        playerControl = playerTransform.GetComponentInChildren<PlayerControl>();
+        playerControl = playerTransform.GetComponent<PlayerControl>();
+        activateDistance = 10f;
     }
 
     void FixedUpdate()
@@ -33,8 +33,6 @@ public class BossBin : GenericBoss
     protected override void Update()
     {
         base.Update();
-        if (playerTransform.position.y > transform.position.y - ACTIVATE_DISTANCE)
-            bossActive = true;
     }
 
     protected override void DeathCheck()
@@ -52,16 +50,11 @@ public class BossBin : GenericBoss
         base.OnCollisionEnter(col); // detect player weapon hits
 
         /* if the player touches the boss, the player loses */
-        if (col.collider.tag == "Player")
+        if (col.collider.tag == "PlayerCollider")
         {
             LoseSequence();
         }
 
-    }
-
-    protected override void LoseSequence()
-    {
-        base.LoseSequence();
     }
 
     /* inhale the player */

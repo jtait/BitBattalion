@@ -9,22 +9,31 @@ public abstract class GenericBoss : MonoBehaviour {
     protected Transform playerTransform; // the transform of the player
     protected int difficulty;
     protected bool bossActive = false; // is the boss active?
+    protected float activateDistance; // the proximity of the player before becoming active
 
-    void Awake()
+    protected virtual void Awake()
     {
         gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
         difficulty = gParams.difficulty;
-        playerTransform = GameObject.Find("Player").transform;
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-	protected virtual void Start ()
+    protected virtual void Start()
     {
-	
-	}
-	
+
+    }
+    
 	protected virtual void Update ()
     {
         DeathCheck();
+        if (!bossActive && playerTransform.position.y > transform.position.y - activateDistance)
+        {
+            bossActive = true;
+        }
+        else if (bossActive && playerTransform.position.y < transform.position.y - activateDistance)
+        {
+            bossActive = false;
+        }
 	}
 
     protected virtual void OnCollisionEnter(Collision col)
@@ -61,9 +70,9 @@ public abstract class GenericBoss : MonoBehaviour {
     }
 
     /* called if the player loses the fight */
-    protected virtual void LoseSequence()
+    public void LoseSequence()
     {
-        playerTransform.GetComponentInChildren<PlayerControl>().PlayerDeath();
+        playerTransform.GetComponent<PlayerControl>().PlayerDeath();
     }
 
     protected void DestroyAllEnemiesAndSpawners()
