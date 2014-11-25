@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour {
 
 	void Start ()
     {
-        playerTransformLocation = GameObject.Find("Player").transform;
+        playerTransformLocation = GameObject.FindGameObjectWithTag("Player").transform;
         timer = initialWaitTime;
         yPosition = transform.position.y;
         if (bossAreaSpawner) yOffset = 0;

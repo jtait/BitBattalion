@@ -282,6 +282,7 @@ public class PlayerControl : MonoBehaviour
     {
         playerRenderer.active = false;
         playerCollider.enabled = false;
+        transform.GetComponentInChildren<ParticleSystem>().enableEmission = false;
     }
 
     void EnablePlayer()
@@ -289,7 +290,7 @@ public class PlayerControl : MonoBehaviour
         transform.position = gParams.lastCheckpoint;
         playerRenderer.active = true;
         playerCollider.enabled = true;
-        //transform.parent.GetComponent<ConstantScroll>().isActive = true;
+        transform.GetComponentInChildren<ParticleSystem>().enableEmission = true;
     }
 
 }
