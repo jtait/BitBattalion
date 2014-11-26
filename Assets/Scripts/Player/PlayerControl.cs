@@ -204,6 +204,12 @@ public class PlayerControl : MonoBehaviour
         /* reset powerUp benefits */
         PowerUpPickup(PowerUpType.None);
 
+        /* endless mode special */
+        if (gParams.endlessMode)
+        {
+            gParams.DestroyAllEnemiesInList();
+        }
+
         if (gParams.playerLives > 0)
         {
             /* respawn player at last checkpoint */

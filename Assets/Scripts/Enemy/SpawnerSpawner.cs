@@ -7,7 +7,6 @@ public class SpawnerSpawner : MonoBehaviour {
     private const int NUMBER_OF_LOCATIONS = 3; // the number of spawner locations in the world
     private const int SPAWNER_OFFSET_FROM_CENTER = 10; // the offset from the center for the spawner positions
     private const float INITIAL_SPAWN_FREQUENCY = 5; // the starting spawn frequency in seconds
-    private const float DIFFICULTY_MULTIPLIER = 0.25f; // the multiplier applied to the difficulty level
     private int NUMBER_OF_COMBINATIONS = (int) Mathf.Pow(2, NUMBER_OF_LOCATIONS); // the number of possible position combinations
 
     private Vector3[] turretPositionOffset; // the offset to position the turret on the screen
@@ -106,7 +105,6 @@ public class SpawnerSpawner : MonoBehaviour {
             {
                 spawnedSoFar = 0; // reset counter
                 gParams.difficulty++; // increase difficulty
-                spawnFrequency -= gParams.difficulty * DIFFICULTY_MULTIPLIER;
             }
         }
 
