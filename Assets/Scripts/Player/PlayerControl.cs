@@ -3,14 +3,14 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour
 {
-
+    /* constants */
     private const float BASE_FIRE_RATE = 0.3f; // the base fire rate of the ship.  Lower is faster.
     private const float FIRE_RATE_PERK = 0.1f; // the rapid fire rate of the ship
     private const float MISSILE_FIRE_RATE = 1f; // the missile fire rate
     private const float SHOT_OFFSET = 2.5f;
     private const float RAPID_FIRE_TIMER = 10f; // the length of time for rapid fire to last
 
-    // movement
+    /* movement */
     public float strafeForce = 10f;
     private float strafeDirection;
     private float velocityDirection;
@@ -18,7 +18,7 @@ public class PlayerControl : MonoBehaviour
     public bool moveOverride = false;
     public Vector3 movementOverrideVector;
 
-    // weapons
+    /* weapons */
     private GameObject ammo; // the ammo the player ship will fire
     private GameObject specialWeapon; // the special weapon (bomb, missile, etc.) that the player ship has
     private float fireRate; // delay between regular shots
@@ -26,15 +26,16 @@ public class PlayerControl : MonoBehaviour
     private float specialFireRate; // delay between special shots
     private float nextSpecial; // delay until next special shot can be fired
 
-    // persistent game parameters
+    /* persistent game parameters */
     private GameParameters gParams;
 
-    // types of available ammo
+    /* types of available ammo */
     private enum WeaponType { laser, missile, bomb, none };
     private GameObject laser;
     private GameObject missile;
     private GameObject bomb;
 
+    /* special weapons */
     private bool shielded = false;
     private WeaponType specialWeaponType;
     private int specialWeaponAmmoCount;
@@ -48,6 +49,10 @@ public class PlayerControl : MonoBehaviour
     /* sound */
     private AudioClip playerExplosionSound;
     private AudioClip laserSound;
+
+    /* shield */
+    private ParticleSystem shieldParticles;
+    private ParticleSystem engineParticles;
 
     /* initialize parameters here */
     void Awake()
@@ -68,6 +73,9 @@ public class PlayerControl : MonoBehaviour
         specialWeaponAmmoCount = 0;
         rapidFireEnabled = false;
         rapidFireTimer = 0f;
+        /* particles */
+        shieldParticles = GameObject.Find("ShieldParticles").GetComponent<ParticleSystem>();
+        engineParticles = GameObject.Find("ShipEngineParticles").GetComponent<ParticleSystem>();
     }
     
     void FixedUpdate()
@@ -84,6 +92,16 @@ public class PlayerControl : MonoBehaviour
         if (moveOverride)
         {
             transform.position = Vector3.MoveTowards(transform.position, movementOverrideVector, 0.1f);
+        }
+
+        /* shield display */
+        if (shielded)
+        {
+            shieldParticles.enableEmission = true;
+        }
+        else
+        {
+            shieldParticles.enableEmission = false;
         }
     }
 
@@ -181,7 +199,6 @@ public class PlayerControl : MonoBehaviour
             //TODO
             /* GAME OVER */
         }
-
     }
 
     void DestroyAllEnemies()
@@ -278,19 +295,21 @@ public class PlayerControl : MonoBehaviour
         EnablePlayer();
     }
 
+    /* disable player features on death */
     void DisablePlayer()
     {
         playerRenderer.active = false;
         playerCollider.enabled = false;
-        transform.GetComponentInChildren<ParticleSystem>().enableEmission = false;
+        engineParticles.enableEmission = false;
     }
 
+    /* enable player features when respawning */
     void EnablePlayer()
     {
         transform.position = gParams.lastCheckpoint;
         playerRenderer.active = true;
         playerCollider.enabled = true;
-        transform.GetComponentInChildren<ParticleSystem>().enableEmission = true;
+        engineParticles.enableEmission = true;
     }
 
 }
