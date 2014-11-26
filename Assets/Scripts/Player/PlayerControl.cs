@@ -77,6 +77,11 @@ public class PlayerControl : MonoBehaviour
         shieldParticles = GameObject.Find("ShieldParticles").GetComponent<ParticleSystem>();
         engineParticles = GameObject.Find("ShipEngineParticles").GetComponent<ParticleSystem>();
     }
+
+    void Start()
+    {
+        StartCoroutine(PauseLoop());
+    }
     
     void FixedUpdate()
     {
@@ -139,6 +144,7 @@ public class PlayerControl : MonoBehaviour
                 SetRapidFire(false);
             }
         }
+        
     }
 
     /* create and launch projectile from ship's location */
@@ -310,6 +316,24 @@ public class PlayerControl : MonoBehaviour
         playerRenderer.active = true;
         playerCollider.enabled = true;
         engineParticles.enableEmission = true;
+    }
+
+    /* loop to enable pausing */
+    IEnumerator PauseLoop()
+    {
+        while (true)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (!gParams.paused)
+                    gParams.PauseGame();
+                else
+                {
+                    gParams.ResumeGame();
+                }
+            }
+            yield return null;
+        }
     }
 
 }

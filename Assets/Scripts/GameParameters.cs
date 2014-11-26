@@ -20,6 +20,9 @@ public class GameParameters : MonoBehaviour {
     /* table of all enemies on screen */
     private ArrayList enemyList;
 
+    /* pausing */
+    public bool paused = false;
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -95,4 +98,32 @@ public class GameParameters : MonoBehaviour {
         enemyList = new ArrayList(); // reset the list
     }
 
+    /* called when the player loses all lives */
+    public void GameOver()
+    {
+
+
+    }
+
+    /* pause the game */
+    public void PauseGame(){
+        Object[] objects = FindObjectsOfType (typeof(GameObject));
+        foreach (GameObject go in objects)
+        {
+            go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+        }
+        Time.timeScale = 0;
+        paused = true;
+    }
+
+    /* resume the game */
+    public void ResumeGame(){
+        Time.timeScale = 1;
+        Object[] objects = FindObjectsOfType (typeof(GameObject));
+        foreach (GameObject go in objects)
+        {
+            go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
+        }
+        paused = false;
+    }
 }
