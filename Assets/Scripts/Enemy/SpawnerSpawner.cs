@@ -50,7 +50,7 @@ public class SpawnerSpawner : MonoBehaviour {
         spawnerLocations[0] = new Vector3(-SPAWNER_OFFSET_FROM_CENTER, 0, 0) + transform.position;
         turretPositionOffset[0] = new Vector3(-2f, -4f, 0);
         spawnerLocations[1] = transform.position;
-        turretPositionOffset[1] = new Vector3(0, -8f, 0);
+        turretPositionOffset[1] = new Vector3(0, -4f, 0);
         spawnerLocations[2] = new Vector3(SPAWNER_OFFSET_FROM_CENTER, 0, 0) + transform.position;
         turretPositionOffset[2] = new Vector3(2f, -4f, 0);
         
