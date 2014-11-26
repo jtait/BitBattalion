@@ -126,11 +126,11 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetAxis("Fire1") == 1)
         {
             Shoot();
         }
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetAxis("Fire2") == 1)
         {
             ShootSpecialWeapon(specialWeapon);
         }
