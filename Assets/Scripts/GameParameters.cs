@@ -126,4 +126,12 @@ public class GameParameters : MonoBehaviour {
         }
         paused = false;
     }
+
+    /* wait for a specific time, then load the next level */
+    public static IEnumerator WaitForLevelLoad(float waitTime, string level)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Application.LoadLevel(level);
+    }
+
 }
