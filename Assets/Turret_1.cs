@@ -48,7 +48,7 @@ public class Turret_1 : GenericEnemy
         }
     }
 
-    /* overriden in case the turrets are spawned in endless mode
+    /* overriden in case the turrets are spawned in endless mode */
     protected override void Death()
     {
         if (health <= 0)
