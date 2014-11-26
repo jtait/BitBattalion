@@ -5,7 +5,7 @@ public class BossHardDrive : GenericBoss {
 
     private const float LIMIT_DISTANCE_FROM_CENTER = 8;
     private const float BASE_MOVE_SPEED = 25f;
-    private const int BASE_HEALTH = 50; // the base health of the drive
+    private const int BASE_HEALTH = 150; // the base health of the drive
     private const float BASE_PAUSE_BEFORE_SHOOT_DURATION = 1f;
     private const float MIN_TIME_UNTIL_SHOT = 7;
     private const float MAX_TIME_UNTIL_SHOT = 11;
@@ -23,6 +23,7 @@ public class BossHardDrive : GenericBoss {
     private float nextShot;
     private GameObject disk;
     private float pauseTime;
+    private bool canShoot = true;
 
     protected override void Awake()
     {
@@ -63,10 +64,10 @@ public class BossHardDrive : GenericBoss {
         {
             BackAndForth();
 
-            if (Time.time > nextShot)
+            if (Time.time > nextShot && canShoot)
             {
                 StartCoroutine(PauseAndShoot(pauseTime, playerTransform.position));
-                nextShot = Time.time + Random.Range(MIN_TIME_UNTIL_SHOT, MAX_TIME_UNTIL_SHOT);
+                canShoot = false;
             }
         }
 
@@ -94,6 +95,8 @@ public class BossHardDrive : GenericBoss {
         Shoot(playerPosition);
         yield return new WaitForSeconds(duration/2);
         rigidbody.velocity = savedVelocity;
+        nextShot = Time.time + Random.Range(MIN_TIME_UNTIL_SHOT, MAX_TIME_UNTIL_SHOT);
+        canShoot = true;
     }
 
     private void Shoot(Vector3 targetPosition)
