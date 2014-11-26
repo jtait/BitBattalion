@@ -20,6 +20,7 @@ public class ByteShip_0 : GenericEnemy
         transform.localEulerAngles = new Vector3(0, 180, 0);
 
         /* override all basic parameters */
+        ammunition = Resources.Load<GameObject>("Ammo/EnemyLaser");
         health = 4;
         pointValue = 800 * difficulty;
         fireRate = 5 / difficulty;

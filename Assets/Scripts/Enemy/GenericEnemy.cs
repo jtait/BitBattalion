@@ -7,10 +7,10 @@ public abstract class GenericEnemy : MonoBehaviour {
 
     public int health = 1; // how many shots does it take to kill this ship, with modifiers
 
-    protected float baseForwardVelocity = 0f; // the base speed of the ship, before modifiers
+    protected float baseForwardVelocity; // the base speed of the ship, before modifiers
     protected GameParameters gParams;
     protected int difficulty; // the difficulty modifier of the enemy - useful for endless mode or repeating levels at higher difficulty
-    public GameObject ammunition; // the type of projectile the ship fires
+    protected GameObject ammunition; // the type of projectile the ship fires
     protected float fireRate = 1; // how often the BitShip fires, after modifiers
 
     public bool special = false; // a special parameter - the use is defined by the child class to set a given condition

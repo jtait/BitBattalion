@@ -283,7 +283,8 @@ GameObject:
   - 33: {fileID: 3300032}
   - 23: {fileID: 2300032}
   - 54: {fileID: 5400000}
-  - 65: {fileID: 6500000}
+  - 135: {fileID: 13500000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: StarTurret_0
   m_TagString: Enemy
@@ -491,7 +492,7 @@ Transform:
   m_GameObject: {fileID: 100032}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -4.37113883e-08}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: .00200000009, y: .00200000009, z: .00200000009}
   m_Children:
   - {fileID: 400030}
   - {fileID: 400028}
@@ -985,8 +986,22 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!65 &6500000
-BoxCollider:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69e28e75ec9bba945a582ad3d70d291a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 250
+  health: 1
+  special: 0
+--- !u!135 &13500000
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -995,8 +1010,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1063.09729, y: 1227.55933, z: 750}
-  m_Center: {x: 0, y: 0, z: 300}
+  m_Radius: 613.779541
+  m_Center: {x: 0, y: 0, z: -1.45519152e-11}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
