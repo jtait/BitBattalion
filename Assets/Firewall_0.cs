@@ -47,6 +47,10 @@ public class Firewall_0 : GenericEnemy {
     /* override base to make indestructible */
     protected override void OnCollisionEnter(Collision col)
     {
+        if (col.collider.tag == "Weapon")
+        {
+            Destroy(col.collider.gameObject);
+        }
     }
 
 }
