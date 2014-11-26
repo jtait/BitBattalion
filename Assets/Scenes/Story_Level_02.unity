@@ -1206,7 +1206,7 @@ Transform:
   m_Children:
   - {fileID: 1349892006}
   m_Father: {fileID: 2108806666}
-  m_RootOrder: 8
+  m_RootOrder: 3
 --- !u!1 &411307876
 GameObject:
   m_ObjectHideFlags: 0
@@ -3710,7 +3710,7 @@ Transform:
   - {fileID: 829274198}
   - {fileID: 1892510509}
   m_Father: {fileID: 2108806666}
-  m_RootOrder: 7
+  m_RootOrder: 9
 --- !u!1 &695727764
 GameObject:
   m_ObjectHideFlags: 0
@@ -5202,7 +5202,7 @@ Transform:
   m_Children:
   - {fileID: 1325532192}
   m_Father: {fileID: 2108806666}
-  m_RootOrder: 6
+  m_RootOrder: 8
 --- !u!1 &1114998619
 GameObject:
   m_ObjectHideFlags: 0
@@ -7276,7 +7276,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2108806666}
-  m_RootOrder: 4
+  m_RootOrder: 6
 --- !u!1 &1393195666
 GameObject:
   m_ObjectHideFlags: 0
@@ -7695,6 +7695,33 @@ Prefab:
   m_RootGameObject: {fileID: 1568176795}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1523549539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1523549540}
+  m_Layer: 0
+  m_Name: Walls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1523549540
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1523549539}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2108806666}
+  m_RootOrder: 5
 --- !u!1 &1537068330
 GameObject:
   m_ObjectHideFlags: 0
@@ -7914,7 +7941,7 @@ Transform:
   m_LocalScale: {x: 28, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2108806666}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &1565274583
 GameObject:
   m_ObjectHideFlags: 0
@@ -11897,12 +11924,13 @@ Transform:
   - {fileID: 292800828}
   - {fileID: 1114998620}
   - {fileID: 53890208}
+  - {fileID: 386711354}
   - {fileID: 1554205475}
+  - {fileID: 1523549540}
   - {fileID: 1388794153}
   - {fileID: 2131990623}
   - {fileID: 1110162279}
   - {fileID: 694168726}
-  - {fileID: 386711354}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!1 &2131990622
@@ -11931,7 +11959,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2108806666}
-  m_RootOrder: 5
+  m_RootOrder: 7
 --- !u!1 &2144363659
 GameObject:
   m_ObjectHideFlags: 0
