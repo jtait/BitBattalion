@@ -50,7 +50,7 @@ public abstract class GenericEnemy : MonoBehaviour {
     }
 
     /* check for collisions with projectiles */
-    void OnCollisionEnter(Collision col)
+    protected virtual void OnCollisionEnter(Collision col)
     {
         /* detect when an enemy is hit by a player weapon */
         if (col.collider.name == "Bomb")

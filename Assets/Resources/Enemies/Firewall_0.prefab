@@ -12,7 +12,7 @@ GameObject:
   - 65: {fileID: 6500004}
   m_Layer: 0
   m_Name: Firewall_0
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -828,7 +828,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointValue: 0
   health: 1
-  ammunition: {fileID: 0}
   special: 0
   cycle: 1
 --- !u!198 &19800000

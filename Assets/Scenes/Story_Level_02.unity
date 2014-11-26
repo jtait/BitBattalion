@@ -4376,7 +4376,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointValue: 300
   health: 4000
-  ammunition: {fileID: 100000, guid: 949bb68e4ceb09144820a9ca5a2d34b3, type: 2}
   special: 0
   minFireDelay: 1
   maxFireDelay: 3
@@ -7234,7 +7233,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointValue: 0
   health: 1
-  ammunition: {fileID: 0}
   special: 0
   cycle: 1
 --- !u!65 &1349892008
@@ -8594,6 +8592,7 @@ MonoBehaviour:
   speedMultiplier: 1
   endlessModeTurrets: 0
   endlessMode: 0
+  paused: 0
 --- !u!4 &1659490771
 Transform:
   m_ObjectHideFlags: 0
@@ -10325,7 +10324,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointValue: 300
   health: 4000
-  ammunition: {fileID: 100000, guid: 949bb68e4ceb09144820a9ca5a2d34b3, type: 2}
   special: 0
   minFireDelay: 1
   maxFireDelay: 3
