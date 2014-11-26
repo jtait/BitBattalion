@@ -3,7 +3,7 @@ using System.Collections;
 
 public class LoadSceneButton : MonoBehaviour {
 
-    public int sceneToLoad;
+    public string sceneToLoad;
 
     void OnMouseDown()
     {

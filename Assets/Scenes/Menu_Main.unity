@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a556936c4eaeacd4c8fcfb657a21b9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: 0
+  sceneToLoad: Menu_Options
 --- !u!65 &454174262
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a556936c4eaeacd4c8fcfb657a21b9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: 1
+  sceneToLoad: Story_Level_01
 --- !u!65 &1031959476
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -504,7 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a556936c4eaeacd4c8fcfb657a21b9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: 4
+  sceneToLoad: Endless_Mode
 --- !u!65 &2030441484
 BoxCollider:
   m_ObjectHideFlags: 0
