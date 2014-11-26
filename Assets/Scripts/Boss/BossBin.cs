@@ -9,6 +9,7 @@ public class BossBin : GenericBoss
     private const float MAX_TIME_UNTIL_INHALE = 8;
     private const float MIN_INHALE_DURATION = 2.1f;
     private const float MAX_INHALE_DURATION = 4.3f;
+    private const int BASE_POINTS = 4000;
 
     /* for inhale */
     private PlayerControl playerControl;
@@ -16,6 +17,7 @@ public class BossBin : GenericBoss
 
     protected override void Start()
     {
+        points = BASE_POINTS * difficulty;
         health = BASE_HEALTH * gParams.difficulty / 2; // multiply boss health by difficulty level
         playerControl = playerTransform.GetComponent<PlayerControl>();
         activateDistance = 10f;
@@ -68,7 +70,7 @@ public class BossBin : GenericBoss
     }
 
     /* called if the player loses the fight */
-    public void LoseSequence()
+    public override void LoseSequence()
     {
         playerTransform.GetComponent<PlayerControl>().PlayerDeath();
         playerControl.moveOverride = false;

@@ -10,8 +10,9 @@ public class BossHardDrive : GenericBoss {
     private const float MIN_TIME_UNTIL_SHOT = 7;
     private const float MAX_TIME_UNTIL_SHOT = 11;
     private const float CENTER_OFFSET = 2f; // the offset so the disk shoots from the edge instead of the center of the transform
-    private const float DOWN_OFFSET = 2.5f;
-    private const float LEFT_OFFSET = 1f;
+    private const float DOWN_OFFSET = 2.5f; // for launching disk
+    private const float LEFT_OFFSET = 1f; // for launching disk
+    private const int BASE_POINTS = 6000;
 
     /* movement */
     private float leftLimit;
@@ -31,6 +32,7 @@ public class BossHardDrive : GenericBoss {
 
 	protected override void Start ()
     {
+        points = BASE_POINTS * difficulty;
         health = BASE_HEALTH * gParams.difficulty / 2; // multiply boss health by difficulty level
         moveSpeed = BASE_MOVE_SPEED * 0.25f * difficulty;
         leftLimit = transform.position.x - LIMIT_DISTANCE_FROM_CENTER;
@@ -100,6 +102,11 @@ public class BossHardDrive : GenericBoss {
         Vector3 launchFrom = transform.position + transform.forward * CENTER_OFFSET + Vector3.forward * DOWN_OFFSET + Vector3.left * LEFT_OFFSET;
         GameObject clone = GameObject.Instantiate(disk, launchFrom, Quaternion.identity) as GameObject;
         clone.GetComponent<GenericAmmo>().shotVelocity = (targetPosition - transform.position) * clone.GetComponent<GenericAmmo>().baseSpeed * 0.5f * difficulty;
+    }
+
+    protected override void DeathSequence()
+    {
+        base.DeathSequence();
     }
 
 }

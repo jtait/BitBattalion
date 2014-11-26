@@ -10,6 +10,7 @@ public abstract class GenericBoss : MonoBehaviour {
     protected int difficulty;
     protected bool bossActive = false; // is the boss active?
     protected float activateDistance; // the proximity of the player before becoming active
+    protected int points; // the number of points awarded for killing the boss
 
     protected virtual void Awake()
     {
@@ -59,6 +60,7 @@ public abstract class GenericBoss : MonoBehaviour {
         StartCoroutine(WaitForLevelLoad(WAIT_TIME_FOR_LEVEL_LOAD));
         renderer.active = false;
         collider.enabled = false;
+        gParams.UpdateScore(points);
         DestroyAllEnemiesAndSpawners();
 
     }
@@ -70,7 +72,7 @@ public abstract class GenericBoss : MonoBehaviour {
     }
 
     /* called if the player loses the fight */
-    public void LoseSequence()
+    public virtual void LoseSequence()
     {
         playerTransform.GetComponent<PlayerControl>().PlayerDeath();
     }

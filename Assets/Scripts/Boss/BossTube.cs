@@ -6,8 +6,10 @@ public class BossTube : GenericBoss {
     private const int BASE_HEALTH = 50; // the base health of the tube
     private int allowableEscapedBits; // the number of bits that can escape before the player loses
     private int escapedBits = 0; // keeps track of the number of escaped bits
+    private const int BASE_POINTS = 4000;
 
 	protected override void Start () {
+        points = BASE_POINTS * difficulty;
         health = BASE_HEALTH * gParams.difficulty / 2; // multiply boss health by difficulty level
         allowableEscapedBits = 19 * (1 / gParams.difficulty); // arbitrary number
         activateDistance = 10f;
