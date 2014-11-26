@@ -25,6 +25,7 @@ public class PlayerControl : MonoBehaviour
     private float nextShot; // delay until next regualer shot can be fired
     private float specialFireRate; // delay between special shots
     private float nextSpecial; // delay until next special shot can be fired
+    private bool canShoot = true;
 
     /* persistent game parameters */
     private GameParameters gParams;
@@ -57,22 +58,32 @@ public class PlayerControl : MonoBehaviour
     /* initialize parameters here */
     void Awake()
     {
+        /* game parameters */
+        gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
+
+        /* references to player objects */
         playerRenderer = GameObject.Find("PlayerShip_0").GetComponent<MeshRenderer>();
         playerCollider = GameObject.Find("PlayerCollider").GetComponent<MeshCollider>();
+        
+        /* resources */
         playerExplosionSound = Resources.Load<AudioClip>("SoundFX/playerExplosion/explodey");
         laser = Resources.Load<GameObject>("Ammo/LaserShot");
         laserSound = Resources.Load<AudioClip>("SoundFX/laser/railgun");
         missile = Resources.Load<GameObject>("Ammo/Missile");
         bomb = Resources.Load<GameObject>("Ammo/Bomb");
+
+        /* regular weapons */
         ammo = laser;
         nextShot = 0f;
-        nextSpecial = 0f;
-        gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
         fireRate = BASE_FIRE_RATE;
+
+        /* special weapons */
         specialWeaponType = WeaponType.none;
         specialWeaponAmmoCount = 0;
         rapidFireEnabled = false;
         rapidFireTimer = 0f;
+        nextSpecial = 0f;
+
         /* particles */
         shieldParticles = GameObject.Find("ShieldParticles").GetComponent<ParticleSystem>();
         engineParticles = GameObject.Find("ShipEngineParticles").GetComponent<ParticleSystem>();
@@ -80,7 +91,7 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(PauseLoop());
+        StartCoroutine(PauseLoop()); // start the loop for pause function
     }
     
     void FixedUpdate()
@@ -110,6 +121,7 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    /* handle collisions */
     void OnCollisionEnter(Collision col)
     {
         if (col.collider.tag == "Enemy" || col.collider.tag == "EnemyWeapon")
@@ -124,6 +136,7 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    /* controls and timers */
     void Update()
     {
         if (Input.GetAxis("Fire1") == 1)
@@ -150,7 +163,7 @@ public class PlayerControl : MonoBehaviour
     /* create and launch projectile from ship's location */
     void Shoot()
     {
-        if (Time.time > nextShot)
+        if (Time.time > nextShot && canShoot)
         {
             // generate a new object to fire, instantiate with velocity, power, etc.
             Vector3 launchFrom = new Vector3(transform.position.x, transform.position.y + SHOT_OFFSET, transform.position.z);
@@ -164,7 +177,7 @@ public class PlayerControl : MonoBehaviour
     /* create and fire a special weapon if the player has one */
     void ShootSpecialWeapon(GameObject type)
     {
-        if (specialWeapon != null)
+        if (specialWeapon != null && canShoot)
         {
             if (Time.time > nextSpecial)
             {
@@ -182,7 +195,7 @@ public class PlayerControl : MonoBehaviour
     /* called when a player dies */
     public void PlayerDeath()
     {
-        AudioSource.PlayClipAtPoint(playerExplosionSound, transform.position, 1f);
+        AudioSource.PlayClipAtPoint(playerExplosionSound, transform.position, 1f); // play explosion sound
 
         /* decrease player lives */
         gParams.playerLives--;
@@ -193,26 +206,15 @@ public class PlayerControl : MonoBehaviour
 
         if (gParams.playerLives > 0)
         {
-            /* destroy all enemies */
-            //DestroyAllEnemies();
-
             /* respawn player at last checkpoint */
             StartCoroutine(WaitForRespawn(2));
             DisablePlayer();
         }
         else
         {
-            //TODO
             /* GAME OVER */
-        }
-    }
-
-    void DestroyAllEnemies()
-    {
-        GameObject[] toDestroy = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in toDestroy)
-        {
-            Destroy(enemy);
+            DisablePlayer();
+            StartCoroutine(GameParameters.WaitForLevelLoad(2, "Menu_Game_Over")); // wait for 2 seconds and load the game over screen
         }
     }
 
@@ -304,6 +306,7 @@ public class PlayerControl : MonoBehaviour
     /* disable player features on death */
     void DisablePlayer()
     {
+        canShoot = false;
         playerRenderer.active = false;
         playerCollider.enabled = false;
         engineParticles.enableEmission = false;
@@ -316,6 +319,7 @@ public class PlayerControl : MonoBehaviour
         playerRenderer.active = true;
         playerCollider.enabled = true;
         engineParticles.enableEmission = true;
+        canShoot = true;
     }
 
     /* loop to enable pausing */
