@@ -157,7 +157,6 @@ public class PlayerControl : MonoBehaviour
                 SetRapidFire(false);
             }
         }
-        print(gParams.difficulty);
     }
 
     /* create and launch projectile from ship's location */
