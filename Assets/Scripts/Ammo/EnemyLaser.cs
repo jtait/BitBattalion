@@ -15,6 +15,6 @@ public class EnemyLaser : GenericAmmo {
 
     protected override void OnCollisionEnter(Collision col)
     {
-        base.OnCollisionEnter(col);
+        if (col.collider.tag != "PlayerCollider" && col.collider.name != "EnemyLaser") Destroy(gameObject);
     }
 }
