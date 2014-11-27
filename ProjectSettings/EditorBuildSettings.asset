@@ -19,3 +19,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Story_Level_03.unity
   - enabled: 1
     path: Assets/Scenes/Endless_Mode.unity
+  - enabled: 1
+    path: Assets/Scenes/Menu_Game_Over.unity
