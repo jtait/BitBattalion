@@ -39,7 +39,6 @@ public class PlayerControl : MonoBehaviour
 
     /* special weapons */
     private bool shielded = false;
-    private WeaponType specialWeaponType;
     private int specialWeaponAmmoCount;
     private bool rapidFireEnabled;
     private float rapidFireTimer;
@@ -81,7 +80,6 @@ public class PlayerControl : MonoBehaviour
         fireRate = BASE_FIRE_RATE;
 
         /* special weapons */
-        specialWeaponType = WeaponType.none;
         specialWeaponAmmoCount = 0;
         rapidFireEnabled = false;
         rapidFireTimer = 0f;
@@ -186,7 +184,7 @@ public class PlayerControl : MonoBehaviour
                 Vector3 launchFrom = new Vector3(transform.position.x, transform.position.y + SHOT_OFFSET, transform.position.z);
                 GameObject clone = GameObject.Instantiate(type, launchFrom, Quaternion.identity) as GameObject;
                 clone.GetComponent<GenericAmmo>().shotVelocity += new Vector3(0, rigidbody.velocity.y, 0);
-                nextSpecial = Time.time + fireRate;
+                nextSpecial = Time.time + specialFireRate;
                 specialWeaponAmmoCount--;
                 if (specialWeaponAmmoCount <= 0)
                     SetSpecialWeapon(WeaponType.none);
@@ -241,17 +239,14 @@ public class PlayerControl : MonoBehaviour
         switch (weapon)
         {
             case WeaponType.none:
-                specialWeaponType = WeaponType.none;
                 specialWeapon = null;
                 specialWeaponAmmoCount = 0;
                 break;
             case WeaponType.missile:
-                specialWeaponType = WeaponType.missile;
                 specialWeapon = missile;
-                specialWeaponAmmoCount = 3;
+                specialWeaponAmmoCount = 6;
                 break;
             case WeaponType.bomb:
-                specialWeaponType = WeaponType.bomb;
                 specialWeapon = bomb;
                 specialWeaponAmmoCount = 1;
                 break;

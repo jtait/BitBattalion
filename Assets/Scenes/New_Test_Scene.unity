@@ -3347,6 +3347,14 @@ Prefab:
       propertyPath: m_Name
       value: Capacitor_02
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: c56a6b2c29b4142ae94920daa41e5c3a, type: 2}
+      propertyPath: randomType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: c56a6b2c29b4142ae94920daa41e5c3a, type: 2}
+      propertyPath: predeterminedType
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c56a6b2c29b4142ae94920daa41e5c3a, type: 2}
   m_RootGameObject: {fileID: 1481517681}
@@ -5606,8 +5614,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0b9d0ee34cc85439e04b70233b011f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomType: 1
-  predeterminedType: 0
+  randomType: 0
+  predeterminedType: 3
 --- !u!23 &1481517685
 Renderer:
   m_ObjectHideFlags: 0

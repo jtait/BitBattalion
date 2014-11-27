@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Bomb : GenericAmmo {
+public class PlayerBomb : GenericAmmo {
 
     // persistent game parameters
     private GameParameters gParams;

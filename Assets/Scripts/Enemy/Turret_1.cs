@@ -39,7 +39,6 @@ public class Turret_1 : GenericEnemy
                 Vector3 launchFrom = transform.position + (transform.right * OFFSET_FROM_CENTER);
                 GameObject clone = GameObject.Instantiate(ammunition, launchFrom, Quaternion.identity) as GameObject;
                 GenericAmmo ammo = clone.GetComponent<GenericAmmo>();
-                // good from here down
                 ammo.shotVelocity = (ammo.transform.position - transform.position) * ammo.baseSpeed * 0.5f * difficulty * BASE_SHOT_VELOCITY;
                 ammo.timeToLive = ammo.timeToLive * 0.5f * difficulty + BASE_SHOT_TTL;
                 transform.RotateAround(transform.position, Vector3.forward, angleOfRotation); // actually rotates the transform around its center
