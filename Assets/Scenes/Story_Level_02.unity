@@ -4442,7 +4442,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1537412722}
   m_GameObject: {fileID: 829274197}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ddb37429d240fe409fee2d3c8ad104e, type: 3}
   m_Name: 
@@ -7761,6 +7761,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 400042, guid: 4907351f8e24c1447b15a79980600e27, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4907351f8e24c1447b15a79980600e27, type: 2}
   m_RootGameObject: {fileID: 1568176795}
@@ -7905,7 +7909,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 563113940247d462a85a68be9f5981be, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100034, guid: 563113940247d462a85a68be9f5981be, type: 2}
       propertyPath: m_TagString
@@ -10395,7 +10399,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 2049530376}
   m_GameObject: {fileID: 1892510508}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ddb37429d240fe409fee2d3c8ad104e, type: 3}
   m_Name: 
@@ -10740,7 +10744,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 563113940247d462a85a68be9f5981be, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100034, guid: 563113940247d462a85a68be9f5981be, type: 2}
       propertyPath: m_TagString
