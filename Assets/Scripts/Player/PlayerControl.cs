@@ -44,7 +44,7 @@ public class PlayerControl : MonoBehaviour
     private float rapidFireTimer;
 
     /* renderer and collider*/
-    private MeshRenderer playerRenderer;
+    private MeshRenderer[] playerRenderer;
     private MeshCollider playerCollider;
 
     /* sound */
@@ -64,7 +64,7 @@ public class PlayerControl : MonoBehaviour
         pauseDisplay.renderer.enabled = false;
 
         /* references to player objects */
-        playerRenderer = GameObject.Find("PlayerShip_0").GetComponent<MeshRenderer>();
+        playerRenderer = GameObject.Find("PlayerShip_0").GetComponentsInChildren<MeshRenderer>();
         playerCollider = GameObject.Find("PlayerCollider").GetComponent<MeshCollider>();
         
         /* resources */
@@ -310,7 +310,7 @@ public class PlayerControl : MonoBehaviour
     void DisablePlayer()
     {
         canShoot = false;
-        playerRenderer.active = false;
+        SetRenderers(false);
         playerCollider.enabled = false;
         engineParticles.enableEmission = false;
     }
@@ -319,10 +319,18 @@ public class PlayerControl : MonoBehaviour
     void EnablePlayer()
     {
         transform.position = gParams.lastCheckpoint;
-        playerRenderer.active = true;
+        SetRenderers(true);
         playerCollider.enabled = true;
         engineParticles.enableEmission = true;
         canShoot = true;
+    }
+
+    private void SetRenderers(bool set)
+    {
+        foreach (Renderer r in playerRenderer)
+        {
+            r.enabled = set;
+        }
     }
 
     /* loop to enable pausing */

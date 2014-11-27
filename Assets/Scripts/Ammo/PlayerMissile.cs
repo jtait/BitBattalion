@@ -9,7 +9,6 @@ public class PlayerMissile : GenericAmmo {
     private const float OFFSET_FROM_CENTER = 1.5f; // the offset from the center of the transform
 
     private GameObject ammunition;
-    private float angleOfRotation; // the angle of rotation between shots
 
     void Awake()
     {
@@ -21,7 +20,6 @@ public class PlayerMissile : GenericAmmo {
         timeToLive = 0.05f;
         destructionTime = Time.time + timeToLive;
         shotVelocity = Vector3.up * baseSpeed;
-        angleOfRotation = DEGREES_IN_CIRCLE / NUMBER_OF_PROJECTILES;
     }
 
     protected override void FixedUpdate()
