@@ -53,7 +53,7 @@ public abstract class GenericEnemy : MonoBehaviour {
     protected virtual void OnCollisionEnter(Collision col)
     {
         /* detect when an enemy is hit by a player weapon */
-        if (col.collider.name == "Bomb")
+        if (col.collider.tag == "Bomb")
         {
             AudioSource.PlayClipAtPoint(damageSound, transform.position, 2);
         }
