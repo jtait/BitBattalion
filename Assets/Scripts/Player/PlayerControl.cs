@@ -29,6 +29,7 @@ public class PlayerControl : MonoBehaviour
 
     /* persistent game parameters */
     private GameParameters gParams;
+    private GameObject pauseDisplay;
 
     /* types of available ammo */
     private enum WeaponType { laser, missile, bomb, none };
@@ -60,6 +61,8 @@ public class PlayerControl : MonoBehaviour
     {
         /* game parameters */
         gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
+        pauseDisplay = GameObject.Find("PauseDisplay");
+        pauseDisplay.renderer.enabled = false;
 
         /* references to player objects */
         playerRenderer = GameObject.Find("PlayerShip_0").GetComponent<MeshRenderer>();
@@ -335,11 +338,24 @@ public class PlayerControl : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (!gParams.paused)
+                {
                     gParams.PauseGame();
+                    pauseDisplay.renderer.enabled = true;
+                }
                 else
                 {
                     gParams.ResumeGame();
+                    pauseDisplay.renderer.enabled = false;
                 }
+            }
+            if (Input.GetKeyDown(KeyCode.Y) && gParams.paused)
+            {
+                gParams.ResumeGame();
+                Application.LoadLevel("Menu_Game_Over");
+            }
+            if (Input.GetKeyDown(KeyCode.N) && gParams.paused)
+            {
+                gParams.ResumeGame();
             }
             yield return null;
         }
