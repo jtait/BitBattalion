@@ -3862,16 +3862,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 13200002, guid: 3f6b568d49e45014ab7eb38ae5cfe51c, type: 2}
-      propertyPath: m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: ffcccd4a38474b241a4cf347c8d93a94,
-        type: 3}
-    - target: {fileID: 13200000, guid: 3f6b568d49e45014ab7eb38ae5cfe51c, type: 2}
-      propertyPath: m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: ffcccd4a38474b241a4cf347c8d93a94,
-        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3f6b568d49e45014ab7eb38ae5cfe51c, type: 2}
   m_RootGameObject: {fileID: 1506493170}
