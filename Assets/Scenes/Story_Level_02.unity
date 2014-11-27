@@ -4374,7 +4374,7 @@ GameObject:
   - 65: {fileID: 829274199}
   m_Layer: 0
   m_Name: Turret_0
-  m_TagString: Boss
+  m_TagString: BossMinion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7909,7 +7909,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100034, guid: 563113940247d462a85a68be9f5981be, type: 2}
       propertyPath: m_TagString
-      value: Boss
+      value: BossMinion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 563113940247d462a85a68be9f5981be, type: 2}
@@ -10327,7 +10327,7 @@ GameObject:
   - 65: {fileID: 1892510510}
   m_Layer: 0
   m_Name: Turret_0
-  m_TagString: Boss
+  m_TagString: BossMinion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10744,7 +10744,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100034, guid: 563113940247d462a85a68be9f5981be, type: 2}
       propertyPath: m_TagString
-      value: Boss
+      value: BossMinion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 563113940247d462a85a68be9f5981be, type: 2}

@@ -7950,7 +7950,7 @@ GameObject:
   - 114: {fileID: 481280375}
   m_Layer: 0
   m_Name: StarTurret_0
-  m_TagString: Boss
+  m_TagString: BossMinion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17457,7 +17457,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100032, guid: 6244731b2dc4e4a7d86301918f6e55c2, type: 2}
       propertyPath: m_TagString
-      value: Boss
+      value: BossMinion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6244731b2dc4e4a7d86301918f6e55c2, type: 2}
@@ -33132,7 +33132,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100032, guid: 6244731b2dc4e4a7d86301918f6e55c2, type: 2}
       propertyPath: m_TagString
-      value: Boss
+      value: BossMinion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6244731b2dc4e4a7d86301918f6e55c2, type: 2}
@@ -33154,7 +33154,7 @@ GameObject:
   - 114: {fileID: 1651767022}
   m_Layer: 0
   m_Name: StarTurret_0
-  m_TagString: Boss
+  m_TagString: BossMinion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

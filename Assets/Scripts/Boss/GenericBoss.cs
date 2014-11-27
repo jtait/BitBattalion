@@ -81,7 +81,8 @@ public abstract class GenericBoss : MonoBehaviour {
     {
         DestroyGameObjectsInArray(GameObject.FindGameObjectsWithTag("Enemy"));
         DestroyGameObjectsInArray(GameObject.FindGameObjectsWithTag("Spawner"));
-        DestroyGameObjectsInArray(GameObject.FindGameObjectsWithTag("EnemyWeapon"));        
+        DestroyGameObjectsInArray(GameObject.FindGameObjectsWithTag("EnemyWeapon"));
+        DestroyGameObjectsInArray(GameObject.FindGameObjectsWithTag("BossMinion"));   
     }
 
     private void DestroyGameObjectsInArray(GameObject[] array)

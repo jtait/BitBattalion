@@ -21,8 +21,22 @@ public class LeaveGameOver : MonoBehaviour {
 
     void OnMouseDown()
     {
-        if(gParams != null)
+        Leave();
+    }
+
+    void Update()
+    {
+        if (Input.anyKeyDown)
+        {
+            Leave();
+        }
+    }
+
+    void Leave()
+    {
+        if (gParams != null)
             Destroy(gParams.gameObject);
         Application.LoadLevel(sceneToLoad);
     }
+
 }
