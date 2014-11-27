@@ -47,17 +47,7 @@ public class Capacitor : MonoBehaviour
         else return PowerUpType.None;
     }
 
-    void OnTriggerEnter(Collider col)
-    {
-        if (col.tag == "Weapon")
-        {
-            SpawnPowerUp(type);
-            Destroy(col.gameObject);
-            Destroy(gameObject);
-        }
-    }
-
-    private void SpawnPowerUp(PowerUpType type)
+    public void SpawnPowerUp()
     {
         GameObject powerUp = GetPowerUp(type);
         if (powerUp != null)
