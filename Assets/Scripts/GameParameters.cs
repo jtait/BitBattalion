@@ -63,7 +63,7 @@ public class GameParameters : MonoBehaviour {
     }
 
     /* return the player's score */
-    public long getPlayerScore()
+    public long GetPlayerScore()
     {
         return playerScore;
     }
