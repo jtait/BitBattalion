@@ -64,6 +64,7 @@ public class PlayerControl : MonoBehaviour
         gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
         pauseDisplay = GameObject.Find("PauseDisplay");
         pauseDisplay.renderer.enabled = false;
+        gParams.lastCheckpoint = Vector3.zero;
 
         /* references to player objects */
         playerRenderer = GameObject.Find("PlayerShip_0").GetComponentsInChildren<MeshRenderer>();
