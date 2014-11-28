@@ -5,7 +5,7 @@ public abstract class GenericBoss : MonoBehaviour {
 
     protected int health;
     protected GameParameters gParams;
-    protected const float WAIT_TIME_FOR_LEVEL_LOAD = 4;
+    protected const float WAIT_TIME_FOR_LEVEL_LOAD = 3;
     protected Transform playerTransform; // the transform of the player
     protected int difficulty;
     protected bool bossActive = false; // is the boss active?
@@ -57,19 +57,17 @@ public abstract class GenericBoss : MonoBehaviour {
     /* called if the player wins and the boss dies */
     protected virtual void DeathSequence()
     {
-        /* override in child - call base at the begining of the death sequence */
-        StartCoroutine(WaitForLevelLoad(WAIT_TIME_FOR_LEVEL_LOAD));
         renderer.active = false;
         collider.enabled = false;
         gParams.UpdateScore(points);
         DestroyAllEnemiesAndSpawners();
-        Application.LoadLevel(nextLevel);
+        StartCoroutine(WaitForLevelLoad(WAIT_TIME_FOR_LEVEL_LOAD));       
     }
 
     protected IEnumerator WaitForLevelLoad(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        // load next level here
+        Application.LoadLevel(nextLevel);
     }
 
     /* called if the player loses the fight */
