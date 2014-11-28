@@ -14,12 +14,15 @@ public class BossBin : GenericBoss
     /* for inhale */
     private PlayerControl playerControl;
     private float nextInhale = 5;
+    private ParticleEmitter inhaleParticles;
 
     protected override void Start()
     {
         points = BASE_POINTS * difficulty;
         health = BASE_HEALTH * gParams.difficulty / 2; // multiply boss health by difficulty level
         playerControl = playerTransform.GetComponent<PlayerControl>();
+        inhaleParticles = GetComponentInChildren<ParticleEmitter>();
+        inhaleParticles.emit = false;
         activateDistance = 10f;
         nextLevel = "Story_Level_03";
     }
@@ -63,9 +66,11 @@ public class BossBin : GenericBoss
     /* inhale the player */
     IEnumerator Inhale(float duration)
     {
+        inhaleParticles.emit = true;
         playerControl.moveOverride = true;
         playerControl.movementOverrideVector = transform.position;
         yield return new WaitForSeconds(duration);
+        inhaleParticles.emit = false;
         playerControl.movementOverrideVector = Vector3.zero;
         playerControl.moveOverride = false;
     }
