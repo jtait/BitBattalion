@@ -114,11 +114,11 @@ public class PlayerControl : MonoBehaviour
         /* shield display */
         if (shielded)
         {
-            shieldParticles.enableEmission = true;
+            shieldParticles.Play();
         }
         else
         {
-            shieldParticles.enableEmission = false;
+            shieldParticles.Stop();
         }
     }
 
