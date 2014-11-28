@@ -1101,6 +1101,8 @@ MonoBehaviour:
   pointValue: 300
   health: 3
   special: 0
+<<<<<<< HEAD
+=======
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1113,6 +1115,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+>>>>>>> FETCH_HEAD
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

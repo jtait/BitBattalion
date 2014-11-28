@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: SpawnByte
+  m_Name: SpawnStraightBit
   m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,11 +39,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741be1ace04c3b54caa9311b82d6dc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawn: {fileID: 100036, guid: 9f961640406da44f680c476b5cb87722, type: 2}
+  enemyToSpawn: {fileID: 100000, guid: 0fdfae8cf3ec7704d86eece6e29a720a, type: 2}
   destroyOnCompletion: 0
   spawn: 0
-  amountToSpawn: 1
-  spawnFrequency: 0
+  amountToSpawn: 4
+  spawnFrequency: 1
   initialWaitTime: 0
   spawnType: 0
   bossAreaSpawner: 0
