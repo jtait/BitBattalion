@@ -9,6 +9,7 @@ public class PlayerControl : MonoBehaviour
     private const float MISSILE_FIRE_RATE = 1f; // the missile fire rate
     private const float SHOT_OFFSET = 2.5f;
     private const float RAPID_FIRE_TIMER = 10f; // the length of time for rapid fire to last
+    private const float INVINCIBLE_TIME = 1f; // the time the player is invincible for after respawning
 
     /* movement */
     public float strafeForce = 10f;
@@ -30,6 +31,7 @@ public class PlayerControl : MonoBehaviour
     /* persistent game parameters */
     private GameParameters gParams;
     private GameObject pauseDisplay;
+    private bool invincible = false; // is the player invincible
 
     /* types of available ammo */
     private enum WeaponType { laser, missile, bomb, none };
@@ -132,8 +134,11 @@ public class PlayerControl : MonoBehaviour
                 Destroy(col.gameObject);
             }
 
-            if (shielded) shielded = false;
-            else PlayerDeath();
+            if (!invincible)
+            {
+                if (shielded) shielded = false;
+                else PlayerDeath();
+            }
         }
     }
 
@@ -196,6 +201,8 @@ public class PlayerControl : MonoBehaviour
     public void PlayerDeath()
     {
         AudioSource.PlayClipAtPoint(playerExplosionSound, transform.position, 1f); // play explosion sound
+
+        invincible = true;
 
         /* decrease player lives */
         gParams.playerLives--;
@@ -304,6 +311,7 @@ public class PlayerControl : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         transform.parent.position = gParams.lastCheckpoint;
         EnablePlayer();
+        StartCoroutine(InvincibleTimer(INVINCIBLE_TIME));
     }
 
     /* disable player features on death */
@@ -323,6 +331,13 @@ public class PlayerControl : MonoBehaviour
         playerCollider.enabled = true;
         engineParticles.enableEmission = true;
         canShoot = true;
+    }
+
+    /* set player invincible to false after time */
+    IEnumerator InvincibleTimer(float time)
+    {
+        yield return new WaitForSeconds(time);
+        invincible = false;
     }
 
     private void SetRenderers(bool set)
