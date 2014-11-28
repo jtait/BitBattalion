@@ -95,6 +95,7 @@ GameObject:
   - 4: {fileID: 400010}
   - 33: {fileID: 3300010}
   - 23: {fileID: 2300010}
+  - 65: {fileID: 6500000}
   m_Layer: 0
   m_Name: wall_s_h
   m_TagString: Enemy
@@ -341,6 +342,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
   m_Mesh: {fileID: 4300000, guid: 3ec93d1a281484b5cac53d19980f7344, type: 3}
+--- !u!65 &6500000
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100010}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 75.5905533, y: 24.0794487, z: 50}
+  m_Center: {x: 2.36220551, y: .850748062, z: 19.6850395}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
