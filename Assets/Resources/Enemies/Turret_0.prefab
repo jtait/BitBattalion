@@ -1100,8 +1100,6 @@ MonoBehaviour:
   pointValue: 300
   health: 3
   special: 0
-  minFireDelay: 1
-  maxFireDelay: 3
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

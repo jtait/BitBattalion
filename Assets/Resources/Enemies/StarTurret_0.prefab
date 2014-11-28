@@ -997,8 +997,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e28e75ec9bba945a582ad3d70d291a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointValue: 250
-  health: 1
+  pointValue: 1000
+  health: 20
   special: 0
 --- !u!135 &13500000
 SphereCollider:
