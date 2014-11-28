@@ -4,8 +4,6 @@ using System.Collections;
 public class BitShip_2 : GenericEnemy
 {
 
-    private Transform targetTransform;
-
     protected override void Start()
     {
         targetTransform = GameObject.FindGameObjectWithTag("Boss").transform;
