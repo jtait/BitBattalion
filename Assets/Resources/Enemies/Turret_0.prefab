@@ -299,6 +299,7 @@ GameObject:
   - 4: {fileID: 400034}
   - 114: {fileID: 11400000}
   - 54: {fileID: 5400000}
+  - 135: {fileID: 13500000}
   m_Layer: 0
   m_Name: Turret_0
   m_TagString: Enemy
@@ -1100,8 +1101,18 @@ MonoBehaviour:
   pointValue: 300
   health: 3
   special: 0
-  minFireDelay: 1
-  maxFireDelay: 3
+--- !u!135 &13500000
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100034}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1

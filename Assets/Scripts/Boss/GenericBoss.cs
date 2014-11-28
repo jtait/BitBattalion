@@ -61,13 +61,7 @@ public abstract class GenericBoss : MonoBehaviour {
         collider.enabled = false;
         gParams.UpdateScore(points);
         DestroyAllEnemiesAndSpawners();
-        StartCoroutine(WaitForLevelLoad(WAIT_TIME_FOR_LEVEL_LOAD));       
-    }
-
-    protected IEnumerator WaitForLevelLoad(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        Application.LoadLevel(nextLevel);
+        StartCoroutine(GameParameters.WaitForLevelLoad(WAIT_TIME_FOR_LEVEL_LOAD, nextLevel));       
     }
 
     /* called if the player loses the fight */
