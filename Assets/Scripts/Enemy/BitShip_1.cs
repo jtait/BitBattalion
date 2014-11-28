@@ -13,7 +13,7 @@ public class BitShip_1 : GenericEnemy {
         health = 1;
         pointValue = 200 * difficulty;
         fireRate = fireRate * difficulty;
-        baseForwardVelocity = 2;
+        baseForwardVelocity = 4;
     }
 
     void FixedUpdate()
