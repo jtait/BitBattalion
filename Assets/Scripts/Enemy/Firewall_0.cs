@@ -40,7 +40,14 @@ public class Firewall_0 : GenericEnemy {
     private void SetParticles(bool active)
     {
         foreach(ParticleSystem p in fireParticles){
-            p.enableEmission = active;
+            if (active)
+            {
+                p.Play();
+            }
+            else
+            {
+                p.Stop();
+            }
         }
     }
 
