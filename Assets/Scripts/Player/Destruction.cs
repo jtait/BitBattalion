@@ -7,4 +7,10 @@ public class Destruction : MonoBehaviour {
     void OnCollisionEnter(Collision col){
         Destroy(col.collider.gameObject);
     }
+
+    /* destroy any trigger that enters the trigger */
+    void OnTriggerEnter(Collider col)
+    {
+        Destroy(col.gameObject);
+    }
 }
