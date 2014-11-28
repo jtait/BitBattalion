@@ -21,6 +21,7 @@ public class BossBin : GenericBoss
         health = BASE_HEALTH * gParams.difficulty / 2; // multiply boss health by difficulty level
         playerControl = playerTransform.GetComponent<PlayerControl>();
         activateDistance = 10f;
+        nextLevel = "Story_Level_03";
     }
 
     void FixedUpdate()

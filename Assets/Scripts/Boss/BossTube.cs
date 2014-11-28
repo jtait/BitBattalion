@@ -13,6 +13,7 @@ public class BossTube : GenericBoss {
         health = BASE_HEALTH * gParams.difficulty / 2; // multiply boss health by difficulty level
         allowableEscapedBits = 19 * (1 / gParams.difficulty); // arbitrary number
         activateDistance = 10f;
+        nextLevel = "Story_Level_02";
 	}
 
     protected override void Update()

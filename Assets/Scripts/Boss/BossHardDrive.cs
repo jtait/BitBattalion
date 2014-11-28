@@ -40,6 +40,7 @@ public class BossHardDrive : GenericBoss {
         rightLimit = transform.position.x + LIMIT_DISTANCE_FROM_CENTER;
         pauseTime = BASE_PAUSE_BEFORE_SHOOT_DURATION / difficulty;
         activateDistance = 10f;
+        nextLevel = "Story_Level_01";
 	}
 
     protected override void Update()
@@ -110,6 +111,7 @@ public class BossHardDrive : GenericBoss {
     protected override void DeathSequence()
     {
         base.DeathSequence();
+        gParams.difficulty++; // increase difficulty for next round
     }
 
 }

@@ -11,6 +11,7 @@ public abstract class GenericBoss : MonoBehaviour {
     protected bool bossActive = false; // is the boss active?
     protected float activateDistance; // the proximity of the player before becoming active
     protected int points; // the number of points awarded for killing the boss
+    protected string nextLevel; // the level to load after defeating the boss
 
     protected virtual void Awake()
     {
@@ -62,7 +63,7 @@ public abstract class GenericBoss : MonoBehaviour {
         collider.enabled = false;
         gParams.UpdateScore(points);
         DestroyAllEnemiesAndSpawners();
-
+        Application.LoadLevel(nextLevel);
     }
 
     protected IEnumerator WaitForLevelLoad(float waitTime)
