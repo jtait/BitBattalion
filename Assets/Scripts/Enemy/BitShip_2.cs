@@ -6,8 +6,6 @@ public class BitShip_2 : GenericEnemy
 
     protected override void Start()
     {
-        targetTransform = GameObject.FindGameObjectWithTag("Boss").transform;
-
         /* set all basic parameters */
         health = 1;
         pointValue = 200 * difficulty;
