@@ -4,7 +4,7 @@ using System.Collections;
 public class BossBin : GenericBoss
 {
 
-    private const int BASE_HEALTH = 50; // the base health of the bin
+    private const int BASE_HEALTH = 150; // the base health of the bin
     private const float MIN_TIME_UNTIL_INHALE = 3;
     private const float MAX_TIME_UNTIL_INHALE = 8;
     private const float MIN_INHALE_DURATION = 2.1f;
@@ -49,6 +49,7 @@ public class BossBin : GenericBoss
     protected override void DeathSequence()
     {
         base.DeathSequence();
+        Vacuum(false);
     }
 
     protected override void OnCollisionEnter(Collision col)
@@ -66,20 +67,27 @@ public class BossBin : GenericBoss
     /* inhale the player */
     IEnumerator Inhale(float duration)
     {
-        inhaleParticles.emit = true;
-        playerControl.moveOverride = true;
-        playerControl.movementOverrideVector = transform.position;
+        Vacuum(true);
         yield return new WaitForSeconds(duration);
-        inhaleParticles.emit = false;
-        playerControl.movementOverrideVector = Vector3.zero;
-        playerControl.moveOverride = false;
+        Vacuum(false);
     }
 
     /* called if the player loses the fight */
     public override void LoseSequence()
     {
         playerTransform.GetComponent<PlayerControl>().PlayerDeath();
-        playerControl.moveOverride = false;
+        Vacuum(false);
+    }
+
+    private void Vacuum(bool set){
+        playerControl.moveOverride = set;
+        inhaleParticles.emit = set;
+        if(set){
+            playerControl.movementOverrideVector = transform.position;
+        }
+        else{
+            playerControl.movementOverrideVector = Vector3.zero;
+        }
     }
 
 }

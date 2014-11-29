@@ -13,6 +13,7 @@ public class Firewall_0 : GenericEnemy {
     public bool cycle = true; // is the wall currently cycling?
     
 	protected override void Start () {
+
         wallInactiveTime = BASE_WALL_INACTIVE_TIME / difficulty;
         wallActiveTime = BASE_WALL_ACTIVE_TIME * difficulty;
         wallCollider = GetComponent<BoxCollider>();
@@ -27,26 +28,26 @@ public class Firewall_0 : GenericEnemy {
     {
         while (cycle)
         {
-            SetParticles(true);
-            wallCollider.enabled = true;
+            SetWall(true);
             yield return new WaitForSeconds(wallActiveTime);
-            SetParticles(false);
-            wallCollider.enabled = false;
+            SetWall(false);
             yield return new WaitForSeconds(wallInactiveTime);
         }
     }
 
     /* helper to set both ParticleSystems at once */
-    private void SetParticles(bool active)
+    private void SetWall(bool active)
     {
         foreach(ParticleSystem p in fireParticles){
             if (active)
             {
                 p.Play();
+                wallCollider.enabled = true;
             }
             else
             {
                 p.Stop();
+                wallCollider.enabled = false;
             }
         }
     }
