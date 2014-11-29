@@ -299,15 +299,18 @@ public class PlayerControl : MonoBehaviour
             case PowerUpType.Missile:
                 SetSpecialWeapon(WeaponType.missile);
                 specialFireRate = MISSILE_FIRE_RATE;
+                shielded = false;
                 break;
             case PowerUpType.Bomb:
                 SetSpecialWeapon(WeaponType.bomb);
+                shielded = false;
                 break;
             case PowerUpType.ExtraLife:
                 gParams.playerLives++;
                 break;
             case PowerUpType.RapidFire:
                 SetRapidFire(true);
+                shielded = false;
                 break;
             case PowerUpType.Shield:
                 shielded = true;

@@ -43,7 +43,7 @@ public class Capacitor : MonoBehaviour
         if (random < 30) return PowerUpType.Shield;
         if (random < 45) return PowerUpType.Missile;
         if (random < 55) return PowerUpType.Bomb;
-        if (random < 57) return PowerUpType.ExtraLife;
+        if (random < 58) return PowerUpType.ExtraLife;
         else return PowerUpType.None;
     }
 
