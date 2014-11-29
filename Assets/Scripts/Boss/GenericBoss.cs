@@ -13,9 +13,13 @@ public abstract class GenericBoss : MonoBehaviour {
     protected int points; // the number of points awarded for killing the boss
     protected string nextLevel; // the level to load after defeating the boss
 
+    /* renderer */
+    private MeshRenderer[] bossRenderer;
+
     protected virtual void Awake()
     {
         gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
+        bossRenderer = GetComponentsInChildren<MeshRenderer>();
         difficulty = gParams.difficulty;
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -57,7 +61,7 @@ public abstract class GenericBoss : MonoBehaviour {
     /* called if the player wins and the boss dies */
     protected virtual void DeathSequence()
     {
-        renderer.active = false;
+        SetRenderers(false);
         collider.enabled = false;
         gParams.UpdateScore(points);
         DestroyAllEnemiesAndSpawners();
@@ -84,6 +88,14 @@ public abstract class GenericBoss : MonoBehaviour {
         {
             if (enemy != null)
                 Destroy(enemy);
+        }
+    }
+
+    private void SetRenderers(bool set)
+    {
+        foreach (Renderer r in bossRenderer)
+        {
+            r.enabled = set;
         }
     }
 
