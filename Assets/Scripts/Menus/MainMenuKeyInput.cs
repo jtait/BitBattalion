@@ -6,7 +6,7 @@ public class MainMenuKeyInput : MonoBehaviour {
 
     private const string CAMPAIGN = "Story_Level_01";
     private const string ENDLESS = "Endless_Mode";
-    private const string HIGH_SCORE = "Menu_Main";
+    private const string HIGH_SCORE = "Menu_Highscores";
     private const string OPTIONS = "Menu_Options";
 	
 	void Update () {
