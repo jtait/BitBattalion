@@ -93,6 +93,7 @@ public class PlayerControl : MonoBehaviour
         /* particles */
         shieldParticles = GameObject.Find("ShieldParticles").GetComponent<ParticleSystem>();
         engineParticles = GameObject.Find("ShipEngineParticles").GetComponent<ParticleSystem>();
+
     }
 
     void Start()

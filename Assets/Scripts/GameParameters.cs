@@ -27,7 +27,16 @@ public class GameParameters : MonoBehaviour {
     {
         DontDestroyOnLoad(gameObject);
 
-        enemyList = new ArrayList();
+        lastCheckpoint = Vector3.zero;
+
+        difficulty = 1;
+        playerScore = 0;
+        playerLives = 5;
+    }
+
+    void OnLevelWasLoaded()
+    {
+        enemyList = new ArrayList(); // reset the enemy list
 
         GameObject hud = GameObject.Find("HUD");
         if (hud != null)
@@ -36,19 +45,8 @@ public class GameParameters : MonoBehaviour {
             livesString = guiStrings[0];
             scoreString = guiStrings[1];
         }
-    }
-
-    void Start()
-    {
-
-        lastCheckpoint = Vector3.zero;
-
-        difficulty = 1;
-        playerScore = 0;
-        playerLives = 5;
-
         UpdateScore(0);
-        if(livesString != null)
+        if (livesString != null)
             SetLivesText();
     }
 
