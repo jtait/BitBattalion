@@ -46,8 +46,8 @@ public class Firewall_0 : GenericEnemy {
             }
             else
             {
-                p.Stop();
                 wallCollider.enabled = false;
+                p.Stop();
             }
         }
     }
