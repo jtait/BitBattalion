@@ -307,6 +307,7 @@ public class PlayerControl : MonoBehaviour
                 break;
             case PowerUpType.ExtraLife:
                 gParams.playerLives++;
+                gParams.SetLivesText();
                 break;
             case PowerUpType.RapidFire:
                 SetRapidFire(true);
@@ -384,11 +385,13 @@ public class PlayerControl : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Y) && gParams.paused)
             {
                 gParams.ResumeGame();
+                pauseDisplay.renderer.enabled = false;
                 Application.LoadLevel("Menu_Game_Over");
             }
             if (Input.GetKeyDown(KeyCode.N) && gParams.paused)
             {
                 gParams.ResumeGame();
+                pauseDisplay.renderer.enabled = false;
             }
             yield return null;
         }
