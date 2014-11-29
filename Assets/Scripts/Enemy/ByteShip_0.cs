@@ -23,7 +23,8 @@ public class ByteShip_0 : GenericEnemy
         ammunition = Resources.Load<GameObject>("Ammo/EnemyLaser");
         health = 4;
         pointValue = 800 * difficulty;
-        fireRate = 5 / difficulty;
+        fireRate = Mathf.Max((5 / (float)difficulty), 0.3f);
+        print(fireRate);
         baseForwardVelocity = 0.7f;
         nextShot = 0f;
     }
