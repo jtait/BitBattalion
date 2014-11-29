@@ -167,6 +167,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 728177910}
   - 132: {fileID: 728177909}
+  - 114: {fileID: 728177911}
   m_Layer: 0
   m_Name: ScoreDisplayText
   m_TagString: Untagged
@@ -204,11 +205,23 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 728177908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .03125, y: .055555556, z: 0}
+  m_LocalPosition: {x: .03125, y: .0426563695, z: 0}
   m_LocalScale: {x: .0625, y: .111111112, z: 1}
   m_Children: []
   m_Father: {fileID: 369727553}
   m_RootOrder: 3
+--- !u!114 &728177911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 728177908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ef1b2c3d8ba984993bfd542292c26f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SCALE_FACTOR: 25
 --- !u!1 &1071350516
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,3 +451,44 @@ Transform:
   m_Children: []
   m_Father: {fileID: 369727553}
   m_RootOrder: 0
+--- !u!1 &2082111562
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 3f6b568d49e45014ab7eb38ae5cfe51c, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2082111564}
+  - 114: {fileID: 2082111563}
+  m_Layer: 0
+  m_Name: Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2082111563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 3f6b568d49e45014ab7eb38ae5cfe51c,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2082111562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b89031c4e25c84b902c20774acbd9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  songTitle: menu
+--- !u!4 &2082111564
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 3f6b568d49e45014ab7eb38ae5cfe51c, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2082111562}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2

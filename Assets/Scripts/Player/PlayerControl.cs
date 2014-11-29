@@ -217,7 +217,8 @@ public class PlayerControl : MonoBehaviour
         gParams.SetLivesText();
 
         /* reset powerUp benefits */
-        PowerUpPickup(PowerUpType.None);
+        if (!gParams.endlessMode)
+            PowerUpPickup(PowerUpType.None);
 
         /* endless mode special */
         if (gParams.endlessMode)
@@ -311,7 +312,7 @@ public class PlayerControl : MonoBehaviour
                 shielded = true;
                 break;
         }
-
+        
         powerUpHUD.GetComponent<HUDPowerUp>().DisplayPowerUp(type);
         
     }
