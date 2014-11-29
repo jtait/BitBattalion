@@ -44,6 +44,7 @@ public class PlayerControl : MonoBehaviour
     private int specialWeaponAmmoCount;
     private bool rapidFireEnabled;
     private float rapidFireTimer;
+    private GameObject powerUpHUD;
 
     /* renderer and collider*/
     private MeshRenderer[] playerRenderer;
@@ -87,6 +88,7 @@ public class PlayerControl : MonoBehaviour
         rapidFireEnabled = false;
         rapidFireTimer = 0f;
         nextSpecial = 0f;
+        powerUpHUD = GameObject.Find("PowerUpDisplay");
 
         /* particles */
         shieldParticles = GameObject.Find("ShieldParticles").GetComponent<ParticleSystem>();
@@ -137,7 +139,11 @@ public class PlayerControl : MonoBehaviour
 
             if (!invincible)
             {
-                if (shielded) shielded = false;
+                if (shielded)
+                {
+                    shielded = false;
+                    PowerUpPickup(PowerUpType.None);
+                }
                 else PlayerDeath();
             }
         }
@@ -162,6 +168,7 @@ public class PlayerControl : MonoBehaviour
             if (rapidFireTimer < 0)
             {
                 SetRapidFire(false);
+                PowerUpPickup(PowerUpType.None);
             }
         }
     }
@@ -193,7 +200,7 @@ public class PlayerControl : MonoBehaviour
                 nextSpecial = Time.time + specialFireRate;
                 specialWeaponAmmoCount--;
                 if (specialWeaponAmmoCount <= 0)
-                    SetSpecialWeapon(WeaponType.none);
+                    PowerUpPickup(PowerUpType.None);
             }
         }
     }
@@ -304,6 +311,8 @@ public class PlayerControl : MonoBehaviour
                 shielded = true;
                 break;
         }
+
+        powerUpHUD.GetComponent<HUDPowerUp>().DisplayPowerUp(type);
         
     }
 
