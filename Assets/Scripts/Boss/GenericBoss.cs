@@ -12,6 +12,7 @@ public abstract class GenericBoss : MonoBehaviour {
     protected float activateDistance; // the proximity of the player before becoming active
     protected int points; // the number of points awarded for killing the boss
     protected string nextLevel; // the level to load after defeating the boss
+    protected bool canBeDestroyed = true;
 
     /* renderer */
     private MeshRenderer[] bossRenderer;
@@ -44,9 +45,12 @@ public abstract class GenericBoss : MonoBehaviour {
 
     protected virtual void OnCollisionEnter(Collision col)
     {
-        if (col.collider.tag == "Weapon")
+        if (canBeDestroyed)
         {
-            health--;
+            if (col.collider.tag == "Weapon")
+            {
+                health--;
+            }
         }
     }
 
@@ -71,6 +75,7 @@ public abstract class GenericBoss : MonoBehaviour {
     /* called if the player loses the fight */
     public virtual void LoseSequence()
     {
+        StartCoroutine(InvincibleForSeconds(2));
         playerTransform.GetComponent<PlayerControl>().PlayerDeath();
     }
 
@@ -97,6 +102,13 @@ public abstract class GenericBoss : MonoBehaviour {
         {
             r.enabled = set;
         }
+    }
+
+    IEnumerator InvincibleForSeconds(float seconds)
+    {
+        canBeDestroyed = false;
+        yield return new WaitForSeconds(seconds);
+        canBeDestroyed = true;
     }
 
 }

@@ -30,7 +30,6 @@ public class BossTube : GenericBoss {
     protected override void Update()
     {
         base.Update();
-        print(bossActive);
 
         UpdateBitCounter(); // update the text
 
