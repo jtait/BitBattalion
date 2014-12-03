@@ -7,7 +7,7 @@ public class PlayerControl : MonoBehaviour
     private const float BASE_FIRE_RATE = 0.3f; // the base fire rate of the ship.  Lower is faster.
     private const float FIRE_RATE_PERK = 0.1f; // the rapid fire rate of the ship
     private const float MISSILE_FIRE_RATE = 1f; // the missile fire rate
-    private const float SHOT_OFFSET = 2.5f;
+    private const float SHOT_OFFSET = 1.5f; // the offset from the center of the transform (where the shot originates from)
     private const float RAPID_FIRE_TIMER = 10f; // the length of time for rapid fire to last
     private const float INVINCIBLE_TIME = 1f; // the time the player is invincible for after respawning
 
