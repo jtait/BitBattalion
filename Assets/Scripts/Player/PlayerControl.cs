@@ -199,7 +199,16 @@ public class PlayerControl : MonoBehaviour
         {
             if (Time.time > nextSpecial)
             {
-                Vector3 launchFrom = new Vector3(transform.position.x, transform.position.y + SHOT_OFFSET, transform.position.z);
+                Vector3 launchFrom;
+
+                if (specialWeapon == bomb)
+                {
+                    launchFrom = new Vector3(transform.position.x, transform.position.y + SHOT_OFFSET + bomb.GetComponent<SphereCollider>().radius, transform.position.z); // adds a little offset for the bomb
+                }
+                else
+                {
+                    launchFrom = new Vector3(transform.position.x, transform.position.y + SHOT_OFFSET, transform.position.z);
+                }
                 GameObject clone = GameObject.Instantiate(type, launchFrom, Quaternion.identity) as GameObject;
                 clone.GetComponent<GenericAmmo>().shotVelocity += new Vector3(0, rigidbody.velocity.y, 0);
                 nextSpecial = Time.time + specialFireRate;
