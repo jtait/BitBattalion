@@ -22,6 +22,7 @@ public class BossTube : GenericBoss {
 	protected override void Start () {
         points = BASE_POINTS * difficulty;
         health = BASE_HEALTH * gParams.difficulty / 2; // multiply boss health by difficulty level
+        startHealth = health;
         allowableEscapedBits = 19 * (1 / gParams.difficulty); // arbitrary number
         activateDistance = 14.6f;
         nextLevel = "Story_Level_02";

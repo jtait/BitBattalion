@@ -20,6 +20,7 @@ public class BossBin : GenericBoss
     {
         points = BASE_POINTS * difficulty;
         health = BASE_HEALTH * gParams.difficulty / 2; // multiply boss health by difficulty level
+        startHealth = health;
         playerControl = playerTransform.GetComponent<PlayerControl>();
         inhaleParticles = GetComponentInChildren<ParticleEmitter>();
         inhaleParticles.emit = false;

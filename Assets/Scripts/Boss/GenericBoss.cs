@@ -4,6 +4,7 @@ using System.Collections;
 public abstract class GenericBoss : MonoBehaviour {
 
     protected int health;
+    protected int startHealth;
     protected GameParameters gParams;
     protected const float WAIT_TIME_FOR_LEVEL_LOAD = 3;
     protected Transform playerTransform; // the transform of the player
@@ -14,6 +15,8 @@ public abstract class GenericBoss : MonoBehaviour {
     protected string nextLevel; // the level to load after defeating the boss
     protected bool canBeDestroyed = true;
 
+    protected GameObject healthBar;
+
     /* renderer */
     private MeshRenderer[] bossRenderer;
 
@@ -21,6 +24,7 @@ public abstract class GenericBoss : MonoBehaviour {
     {
         gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
         bossRenderer = GetComponentsInChildren<MeshRenderer>();
+        healthBar = GameObject.Find("BossHealthBar");
         difficulty = gParams.difficulty;
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -36,11 +40,15 @@ public abstract class GenericBoss : MonoBehaviour {
         if (playerTransform.position.y > transform.position.y - activateDistance)
         {
             bossActive = true;
+            DisplayHealthBar(true);
         }
         else if (playerTransform.position.y < transform.position.y - activateDistance)
         {
             bossActive = false;
+            DisplayHealthBar(false);
         }
+
+        UpdateHealthBar();
 	}
 
     protected virtual void OnCollisionEnter(Collision col)
@@ -109,6 +117,15 @@ public abstract class GenericBoss : MonoBehaviour {
         canBeDestroyed = false;
         yield return new WaitForSeconds(seconds);
         canBeDestroyed = true;
+    }
+
+    protected void DisplayHealthBar(bool set){
+        healthBar.renderer.enabled = set;
+    }
+
+
+    protected void UpdateHealthBar(){
+        healthBar.transform.localScale = new Vector3((((float)health) / ((float)startHealth)), 1f, 1f);
     }
 
 }
