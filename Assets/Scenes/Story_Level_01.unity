@@ -1084,9 +1084,10 @@ GameObject:
   - 33: {fileID: 83371016}
   - 23: {fileID: 83371015}
   - 65: {fileID: 83371014}
+  - 114: {fileID: 83371017}
   m_Layer: 0
   m_Name: wall_s_h_0
-  m_TagString: Enemy
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1150,6 +1151,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 773609656}
   m_GameObject: {fileID: 83371012}
   m_Mesh: {fileID: 4300000, guid: 3ec93d1a281484b5cac53d19980f7344, type: 3}
+--- !u!114 &83371017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 8e41d141ff6f94eb89bc42f864f99645,
+    type: 2}
+  m_PrefabInternal: {fileID: 773609656}
+  m_GameObject: {fileID: 83371012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a1f2f90384fcf439d7b5a7bf9defac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 0
+  health: 1
+  special: 0
 --- !u!1 &85629179
 GameObject:
   m_ObjectHideFlags: 0
@@ -4076,9 +4092,10 @@ GameObject:
   - 33: {fileID: 236518307}
   - 23: {fileID: 236518306}
   - 65: {fileID: 236518305}
+  - 114: {fileID: 236518308}
   m_Layer: 0
   m_Name: wall_s_h_1
-  m_TagString: Enemy
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4142,6 +4159,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 482981807}
   m_GameObject: {fileID: 236518303}
   m_Mesh: {fileID: 4300000, guid: 3ec93d1a281484b5cac53d19980f7344, type: 3}
+--- !u!114 &236518308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 8e41d141ff6f94eb89bc42f864f99645,
+    type: 2}
+  m_PrefabInternal: {fileID: 482981807}
+  m_GameObject: {fileID: 236518303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a1f2f90384fcf439d7b5a7bf9defac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 0
+  health: 1
+  special: 0
 --- !u!1 &241134709
 GameObject:
   m_ObjectHideFlags: 0
@@ -4406,9 +4438,10 @@ GameObject:
   - 33: {fileID: 262109502}
   - 23: {fileID: 262109501}
   - 65: {fileID: 262109500}
+  - 114: {fileID: 262109503}
   m_Layer: 0
   m_Name: wall_l_h_7
-  m_TagString: Enemy
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4472,6 +4505,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1525882926}
   m_GameObject: {fileID: 262109498}
   m_Mesh: {fileID: 4300000, guid: 66ef901c009794de3bb4e29aef59830a, type: 3}
+--- !u!114 &262109503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 3665c70b9879f4c7bbe4bb9c1c07ef32,
+    type: 2}
+  m_PrefabInternal: {fileID: 1525882926}
+  m_GameObject: {fileID: 262109498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a1f2f90384fcf439d7b5a7bf9defac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 0
+  health: 1
+  special: 0
 --- !u!1 &264973286
 GameObject:
   m_ObjectHideFlags: 0
@@ -14467,9 +14515,10 @@ GameObject:
   - 33: {fileID: 793476396}
   - 23: {fileID: 793476395}
   - 65: {fileID: 793476394}
+  - 114: {fileID: 793476397}
   m_Layer: 0
   m_Name: wall_l_h_3
-  m_TagString: Enemy
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14533,6 +14582,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1641383671}
   m_GameObject: {fileID: 793476392}
   m_Mesh: {fileID: 4300000, guid: 66ef901c009794de3bb4e29aef59830a, type: 3}
+--- !u!114 &793476397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 3665c70b9879f4c7bbe4bb9c1c07ef32,
+    type: 2}
+  m_PrefabInternal: {fileID: 1641383671}
+  m_GameObject: {fileID: 793476392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a1f2f90384fcf439d7b5a7bf9defac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 0
+  health: 1
+  special: 0
 --- !u!1 &797736944
 GameObject:
   m_ObjectHideFlags: 0
@@ -24966,9 +25030,10 @@ GameObject:
   - 33: {fileID: 1264477072}
   - 23: {fileID: 1264477071}
   - 65: {fileID: 1264477070}
+  - 114: {fileID: 1264477073}
   m_Layer: 0
   m_Name: wall_l_h_0
-  m_TagString: Enemy
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25032,6 +25097,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1109469260}
   m_GameObject: {fileID: 1264477068}
   m_Mesh: {fileID: 4300000, guid: 66ef901c009794de3bb4e29aef59830a, type: 3}
+--- !u!114 &1264477073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 3665c70b9879f4c7bbe4bb9c1c07ef32,
+    type: 2}
+  m_PrefabInternal: {fileID: 1109469260}
+  m_GameObject: {fileID: 1264477068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a1f2f90384fcf439d7b5a7bf9defac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 0
+  health: 1
+  special: 0
 --- !u!1 &1269858580
 GameObject:
   m_ObjectHideFlags: 0
@@ -28501,9 +28581,10 @@ GameObject:
   - 33: {fileID: 1449701552}
   - 23: {fileID: 1449701551}
   - 65: {fileID: 1449701550}
+  - 114: {fileID: 1449701553}
   m_Layer: 0
   m_Name: wall_l_h_1
-  m_TagString: Enemy
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28567,6 +28648,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 11170792}
   m_GameObject: {fileID: 1449701548}
   m_Mesh: {fileID: 4300000, guid: 66ef901c009794de3bb4e29aef59830a, type: 3}
+--- !u!114 &1449701553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 3665c70b9879f4c7bbe4bb9c1c07ef32,
+    type: 2}
+  m_PrefabInternal: {fileID: 11170792}
+  m_GameObject: {fileID: 1449701548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a1f2f90384fcf439d7b5a7bf9defac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 0
+  health: 1
+  special: 0
 --- !u!1 &1452071385
 GameObject:
   m_ObjectHideFlags: 0
@@ -30175,9 +30271,10 @@ GameObject:
   - 33: {fileID: 1542093385}
   - 23: {fileID: 1542093384}
   - 65: {fileID: 1542093383}
+  - 114: {fileID: 1542093386}
   m_Layer: 0
   m_Name: wall_l_h_4
-  m_TagString: Enemy
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30241,6 +30338,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1610096174}
   m_GameObject: {fileID: 1542093381}
   m_Mesh: {fileID: 4300000, guid: 66ef901c009794de3bb4e29aef59830a, type: 3}
+--- !u!114 &1542093386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 3665c70b9879f4c7bbe4bb9c1c07ef32,
+    type: 2}
+  m_PrefabInternal: {fileID: 1610096174}
+  m_GameObject: {fileID: 1542093381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a1f2f90384fcf439d7b5a7bf9defac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 0
+  health: 1
+  special: 0
 --- !u!1 &1544698812
 GameObject:
   m_ObjectHideFlags: 0
@@ -33683,9 +33795,10 @@ GameObject:
   - 33: {fileID: 1755021372}
   - 23: {fileID: 1755021371}
   - 65: {fileID: 1755021370}
+  - 114: {fileID: 1755021373}
   m_Layer: 0
   m_Name: wall_l_h_2
-  m_TagString: Enemy
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33749,6 +33862,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 616678094}
   m_GameObject: {fileID: 1755021368}
   m_Mesh: {fileID: 4300000, guid: 66ef901c009794de3bb4e29aef59830a, type: 3}
+--- !u!114 &1755021373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 3665c70b9879f4c7bbe4bb9c1c07ef32,
+    type: 2}
+  m_PrefabInternal: {fileID: 616678094}
+  m_GameObject: {fileID: 1755021368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a1f2f90384fcf439d7b5a7bf9defac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 0
+  health: 1
+  special: 0
 --- !u!1 &1756571834
 GameObject:
   m_ObjectHideFlags: 0
@@ -33914,9 +34042,10 @@ GameObject:
   - 33: {fileID: 1762258906}
   - 23: {fileID: 1762258905}
   - 65: {fileID: 1762258904}
+  - 114: {fileID: 1762258907}
   m_Layer: 0
   m_Name: wall_l_h_6
-  m_TagString: Enemy
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33980,6 +34109,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1870377877}
   m_GameObject: {fileID: 1762258902}
   m_Mesh: {fileID: 4300000, guid: 66ef901c009794de3bb4e29aef59830a, type: 3}
+--- !u!114 &1762258907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 3665c70b9879f4c7bbe4bb9c1c07ef32,
+    type: 2}
+  m_PrefabInternal: {fileID: 1870377877}
+  m_GameObject: {fileID: 1762258902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a1f2f90384fcf439d7b5a7bf9defac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 0
+  health: 1
+  special: 0
 --- !u!1001 &1762609968
 Prefab:
   m_ObjectHideFlags: 0
@@ -34267,9 +34411,10 @@ GameObject:
   - 33: {fileID: 1773826400}
   - 23: {fileID: 1773826399}
   - 65: {fileID: 1773826398}
+  - 114: {fileID: 1773826401}
   m_Layer: 0
   m_Name: wall_l_h_5
-  m_TagString: Enemy
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34333,6 +34478,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 690799937}
   m_GameObject: {fileID: 1773826396}
   m_Mesh: {fileID: 4300000, guid: 66ef901c009794de3bb4e29aef59830a, type: 3}
+--- !u!114 &1773826401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 3665c70b9879f4c7bbe4bb9c1c07ef32,
+    type: 2}
+  m_PrefabInternal: {fileID: 690799937}
+  m_GameObject: {fileID: 1773826396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a1f2f90384fcf439d7b5a7bf9defac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 0
+  health: 1
+  special: 0
 --- !u!1 &1776155241
 GameObject:
   m_ObjectHideFlags: 0
@@ -37050,7 +37210,7 @@ Light:
   serializedVersion: 3
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .5
+  m_Intensity: .800000012
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
