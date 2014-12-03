@@ -4,7 +4,7 @@ using System.Collections;
 public class Turret_0 : GenericEnemy {
 
     private const float MIN_FIRE_RATE = 1f; // the base fire rate of the turret.  Lower is faster.
-    private const float OFFSET_FROM_CENTER = 3.7f; // the offset so the turret shoots from the end of the barrel instead of the center of the transform
+    private const float OFFSET_FROM_CENTER = 3.5f; // the offset so the turret shoots from the end of the barrel instead of the center of the transform
     private const float MAX_START_DELAY = 5f;
     private const float MIN_FIRE_DELAY = 1;
     private const float MAX_FIRE_DELAY = 3;
