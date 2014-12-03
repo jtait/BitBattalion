@@ -87,6 +87,7 @@ public abstract class GenericBoss : MonoBehaviour {
     {
         StartCoroutine(InvincibleForSeconds(2));
         playerTransform.GetComponent<PlayerControl>().PlayerDeath();
+        health = startHealth; // reset boss health
     }
 
     protected void DestroyAllEnemiesAndSpawners()
