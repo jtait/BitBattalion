@@ -11,6 +11,7 @@ public class LeaveGameOver : MonoBehaviour {
         try
         {
             gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
+            gParams.speedMultiplier = 1; // reset speed multiplier
         }
         catch (System.NullReferenceException)
         {
