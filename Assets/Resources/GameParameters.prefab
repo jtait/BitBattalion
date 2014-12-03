@@ -45,8 +45,7 @@ MonoBehaviour:
   speedMultiplier: 1
   endlessModeTurrets: 0
   endlessMode: 0
-  livesString: {fileID: 0}
-  scoreString: {fileID: 0}
+  paused: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

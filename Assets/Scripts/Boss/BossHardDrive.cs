@@ -25,6 +25,8 @@ public class BossHardDrive : GenericBoss {
     private float pauseTime;
     private bool canShoot = true;
 
+    private bool previousFrame = false; // the active state of the tube in the previous frame
+
     protected override void Awake()
     {
         base.Awake();
@@ -46,21 +48,32 @@ public class BossHardDrive : GenericBoss {
 
     protected override void Update()
     {
-        base.Update();
-
-        if (bossActive && playerTransform.position.y > transform.position.y - activateDistance)
+        DeathCheck();
+        if (playerTransform.position.y > transform.position.y - activateDistance)
         {
-            rigidbody.velocity = new Vector3(moveSpeed, 0, 0);
-            nextShot = Time.time + MAX_TIME_UNTIL_SHOT;
+            bossActive = true;
+            DisplayHealthBar(true);
+            if (!previousFrame)
+            {
+                rigidbody.velocity = new Vector3(moveSpeed, 0, 0);
+                nextShot = Time.time + MAX_TIME_UNTIL_SHOT;
+            }
         }
-        else if (!bossActive && playerTransform.position.y < transform.position.y - activateDistance)
+        else if (playerTransform.position.y < transform.position.y - activateDistance)
         {
+            bossActive = false;
+            DisplayHealthBar(false);
             rigidbody.velocity = Vector3.zero;
         }
+
+        UpdateHealthBar();
+
+        previousFrame = bossActive;
     }
 	
 	void FixedUpdate()
     {
+        print(Time.time + " " + nextShot);
         if (bossActive)
         {
             BackAndForth();
