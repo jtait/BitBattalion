@@ -384,7 +384,6 @@ public class PlayerControl : MonoBehaviour
         bool cheatCode = false;
         while (true)
         {
-            print(cheatCode);
             if (Input.anyKeyDown && gParams.paused && cheatCode && !Input.GetKeyDown(KeyCode.L))
             {
                 cheatCode = false;
