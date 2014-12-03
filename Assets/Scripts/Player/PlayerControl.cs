@@ -58,6 +58,9 @@ public class PlayerControl : MonoBehaviour
     private ParticleSystem shieldParticles;
     private ParticleSystem engineParticles;
 
+    /* particles */
+    private GameObject explosionParticles;
+
     /* initialize parameters here */
     void Awake()
     {
@@ -77,6 +80,7 @@ public class PlayerControl : MonoBehaviour
         laserSound = Resources.Load<AudioClip>("SoundFX/laser/railgun");
         missile = Resources.Load<GameObject>("Ammo/Missile");
         bomb = Resources.Load<GameObject>("Ammo/Bomb");
+        explosionParticles = Resources.Load<GameObject>("Particles/Explosion");
 
         /* regular weapons */
         ammo = laser;
@@ -210,6 +214,7 @@ public class PlayerControl : MonoBehaviour
     public void PlayerDeath()
     {
         AudioSource.PlayClipAtPoint(playerExplosionSound, transform.position, 1f); // play explosion sound
+        GameObject.Instantiate(explosionParticles, transform.position, Quaternion.identity); // play explosion particles
 
         invincible = true;
 
