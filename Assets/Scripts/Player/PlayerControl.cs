@@ -381,8 +381,14 @@ public class PlayerControl : MonoBehaviour
     /* loop to enable pausing */
     IEnumerator PauseLoop()
     {
+        bool cheatCode = false;
         while (true)
         {
+            print(cheatCode);
+            if (Input.anyKeyDown && gParams.paused && cheatCode && !Input.GetKeyDown(KeyCode.L))
+            {
+                cheatCode = false;
+            }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 if (!gParams.paused)
@@ -406,6 +412,16 @@ public class PlayerControl : MonoBehaviour
             {
                 gParams.ResumeGame();
                 pauseDisplay.renderer.enabled = false;
+            }
+            if (Input.GetKeyDown(KeyCode.E) && gParams.paused)
+            {
+                cheatCode = true;
+            }
+            if (Input.GetKeyDown(KeyCode.L) && gParams.paused && cheatCode)
+            {
+                gParams.playerLives += 5;
+                gParams.SetLivesText();
+                cheatCode = false;
             }
             yield return null;
         }
