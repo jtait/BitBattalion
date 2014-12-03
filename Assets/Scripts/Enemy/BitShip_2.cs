@@ -10,7 +10,7 @@ public class BitShip_2 : GenericEnemy
         health = 1;
         pointValue = 200 * difficulty;
         fireRate = fireRate * difficulty;
-        baseForwardVelocity = 3 * difficulty;
+        baseForwardVelocity = 3 * difficulty * gParams.speedMultiplier;
     }
 
     void FixedUpdate()

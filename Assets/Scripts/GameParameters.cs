@@ -8,7 +8,7 @@ public class GameParameters : MonoBehaviour {
     private long playerScore;
     private const long maxScore = 999999999999L;
     public Vector3 lastCheckpoint;
-    public float speedMultiplier = 1;
+    public float speedMultiplier = 1; // global speed multiplier for enemy movement
 
     public int endlessModeTurrets = 0;
     public bool endlessMode = false;

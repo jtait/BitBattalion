@@ -10,7 +10,7 @@ public class BitShip_0 : GenericEnemy {
         /* set all basic parameters */
         health = 1;
         pointValue = 200 * difficulty;
-        baseForwardVelocity = 2;
+        baseForwardVelocity = 2 * gParams.speedMultiplier;
 
         if (special) strafeForce *= -1f;
     }

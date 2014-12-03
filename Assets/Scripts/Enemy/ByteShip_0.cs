@@ -24,7 +24,7 @@ public class ByteShip_0 : GenericEnemy
         health = 4;
         pointValue = 800 * difficulty;
         fireRate = Mathf.Max((5 / (float)difficulty), 0.3f);
-        baseForwardVelocity = 0.7f;
+        baseForwardVelocity = 0.7f * gParams.speedMultiplier;
         nextShot = 0f;
     }
 
