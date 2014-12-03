@@ -99,7 +99,7 @@ GameObject:
   - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: wall_l_v
-  m_TagString: Enemy
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

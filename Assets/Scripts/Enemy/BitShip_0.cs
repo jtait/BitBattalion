@@ -37,4 +37,16 @@ public class BitShip_0 : GenericEnemy {
         base.Death();
     }
 
+    /* check for collisions with projectiles */
+    protected override void OnCollisionEnter(Collision col)
+    {
+        base.OnCollisionEnter(col);
+
+        if (col.collider.tag == "Wall")
+        {
+            health = 0;
+        }
+
+    }
+
 }

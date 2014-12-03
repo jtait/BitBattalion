@@ -135,7 +135,7 @@ public class PlayerControl : MonoBehaviour
     /* handle collisions */
     void OnCollisionEnter(Collision col)
     {
-        if (col.collider.tag == "Enemy" || col.collider.tag == "EnemyWeapon")
+        if (col.collider.tag == "Enemy" || col.collider.tag == "EnemyWeapon" || col.collider.tag == "Wall")
         {
             if (col.collider.tag == "EnemyWeapon")
             {
