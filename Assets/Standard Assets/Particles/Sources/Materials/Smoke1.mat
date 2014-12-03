@@ -48,6 +48,10 @@ Material:
         second: 20
       data:
         first:
+          name: _InvFade
+        second: 1
+      data:
+        first:
           name: _Highlight
         second: 30
     m_Colors:
@@ -62,7 +66,7 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: .0641138107, g: .012435114, b: .338235319, a: 1}
       data:
         first:
           name: BumpMapScale

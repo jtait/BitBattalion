@@ -54,6 +54,7 @@ public class Turret_0 : GenericEnemy {
                 gParams.endlessModeTurrets--;
             }
             gParams.UpdateScore(pointValue);
+            GameObject.Instantiate(explosionParticles, transform.position, Quaternion.identity); // play explosion particles
             Destroy(gameObject);
         }
     }

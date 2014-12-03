@@ -19,6 +19,8 @@ public abstract class GenericEnemy : MonoBehaviour {
     protected bool triggered_2 = false;
     protected bool triggered_3 = false;
 
+    protected GameObject explosionParticles;
+
     /* sounds */
     AudioClip damageSound;
 
@@ -27,6 +29,7 @@ public abstract class GenericEnemy : MonoBehaviour {
         gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
         difficulty = gParams.difficulty; // set the difficulty parameter of the enemy to the difficulty of the game when the enemy is created
         damageSound = Resources.Load<AudioClip>("SoundFX/hit/hit");
+        explosionParticles = Resources.Load<GameObject>("Particles/EnemyExplosion");
     }
 
     protected virtual void Start()
@@ -45,6 +48,7 @@ public abstract class GenericEnemy : MonoBehaviour {
         if (health <= 0)
         {
             gParams.UpdateScore(pointValue);
+            GameObject.Instantiate(explosionParticles, transform.position, Quaternion.identity); // play explosion particles
             Destroy(gameObject);
         }
     }
