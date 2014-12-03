@@ -36,7 +36,7 @@ public class BossHardDrive : GenericBoss {
         points = BASE_POINTS * difficulty;
         health = BASE_HEALTH * gParams.difficulty / 2; // multiply boss health by difficulty level
         startHealth = health;
-        moveSpeed = BASE_MOVE_SPEED * 0.25f * difficulty;
+        moveSpeed = BASE_MOVE_SPEED * 0.25f * (float)difficulty;
         leftLimit = transform.position.x - LIMIT_DISTANCE_FROM_CENTER;
         rightLimit = transform.position.x + LIMIT_DISTANCE_FROM_CENTER;
         pauseTime = BASE_PAUSE_BEFORE_SHOOT_DURATION / difficulty;
@@ -48,12 +48,12 @@ public class BossHardDrive : GenericBoss {
     {
         base.Update();
 
-        if (!bossActive && playerTransform.position.y > transform.position.y - activateDistance)
+        if (bossActive && playerTransform.position.y > transform.position.y - activateDistance)
         {
             rigidbody.velocity = new Vector3(moveSpeed, 0, 0);
             nextShot = Time.time + MAX_TIME_UNTIL_SHOT;
         }
-        else if (bossActive && playerTransform.position.y < transform.position.y - activateDistance)
+        else if (!bossActive && playerTransform.position.y < transform.position.y - activateDistance)
         {
             rigidbody.velocity = Vector3.zero;
         }
