@@ -96,6 +96,7 @@ GameObject:
   - 33: {fileID: 3300010}
   - 23: {fileID: 2300010}
   - 65: {fileID: 6500000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: wall_s_v
   m_TagString: Enemy
@@ -354,6 +355,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 75, y: 23, z: 50}
   m_Center: {x: 2.36220551, y: .850748062, z: 19.6850395}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a1f2f90384fcf439d7b5a7bf9defac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 0
+  health: 1
+  special: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
