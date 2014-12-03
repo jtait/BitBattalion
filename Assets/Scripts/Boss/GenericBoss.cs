@@ -14,6 +14,7 @@ public abstract class GenericBoss : MonoBehaviour {
     protected int points; // the number of points awarded for killing the boss
     protected string nextLevel; // the level to load after defeating the boss
     protected bool canBeDestroyed = true;
+    protected bool dead = false;
 
     protected GameObject healthBar;
 
@@ -64,8 +65,9 @@ public abstract class GenericBoss : MonoBehaviour {
 
     protected virtual void DeathCheck()
     {
-        if (health <= 0)
+        if (health <= 0 && !dead)
         {
+            dead = true;
             DeathSequence();
         }
     }
