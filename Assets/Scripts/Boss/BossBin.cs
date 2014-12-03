@@ -15,6 +15,7 @@ public class BossBin : GenericBoss
     private PlayerControl playerControl;
     private float nextInhale = 5;
     private ParticleEmitter inhaleParticles;
+    private bool inhaling = false;
 
     protected override void Start()
     {
@@ -32,8 +33,12 @@ public class BossBin : GenericBoss
     {
         if (Time.time > nextInhale && bossActive)
         {
-            StartCoroutine(Inhale(Random.Range(MAX_INHALE_DURATION, MAX_INHALE_DURATION)));
-            nextInhale = Time.time + Random.Range(MIN_TIME_UNTIL_INHALE, MAX_TIME_UNTIL_INHALE);
+            if (!inhaling)
+            {
+                inhaling = true;
+                StartCoroutine(Inhale(Random.Range(MAX_INHALE_DURATION, MAX_INHALE_DURATION)));
+                nextInhale = Time.time + Random.Range(MIN_TIME_UNTIL_INHALE, MAX_TIME_UNTIL_INHALE);
+            }
         }
     }
 
@@ -76,17 +81,19 @@ public class BossBin : GenericBoss
     /* called if the player loses the fight */
     public override void LoseSequence()
     {
-        playerTransform.GetComponent<PlayerControl>().PlayerDeath();
         Vacuum(false);
+        playerTransform.GetComponent<PlayerControl>().PlayerDeath();
     }
 
     private void Vacuum(bool set){
         playerControl.moveOverride = set;
         inhaleParticles.emit = set;
         if(set){
+            inhaling = true;
             playerControl.movementOverrideVector = transform.position;
         }
         else{
+            inhaling = false;
             playerControl.movementOverrideVector = Vector3.zero;
         }
     }

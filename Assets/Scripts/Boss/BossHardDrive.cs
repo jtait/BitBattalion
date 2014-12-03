@@ -73,7 +73,6 @@ public class BossHardDrive : GenericBoss {
 	
 	void FixedUpdate()
     {
-        print(Time.time + " " + nextShot);
         if (bossActive)
         {
             BackAndForth();
