@@ -15,10 +15,18 @@ public class BossProximity : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        manager = GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>();
-        musicPlayer = GameObject.FindObjectOfType<MusicPlayer>();
-        regularSong = musicPlayer.songTitle;
-        bossSong = regularSong + "_Boss";
+        try
+        {
+            manager = GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>();
+            musicPlayer = GameObject.FindObjectOfType<MusicPlayer>();
+            regularSong = musicPlayer.songTitle;
+            bossSong = regularSong + "_Boss";
+        }
+        catch (System.NullReferenceException)
+        {
+            manager = null;
+        }
+        
         playerTransform = GameObject.Find("Player").transform;
         yPosition = transform.position.y;
 	}
@@ -30,7 +38,7 @@ public class BossProximity : MonoBehaviour {
             playerTransform.GetComponent<ConstantScroll>().isActive = false;
             if (!changedSong)
             {
-                manager.NewSong(bossSong);
+                if(manager != null) manager.NewSong(bossSong);
                 changedSong = true;
             }
         }
