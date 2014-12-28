@@ -38,7 +38,7 @@ public abstract class GenericBoss : MonoBehaviour {
 	protected virtual void Update ()
     {
         DeathCheck();
-        if (playerTransform.position.y > transform.position.y - activateDistance)
+        if (playerTransform.position.y >= transform.position.y - activateDistance - 0.1f)
         {
             bossActive = true;
             DisplayHealthBar(true);
