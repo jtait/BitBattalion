@@ -331,8 +331,11 @@ public class PlayerControl : MonoBehaviour
                 shielded = true;
                 break;
         }
-        
-        powerUpHUD.GetComponent<HUDPowerUp>().DisplayPowerUp(type);
+
+        if (type != PowerUpType.ExtraLife)
+        {
+            powerUpHUD.GetComponent<HUDPowerUp>().DisplayPowerUp(type);
+        }
         
     }
 
