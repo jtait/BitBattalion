@@ -16,6 +16,7 @@ public class PlayerControl : MonoBehaviour
     private float strafeDirection;
     private float velocityDirection;
     public float velocityAddition = 2f;
+    private bool canMove = true;
     public bool moveOverride = false;
     public Vector3 movementOverrideVector;
 
@@ -107,14 +108,17 @@ public class PlayerControl : MonoBehaviour
     
     void FixedUpdate()
     {
+
+        if(canMove){
+            strafeDirection = Input.GetAxis("Horizontal");
+            velocityDirection = Input.GetAxis("Vertical");
+        }
+
         /* strafing */
-        strafeDirection = Input.GetAxis("Horizontal");
         rigidbody.AddForce(new Vector3(strafeDirection * strafeForce, 0, 0));
-
         /* forward and backward movement */
-        velocityDirection = Input.GetAxis("Vertical");
         rigidbody.velocity = new Vector3(0, velocityAddition * velocityDirection, 0);
-
+        
         /* movement override control */
         if (moveOverride)
         {
@@ -350,6 +354,9 @@ public class PlayerControl : MonoBehaviour
     /* disable player features on death */
     void DisablePlayer()
     {
+        canMove = false;
+        strafeDirection = 0f;
+        velocityDirection = 0f;
         canShoot = false;
         SetRenderers(false);
         playerCollider.enabled = false;
@@ -359,6 +366,7 @@ public class PlayerControl : MonoBehaviour
     /* enable player features when respawning */
     void EnablePlayer()
     {
+        canMove = true;
         transform.position = gParams.lastCheckpoint;
         SetRenderers(true);
         playerCollider.enabled = true;
