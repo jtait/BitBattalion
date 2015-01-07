@@ -4,7 +4,8 @@ using System.Collections;
 
 public class MusicManager : MonoBehaviour {
 
-    private const float FADE_CONSTANT = 0.9f;
+    private const float FADE_INCREMENT = 0.035f;
+    private const float FADE_RESOLUTION = 0.03f;
 
     private Dictionary<string, AudioClip> songList = new Dictionary<string, AudioClip>();
 
@@ -20,7 +21,6 @@ public class MusicManager : MonoBehaviour {
 
     private AudioSource aSource;
     private bool fadeIn = false;
-    private bool change;
     private string songName;
 
 	void Awake ()
@@ -60,46 +60,31 @@ public class MusicManager : MonoBehaviour {
     public void NewSong(string song)
     {
         songName = song;
-        change = true;
+        StopCoroutine(ChangeSong());
+        fadeIn = false;
+        StartCoroutine(ChangeSong());
     }
 
     /* handle crossfading */
-    void Update(){
-        if (change)
+    IEnumerator ChangeSong()
+    {
+        while(aSource.volume > 0 && !fadeIn)
         {
-            if (aSource.volume > 0 && !fadeIn)
-            {
-                FadeOut();
-            }
-            else if(!fadeIn)
-            {
-                aSource.clip = songList[songName];
-                aSource.Play();
-                fadeIn = true;
-            }
-
-            if (aSource.volume < 1 && fadeIn)
-            {
-                FadeIn();
-            }
-            else if(fadeIn)
-            {
-                fadeIn = false;
-                change = false;
-            }
+            aSource.volume -= FADE_INCREMENT;// *Time.deltaTime;
+            yield return new WaitForSeconds(FADE_RESOLUTION);
         }
+
+        aSource.clip = songList[songName];
+        aSource.Play();
+        fadeIn = true;
+
+        while(aSource.volume < 1 && fadeIn)
+        {
+            aSource.volume += FADE_INCREMENT;// *Time.deltaTime;
+            yield return new WaitForSeconds(FADE_RESOLUTION);
+        }
+        
+        fadeIn = false;
     }
-
-    void FadeOut()
-    {
-        aSource.volume -= FADE_CONSTANT * Time.deltaTime;
-    }
-
-    void FadeIn()
-    {
-        aSource.volume += FADE_CONSTANT * Time.deltaTime;
-    }
-
-
 
 }
