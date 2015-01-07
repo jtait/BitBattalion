@@ -8,6 +8,7 @@ public class Turret_0 : GenericEnemy {
     private const float MAX_START_DELAY = 5f;
     private const float MIN_FIRE_DELAY = 1;
     private const float MAX_FIRE_DELAY = 3;
+    private const float TURRET_AMMO_BASE_SPEED = 3f;
 
     private Transform target; // the transform of the target of the shot
     private float nextShot; // the time until the next shot
@@ -39,7 +40,7 @@ public class Turret_0 : GenericEnemy {
             Vector3 launchFrom = transform.position + transform.forward * OFFSET_FROM_CENTER;
             GameObject clone = GameObject.Instantiate(ammunition, launchFrom, Quaternion.identity) as GameObject;
             GenericAmmo ammo = clone.GetComponent<GenericAmmo>();
-            ammo.shotVelocity = (target.position - transform.position) * ammo.baseSpeed * 0.5f * difficulty;
+            ammo.shotVelocity = (target.position - transform.position).normalized * TURRET_AMMO_BASE_SPEED * difficulty;
             ammo.timeToLive = ammo.timeToLive * difficulty;
             nextShot = Time.time + fireRate;
         }
