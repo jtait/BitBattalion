@@ -29,8 +29,10 @@ public class BossBin : GenericBoss
         nextLevel = "Story_Level_03";
     }
 
-    void FixedUpdate()
+    protected override void Update()
     {
+        base.Update();
+
         if (Time.time > nextInhale && bossActive)
         {
             if (!inhaling)
@@ -42,11 +44,6 @@ public class BossBin : GenericBoss
         }
     }
 
-    protected override void Update()
-    {
-        base.Update();
-    }
-
     protected override void DeathCheck()
     {
         base.DeathCheck(); // checks if health <= 0
@@ -55,6 +52,7 @@ public class BossBin : GenericBoss
     protected override void DeathSequence()
     {
         base.DeathSequence();
+        StopCoroutine(Inhale(0f));
         Vacuum(false);
     }
 
@@ -81,6 +79,7 @@ public class BossBin : GenericBoss
     /* called if the player loses the fight */
     public override void LoseSequence()
     {
+        StopCoroutine(Inhale(0f));
         Vacuum(false);
         playerTransform.GetComponent<PlayerControl>().PlayerDeath();
     }

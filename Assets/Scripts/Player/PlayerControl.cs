@@ -122,7 +122,7 @@ public class PlayerControl : MonoBehaviour
         /* movement override control */
         if (moveOverride)
         {
-            transform.position = Vector3.MoveTowards(transform.position, movementOverrideVector, 0.1f);
+            transform.position = Vector3.MoveTowards(transform.position, movementOverrideVector, 0.07f);
         }
 
         /* shield display */
