@@ -10,6 +10,7 @@ public class PlayerControl : MonoBehaviour
     private const float SHOT_OFFSET = 1.5f; // the offset from the center of the transform (where the shot originates from)
     private const float RAPID_FIRE_TIMER = 10f; // the length of time for rapid fire to last
     private const float INVINCIBLE_TIME = 1f; // the time the player is invincible for after respawning
+    private const float MAX_BANK_ANGLE = 20; // maximum bank of ship in degrees
 
     /* movement */
     public float strafeForce = 10f;
@@ -118,6 +119,8 @@ public class PlayerControl : MonoBehaviour
         rigidbody.AddForce(new Vector3(strafeDirection * strafeForce, 0, 0));
         /* forward and backward movement */
         rigidbody.velocity = new Vector3(0, velocityAddition * velocityDirection, 0);
+
+        BankShip();
         
         /* movement override control */
         if (moveOverride)
@@ -134,6 +137,13 @@ public class PlayerControl : MonoBehaviour
         {
             shieldParticles.Stop();
         }
+    }
+
+    private void BankShip()
+    {
+        
+        float currentAngle = MAX_BANK_ANGLE * Input.GetAxis("Horizontal");
+        gameObject.transform.rotation = Quaternion.Euler(0, -currentAngle, 0);
     }
 
     /* handle collisions */
