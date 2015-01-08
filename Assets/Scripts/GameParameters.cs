@@ -75,13 +75,24 @@ public class GameParameters : MonoBehaviour {
     /* add enemy to list of enemies on screen */
     public void AddEnemyToList(GameObject enemy)
     {
-        enemyList.Add(enemy);
+        try{
+            enemyList.Add(enemy);
+        }
+        catch (System.NullReferenceException)
+        {
+        }
     }
 
     /* remove enemy from list of enemies on screen */
     public void RemoveEnemyFromList(GameObject enemy)
     {
-        enemyList.Remove(enemy);
+        try
+        {
+            enemyList.Remove(enemy);
+        }
+        catch (System.NullReferenceException)
+        {
+        }
     }
 
     /* destroy all the enemies in the list */

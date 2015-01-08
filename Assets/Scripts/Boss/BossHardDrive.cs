@@ -24,8 +24,9 @@ public class BossHardDrive : GenericBoss {
     private GameObject disk;
     private float pauseTime;
     private bool canShoot = true;
+    private const float AMMO_BASE_SPEED = 6.0f;
 
-    private bool previousFrame = false; // the active state of the tube in the previous frame
+    private bool previousFrame = false; // the active state of the drive in the previous frame
 
     protected override void Awake()
     {
@@ -117,7 +118,7 @@ public class BossHardDrive : GenericBoss {
         // generate a new object to fire, instantiate with velocity, power, etc.
         Vector3 launchFrom = transform.position + transform.forward * CENTER_OFFSET + Vector3.forward * DOWN_OFFSET + Vector3.left * LEFT_OFFSET;
         GameObject clone = GameObject.Instantiate(disk, launchFrom, Quaternion.identity) as GameObject;
-        clone.GetComponent<GenericAmmo>().shotVelocity = (targetPosition - transform.position) * clone.GetComponent<GenericAmmo>().baseSpeed * 0.5f * difficulty;
+        clone.GetComponent<GenericAmmo>().shotVelocity = (targetPosition - transform.position).normalized * AMMO_BASE_SPEED * difficulty;
     }
 
     protected override void DeathSequence()
