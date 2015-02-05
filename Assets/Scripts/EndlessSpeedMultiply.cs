@@ -7,6 +7,6 @@ public class EndlessSpeedMultiply : MonoBehaviour {
 
     void OnLevelWasLoaded()
     {
-        GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>().speedMultiplier = ENDLESS_MODE_SPEED_MULTIPLIER;
+        GameParameters.instance.speedMultiplier = ENDLESS_MODE_SPEED_MULTIPLIER;
     }
 }

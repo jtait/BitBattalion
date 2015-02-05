@@ -23,7 +23,7 @@ public abstract class GenericBoss : MonoBehaviour {
 
     protected virtual void Awake()
     {
-        gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
+        gParams = GameParameters.instance;
         bossRenderer = GetComponentsInChildren<MeshRenderer>();
         healthBar = GameObject.Find("BossHealthBar");
         difficulty = gParams.difficulty;

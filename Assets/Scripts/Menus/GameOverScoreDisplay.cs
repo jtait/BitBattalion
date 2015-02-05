@@ -12,7 +12,7 @@ public class GameOverScoreDisplay : MonoBehaviour {
 
         try
         {
-            gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
+            gParams = GameParameters.instance;
             scoreText.text = "Your final score was " + gParams.GetPlayerScore().ToString();
         }
         catch (System.NullReferenceException)

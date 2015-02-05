@@ -4,14 +4,9 @@ using System.Collections;
 public class MusicPlayer : MonoBehaviour {
 
     public string songTitle;
-    MusicManager manager;
-
-    void Awake()
-    {
-        manager = GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>();
-    }
+    public bool fade;
 
 	void Start () {
-        manager.NewSong(songTitle);
+        MusicManager.instance.NewSong(songTitle, fade);
 	}
 }

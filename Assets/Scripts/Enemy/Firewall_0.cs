@@ -12,7 +12,9 @@ public class Firewall_0 : GenericEnemy {
     private float wallInactiveTime; // the duration in seconds the the wall is inactive
     public bool cycle = true; // is the wall currently cycling?
     
-	protected override void Start () {
+	protected override void Start ()
+    {
+        base.Start();
 
         wallInactiveTime = BASE_WALL_INACTIVE_TIME / difficulty;
         wallActiveTime = BASE_WALL_ACTIVE_TIME * difficulty;

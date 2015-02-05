@@ -12,10 +12,17 @@ public class Turret_0 : GenericEnemy {
 
     private Transform target; // the transform of the target of the shot
     private float nextShot; // the time until the next shot
-    
-	protected override void Start () {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+
+    void Awake()
+    {
         ammunition = Resources.Load<GameObject>("Ammo/EnemyLaser");
+    }
+
+	protected override void Start ()
+    {
+        base.Start();
+
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         nextShot = StartOffset();
         fireRate = StartFireRate();
 	}

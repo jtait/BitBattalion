@@ -23,18 +23,45 @@ public class GameParameters : MonoBehaviour {
     /* pausing */
     public bool paused = false;
 
-    void Awake()
+    private static GameParameters _instance;
+
+    public static GameParameters instance
     {
-        DontDestroyOnLoad(gameObject);
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<GameParameters>();
+                DontDestroyOnLoad(_instance.gameObject);
+            }
 
-        lastCheckpoint = Vector3.zero;
-
-        difficulty = 1;
-        playerScore = 0;
-        playerLives = 5;
+            return _instance;
+        }
     }
 
-    void OnLevelWasLoaded()
+    void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(this);
+
+            lastCheckpoint = Vector3.zero;
+
+            difficulty = 1;
+            playerScore = 0;
+            playerLives = 5;
+            Reset();
+
+        }
+        else
+        {
+            if (this != _instance)
+                Destroy(this.gameObject);
+        }
+    }
+
+    void Reset()
     {
         enemyList = new ArrayList(); // reset the enemy list
 
@@ -47,7 +74,14 @@ public class GameParameters : MonoBehaviour {
         }
         UpdateScore(0);
         if (livesString != null)
+        {
             SetLivesText();
+        }
+    }
+
+    void OnLevelWasLoaded()
+    {
+        Reset();
     }
 
     /* update the player's score - return true if score has changed */
@@ -75,24 +109,13 @@ public class GameParameters : MonoBehaviour {
     /* add enemy to list of enemies on screen */
     public void AddEnemyToList(GameObject enemy)
     {
-        try{
-            enemyList.Add(enemy);
-        }
-        catch (System.NullReferenceException)
-        {
-        }
+        enemyList.Add(enemy);
     }
 
     /* remove enemy from list of enemies on screen */
     public void RemoveEnemyFromList(GameObject enemy)
     {
-        try
-        {
-            enemyList.Remove(enemy);
-        }
-        catch (System.NullReferenceException)
-        {
-        }
+        enemyList.Remove(enemy);
     }
 
     /* destroy all the enemies in the list */

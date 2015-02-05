@@ -17,6 +17,8 @@ public class Turret_1 : GenericEnemy
     
     protected override void Start()
     {
+        base.Start();
+
         ammunition = Resources.Load<GameObject>("Ammo/EnemyLaser");
         nextShot = StartOffset();
         fireRate = StartFireRate();

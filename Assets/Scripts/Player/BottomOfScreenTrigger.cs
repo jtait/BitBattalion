@@ -7,7 +7,7 @@ public class BottomOfScreenTrigger : MonoBehaviour {
 
     void Awake()
     {
-        gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
+        gParams = GameParameters.instance;
     }
 
     void OnTriggerEnter(Collider col)

@@ -7,6 +7,8 @@ public class BitShip_0 : GenericEnemy {
 
     protected override void Start()
     {
+        base.Start();
+
         /* set all basic parameters */
         health = 1;
         pointValue = 200 * difficulty;

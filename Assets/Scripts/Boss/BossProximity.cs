@@ -17,7 +17,7 @@ public class BossProximity : MonoBehaviour {
 	void Start () {
         try
         {
-            manager = GameObject.FindGameObjectWithTag("MusicManager").GetComponent<MusicManager>();
+            manager = MusicManager.instance;
             musicPlayer = GameObject.FindObjectOfType<MusicPlayer>();
             regularSong = musicPlayer.songTitle;
             bossSong = regularSong + "_Boss";
@@ -38,7 +38,7 @@ public class BossProximity : MonoBehaviour {
             playerTransform.GetComponent<ConstantScroll>().isActive = false;
             if (!changedSong)
             {
-                if(manager != null) manager.NewSong(bossSong);
+                if(manager != null) manager.NewSong(bossSong, true);
                 changedSong = true;
             }
         }

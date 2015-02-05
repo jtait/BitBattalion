@@ -26,15 +26,15 @@ public abstract class GenericEnemy : MonoBehaviour {
 
     void Awake()
     {
-        gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
-        difficulty = gParams.difficulty; // set the difficulty parameter of the enemy to the difficulty of the game when the enemy is created
+        gParams = GameParameters.instance;
         damageSound = Resources.Load<AudioClip>("SoundFX/hit/hit");
         explosionParticles = Resources.Load<GameObject>("Particles/EnemyExplosion");
+        difficulty = gParams.difficulty; // set the difficulty parameter of the enemy to the difficulty of the game when the enemy is created
     }
 
     protected virtual void Start()
     {
-        /* initialization is done in child classes */
+        
     }
 
     void Update()

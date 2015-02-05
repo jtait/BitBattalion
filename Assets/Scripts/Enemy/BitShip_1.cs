@@ -7,6 +7,8 @@ public class BitShip_1 : GenericEnemy {
 
     protected override void Start()
     {
+        base.Start();
+
         targetTransform = GameObject.FindGameObjectWithTag("Boss").transform;
         
         /* set all basic parameters */

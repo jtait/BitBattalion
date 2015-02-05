@@ -67,7 +67,7 @@ public class PlayerControl : MonoBehaviour
     void Awake()
     {
         /* game parameters */
-        gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
+        gParams = GameParameters.instance;
         pauseDisplay = GameObject.Find("PauseDisplay");
         pauseDisplay.renderer.enabled = false;
         gParams.lastCheckpoint = Vector3.zero;

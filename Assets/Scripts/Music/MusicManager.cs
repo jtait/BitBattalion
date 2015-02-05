@@ -23,46 +23,80 @@ public class MusicManager : MonoBehaviour {
     private bool fadeIn = false;
     private string songName;
 
-	void Awake ()
+    private static MusicManager _instance;
+
+    public static MusicManager instance
     {
-        DontDestroyOnLoad(gameObject);
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<MusicManager>();
+                DontDestroyOnLoad(_instance.gameObject);
+            }
 
-        aSource = GetComponent<AudioSource>();
+            return _instance;
+        }
+    }
 
-        /* load songs */
-        storylevel1 = Resources.Load<AudioClip>("Music/While_Atlantis_Sleeps");
-        storylevel1_boss = Resources.Load<AudioClip>("Music/The_Final_Threat");
-        storylevel2 = Resources.Load<AudioClip>("Music/OHC_Mechanized_Whalesong");
-        storylevel2_boss = Resources.Load<AudioClip>("Music/Chaos_Jungle");
-        storylevel3 = Resources.Load<AudioClip>("Music/Fading_World_v1_1");
-        storylevel3_boss = Resources.Load<AudioClip>("Music/OHC_Changeling_Rumble");
-        menu = Resources.Load<AudioClip>("Music/Patashu_in_the_Stars");
-        endlessMode1 = Resources.Load<AudioClip>("Music/Starship_Orion");
-        endlessMode2 = Resources.Load<AudioClip>("Music/Dark_Nebula");
+    void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(this);
 
-        /* add all songs to dictionary */
-        songList.Add("Story_Level_01", storylevel1);
-        songList.Add("Story_Level_02", storylevel2);
-        songList.Add("Story_Level_03", storylevel3);
-        songList.Add("Story_Level_01_Boss", storylevel1_boss);
-        songList.Add("Story_Level_02_Boss", storylevel2_boss);
-        songList.Add("Story_Level_03_Boss", storylevel3_boss);
-        songList.Add("menu", menu);
-        songList.Add("Endless_Mode_01", endlessMode1);
-        songList.Add("Endless_Mode_02", endlessMode2);
+            aSource = GetComponent<AudioSource>();
 
-        /* default song */
-        aSource.clip = menu;
-        aSource.Play();
-	}
+            /* load songs */
+            storylevel1 = Resources.Load<AudioClip>("Music/While_Atlantis_Sleeps");
+            storylevel1_boss = Resources.Load<AudioClip>("Music/The_Final_Threat");
+            storylevel2 = Resources.Load<AudioClip>("Music/OHC_Mechanized_Whalesong");
+            storylevel2_boss = Resources.Load<AudioClip>("Music/Chaos_Jungle");
+            storylevel3 = Resources.Load<AudioClip>("Music/Fading_World_v1_1");
+            storylevel3_boss = Resources.Load<AudioClip>("Music/OHC_Changeling_Rumble");
+            menu = Resources.Load<AudioClip>("Music/Patashu_in_the_Stars");
+            endlessMode1 = Resources.Load<AudioClip>("Music/Starship_Orion");
+            endlessMode2 = Resources.Load<AudioClip>("Music/Dark_Nebula");
+
+            /* add all songs to dictionary */
+            songList.Add("Story_Level_01", storylevel1);
+            songList.Add("Story_Level_02", storylevel2);
+            songList.Add("Story_Level_03", storylevel3);
+            songList.Add("Story_Level_01_Boss", storylevel1_boss);
+            songList.Add("Story_Level_02_Boss", storylevel2_boss);
+            songList.Add("Story_Level_03_Boss", storylevel3_boss);
+            songList.Add("menu", menu);
+            songList.Add("Endless_Mode_01", endlessMode1);
+            songList.Add("Endless_Mode_02", endlessMode2);
+
+        }
+        else
+        {
+            if (this != _instance)
+                Destroy(this.gameObject);
+        }
+    }
+
 
     /* switch the song */
-    public void NewSong(string song)
+    public void NewSong(string song, bool fade)
     {
         songName = song;
-        StopCoroutine(ChangeSong());
-        fadeIn = false;
-        StartCoroutine(ChangeSong());
+
+        if (fade)
+        {            
+            StopCoroutine(ChangeSong());
+            fadeIn = false;
+            StartCoroutine(ChangeSong());
+        }
+
+        else
+        {
+            aSource.clip = songList[songName];
+            aSource.Play();
+        }
+        
     }
 
     /* handle crossfading */
@@ -70,7 +104,7 @@ public class MusicManager : MonoBehaviour {
     {
         while(aSource.volume > 0 && !fadeIn)
         {
-            aSource.volume -= FADE_INCREMENT;// *Time.deltaTime;
+            aSource.volume -= FADE_INCREMENT;
             yield return new WaitForSeconds(FADE_RESOLUTION);
         }
 
@@ -80,7 +114,7 @@ public class MusicManager : MonoBehaviour {
 
         while(aSource.volume < 1 && fadeIn)
         {
-            aSource.volume += FADE_INCREMENT;// *Time.deltaTime;
+            aSource.volume += FADE_INCREMENT;
             yield return new WaitForSeconds(FADE_RESOLUTION);
         }
         
