@@ -7,9 +7,12 @@ using System.Diagnostics;
 
 public class HighScoreTable : MonoBehaviour {
 
-    private string FILE_PATH = Application.persistentDataPath + "/highScoreTable.dat";
+    private string FILE_PATH;
     private const int NUMBER_OF_ENTRIES = 10;
-    private Score[] scores = new Score[NUMBER_OF_ENTRIES];
+    private Score[] campaignScores = new Score[NUMBER_OF_ENTRIES];
+    private Score[] endlessScores = new Score[NUMBER_OF_ENTRIES];
+
+    public enum TableType { CAMPAIGN, ENDLESS };
 
     private static HighScoreTable _instance;
 
@@ -32,6 +35,8 @@ public class HighScoreTable : MonoBehaviour {
         if (_instance == null)
         {
             _instance = this;
+            FILE_PATH = Application.persistentDataPath + "/highScoreTable.dat";
+            Load();
             DontDestroyOnLoad(this);
         }
         else
@@ -41,66 +46,124 @@ public class HighScoreTable : MonoBehaviour {
         }
     }
 
-    public Score[] GetTable()
+    public Score[] GetTable(TableType type)
     {
-        return this.scores;
+        switch (type)
+        {
+            case TableType.CAMPAIGN:
+                return campaignScores;
+            case TableType.ENDLESS:
+                return endlessScores;
+            default:
+                return null;
+        }
     }
 
-    public bool CheckIfScoreShouldBeAdded(long scoreValue)
+    private bool ScoreShouldBeAdded(long scoreValue, TableType type)
     {
-        return scoreValue >= scores[NUMBER_OF_ENTRIES - 1].scoreValue;
+        return scoreValue >= GetTable(type)[NUMBER_OF_ENTRIES - 1].scoreValue;
     }
 
     /* add score to table, return true if added, false if not */
-    public bool AddScore(String name, long scoreValue)
+    public bool AddScore(String name, long scoreValue, TableType type)
     {
-        int i = 0;
-
-        // find the appropropriate spot to add the score
-        while (i < NUMBER_OF_ENTRIES)
+        if (ScoreShouldBeAdded(scoreValue, type))
         {
-            if (scores[i].scoreValue <= scoreValue)
-            {
-                ShuffleDown(i);
-            }
-            else
-            {
-                i++;
-            }
-        }
+            int i = 0;
+            Score[] tableToAdd = GetTable(type);
 
-        if (i < NUMBER_OF_ENTRIES)
-        {
-            scores[i] = new Score(name, scoreValue);
-            return true;
+            // find the appropropriate spot to add the score
+            while (i < NUMBER_OF_ENTRIES)
+            {
+                if (tableToAdd[i].scoreValue <= scoreValue)
+                {
+                    ShuffleDown(i, type);
+                    break;
+                }
+                else
+                {
+                    i++;
+                }
+            }
+
+            if (i < NUMBER_OF_ENTRIES)
+            {
+                tableToAdd[i] = new Score(name, scoreValue);
+                return true;
+            }
         }
 
         return false;
     }
 
     /* shuffle lower scores down to make room for a new score */
-    private void ShuffleDown(int index){
+    private void ShuffleDown(int index, TableType type){
+
+        Score[] tableToShuffle = GetTable(type);
+
         for (int i = NUMBER_OF_ENTRIES - 1; i > index; i--)
         {
-            scores[i] = scores[i - 1];
+            tableToShuffle[i] = tableToShuffle[i - 1];
         }
     }
 
-    [Conditional("UNITY_STANDALONE")]
+    
     public void Save()
     {
+#if UNITY_STANDALONE
+        SaveLocal();
+#endif
+
+#if UNITY_EDITOR
+        SaveLocal();
+#endif
+    }
+
+    private void SaveLocal()
+    {
         FileStream file = File.Open(FILE_PATH, FileMode.Create);
-        new BinaryFormatter().Serialize(file, new HighScoreTableInstance(scores));
+        new BinaryFormatter().Serialize(file, new HighScoreTableInstance(campaignScores, endlessScores));
         file.Close();
     }
 
-    [Conditional("UNITY_STANDALONE")]
     public void Load()
+    {
+#if UNITY_STANDALONE
+        LoadLocal();
+#endif
+
+#if UNITY_EDITOR
+        LoadLocal();
+#endif
+
+#if UNITY_WEBPLAYER
+        CreateEmptyTables();
+#endif
+    }
+
+    private void LoadLocal()
     {
         if (File.Exists(FILE_PATH))
         {
+            BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(FILE_PATH, FileMode.Open);
-            scores = ((HighScoreTableInstance) new BinaryFormatter().Deserialize(file)).score;
+            HighScoreTableInstance table = (HighScoreTableInstance)bf.Deserialize(file);
+            campaignScores = table.campaignScores;
+            endlessScores = table.endlessScores;
+            file.Close();
+        }
+        else
+        {
+            CreateEmptyTables();
+        }
+    }
+
+    private void CreateEmptyTables()
+    {
+        for (int i = 0; i < NUMBER_OF_ENTRIES; i++)
+        {
+            campaignScores[i] = new Score("name", 0);
+            endlessScores[i] = new Score("name", 0);
         }
     }
 
@@ -110,17 +173,19 @@ public class HighScoreTable : MonoBehaviour {
 class HighScoreTableInstance
 {
 
-    public Score[] score;
+    public Score[] campaignScores;
+    public Score[] endlessScores;
 
-    public HighScoreTableInstance(Score[] scores)
+    public HighScoreTableInstance(Score[] campaign, Score[] endless)
     {
-        score = scores;
+        campaignScores = campaign;
+        endlessScores = endless;
     }
 
 }
 
 [Serializable]
-class Score
+public class Score
 {
     public string playerName;
     public long scoreValue;

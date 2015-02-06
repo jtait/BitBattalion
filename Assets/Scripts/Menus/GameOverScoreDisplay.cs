@@ -9,17 +9,22 @@ public class GameOverScoreDisplay : MonoBehaviour {
 	void Awake () {
 
         scoreText = GameObject.Find("ScoreDisplayText").GetComponent<GUIText>();
-
-        try
-        {
-            gParams = GameParameters.instance;
-            scoreText.text = "Your final score was " + gParams.GetPlayerScore().ToString();
-        }
-        catch (System.NullReferenceException)
-        {
-            scoreText.text = "error";
-        }
-        
+        gParams = GameParameters.instance;
+               
 	}
+
+    void Start()
+    {
+        scoreText.text = "Your final score was " + gParams.GetPlayerScore().ToString();
+        if (gParams.endlessMode)
+        {
+            HighScoreTable.instance.AddScore("player", gParams.GetPlayerScore(), HighScoreTable.TableType.ENDLESS);
+        }
+        else
+        {
+            HighScoreTable.instance.AddScore("player", gParams.GetPlayerScore(), HighScoreTable.TableType.CAMPAIGN);
+        }
+        HighScoreTable.instance.Save();
+    }
 
 }
