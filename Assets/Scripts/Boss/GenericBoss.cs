@@ -76,7 +76,7 @@ public abstract class GenericBoss : MonoBehaviour {
     protected virtual void DeathSequence()
     {
         SetRenderers(false);
-        collider.enabled = false;
+        GetComponent<Collider>().enabled = false;
         gParams.UpdateScore(points);
         DestroyAllEnemiesAndSpawners();
         StartCoroutine(GameParameters.WaitForLevelLoad(WAIT_TIME_FOR_LEVEL_LOAD, nextLevel));       
@@ -123,7 +123,7 @@ public abstract class GenericBoss : MonoBehaviour {
     }
 
     protected void DisplayHealthBar(bool set){
-        healthBar.renderer.enabled = set;
+        healthBar.GetComponent<Renderer>().enabled = set;
     }
 
 

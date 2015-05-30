@@ -69,7 +69,7 @@ public class PlayerControl : MonoBehaviour
         /* game parameters */
         gParams = GameParameters.instance;
         pauseDisplay = GameObject.Find("PauseDisplay");
-        pauseDisplay.renderer.enabled = false;
+        pauseDisplay.GetComponent<Renderer>().enabled = false;
         gParams.lastCheckpoint = Vector3.zero;
 
         /* references to player objects */
@@ -116,9 +116,9 @@ public class PlayerControl : MonoBehaviour
         }
 
         /* strafing */
-        rigidbody.AddForce(new Vector3(strafeDirection * strafeForce, 0, 0));
+        GetComponent<Rigidbody>().AddForce(new Vector3(strafeDirection * strafeForce, 0, 0));
         /* forward and backward movement */
-        rigidbody.velocity = new Vector3(0, velocityAddition * velocityDirection, 0);
+        GetComponent<Rigidbody>().velocity = new Vector3(0, velocityAddition * velocityDirection, 0);
 
         BankShip();
         
@@ -200,7 +200,7 @@ public class PlayerControl : MonoBehaviour
             // generate a new object to fire, instantiate with velocity, power, etc.
             Vector3 launchFrom = new Vector3(transform.position.x, transform.position.y + SHOT_OFFSET, transform.position.z);
             GameObject clone = GameObject.Instantiate(ammo, launchFrom, Quaternion.identity) as GameObject;
-            clone.GetComponent<GenericAmmo>().shotVelocity += new Vector3(0, rigidbody.velocity.y, 0);
+            clone.GetComponent<GenericAmmo>().shotVelocity += new Vector3(0, GetComponent<Rigidbody>().velocity.y, 0);
             nextShot = Time.time + fireRate;
             AudioSource.PlayClipAtPoint(laserSound, transform.position, 0.4f);
         }
@@ -224,7 +224,7 @@ public class PlayerControl : MonoBehaviour
                     launchFrom = new Vector3(transform.position.x, transform.position.y + SHOT_OFFSET, transform.position.z);
                 }
                 GameObject clone = GameObject.Instantiate(type, launchFrom, Quaternion.identity) as GameObject;
-                clone.GetComponent<GenericAmmo>().shotVelocity += new Vector3(0, rigidbody.velocity.y, 0);
+                clone.GetComponent<GenericAmmo>().shotVelocity += new Vector3(0, GetComponent<Rigidbody>().velocity.y, 0);
                 nextSpecial = Time.time + specialFireRate;
                 specialWeaponAmmoCount--;
                 if (specialWeaponAmmoCount <= 0)
@@ -414,24 +414,24 @@ public class PlayerControl : MonoBehaviour
                 if (!gParams.paused)
                 {
                     gParams.PauseGame();
-                    pauseDisplay.renderer.enabled = true;
+                    pauseDisplay.GetComponent<Renderer>().enabled = true;
                 }
                 else
                 {
                     gParams.ResumeGame();
-                    pauseDisplay.renderer.enabled = false;
+                    pauseDisplay.GetComponent<Renderer>().enabled = false;
                 }
             }
             if (Input.GetKeyDown(KeyCode.Y) && gParams.paused)
             {
                 gParams.ResumeGame();
-                pauseDisplay.renderer.enabled = false;
+                pauseDisplay.GetComponent<Renderer>().enabled = false;
                 Application.LoadLevel("Menu_Game_Over");
             }
             if (Input.GetKeyDown(KeyCode.N) && gParams.paused)
             {
                 gParams.ResumeGame();
-                pauseDisplay.renderer.enabled = false;
+                pauseDisplay.GetComponent<Renderer>().enabled = false;
             }
             if (Input.GetKeyDown(KeyCode.E) && gParams.paused)
             {

@@ -16,7 +16,7 @@ public abstract class GenericAmmo : MonoBehaviour {
 	
 	protected virtual void FixedUpdate ()
     {
-        rigidbody.velocity = shotVelocity;
+        GetComponent<Rigidbody>().velocity = shotVelocity;
 
         if (Time.time > destructionTime)
         {

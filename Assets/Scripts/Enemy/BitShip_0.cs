@@ -25,11 +25,11 @@ public class BitShip_0 : GenericEnemy {
     /* override base class Move() function */
     void Move()
     {
-        rigidbody.velocity = Vector3.down * baseForwardVelocity; // move forward at constant velocity
+        GetComponent<Rigidbody>().velocity = Vector3.down * baseForwardVelocity; // move forward at constant velocity
 
         if (triggered_1)
         {
-            rigidbody.AddForce(Vector3.right * strafeForce); // strafe when triggered
+            GetComponent<Rigidbody>().AddForce(Vector3.right * strafeForce); // strafe when triggered
         }
 
     }

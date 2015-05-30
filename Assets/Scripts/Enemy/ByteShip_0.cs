@@ -33,7 +33,7 @@ public class ByteShip_0 : GenericEnemy
     /* override base class Move() function */
     void Move()
     {
-        rigidbody.velocity = Vector3.down * baseForwardVelocity;
+        GetComponent<Rigidbody>().velocity = Vector3.down * baseForwardVelocity;
     }
 
     void Shoot()
@@ -45,7 +45,7 @@ public class ByteShip_0 : GenericEnemy
             // generate a new object to fire, instantiate with velocity, power, etc.
             Vector3 launchFrom = new Vector3(transform.position.x, transform.position.y - SHOT_OFFSET, transform.position.z);
             GameObject clone = GameObject.Instantiate(ammunition, launchFrom, Quaternion.identity) as GameObject;
-            float shotVelocity = rigidbody.velocity.y - BASE_SHOT_VELOCITY;
+            float shotVelocity = GetComponent<Rigidbody>().velocity.y - BASE_SHOT_VELOCITY;
             clone.GetComponent<GenericAmmo>().shotVelocity += new Vector3(0, shotVelocity, 0);
             nextShot = Time.time + fireRate;
         }

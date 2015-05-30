@@ -31,13 +31,13 @@ public class PulsingText : MonoBehaviour {
 
     void Pulse()
     {
-        if(guiText.material.color.a > 0 && !fadeIn)
+        if(GetComponent<GUIText>().material.color.a > 0 && !fadeIn)
         {
             FadeOut();
         }
         else
             fadeIn = true;
-        if (guiText.material.color.a < 1 && fadeIn)
+        if (GetComponent<GUIText>().material.color.a < 1 && fadeIn)
         {
             FadeIn();
         }

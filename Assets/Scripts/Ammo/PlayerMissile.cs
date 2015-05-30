@@ -24,11 +24,11 @@ public class PlayerMissile : GenericAmmo {
 
     protected override void FixedUpdate()
     {
-        rigidbody.velocity = shotVelocity;
+        GetComponent<Rigidbody>().velocity = shotVelocity;
 
         if (Time.time > destructionTime)
         {
-            gameObject.collider.enabled = false;
+            gameObject.GetComponent<Collider>().enabled = false;
             /* generate new objects to fire, instantiate with velocity, power, etc. */
             for (int i = (-NUMBER_OF_PROJECTILES / 2); i < (NUMBER_OF_PROJECTILES / 2) + 1; i++)
             {

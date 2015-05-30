@@ -4,7 +4,7 @@ using System.Collections;
 public class ParticleSystemDestroyAfterTime : MonoBehaviour {
 
 	void Start () {
-        StartCoroutine(DestroyAfter(particleSystem.duration + particleSystem.startLifetime));
+        StartCoroutine(DestroyAfter(GetComponent<ParticleSystem>().duration + GetComponent<ParticleSystem>().startLifetime));
 	}
 	
     IEnumerator DestroyAfter(float time){

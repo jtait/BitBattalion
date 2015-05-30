@@ -18,7 +18,7 @@ public class PlayerBomb : GenericAmmo {
 	protected override void Start () {
         base.Start();
         shotVelocity = Vector3.up * baseSpeed;
-        rigidbody.AddForce(shotVelocity);
+        GetComponent<Rigidbody>().AddForce(shotVelocity);
 	}
 
     protected override void FixedUpdate()
@@ -33,7 +33,7 @@ public class PlayerBomb : GenericAmmo {
     void OnCollisionEnter()
     {
         /* stop the bomb if it hits a collider */
-        rigidbody.velocity = Vector3.zero;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
     /* explode and destroy all enemies on screen */

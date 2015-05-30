@@ -10,7 +10,7 @@ public class ScaleHUD : MonoBehaviour {
     void Awake()
     {
         screenWidth = Screen.width;
-        guiText.fontSize = screenWidth / SCALE_FACTOR;
+        GetComponent<GUIText>().fontSize = screenWidth / SCALE_FACTOR;
     }
 
 }

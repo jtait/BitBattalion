@@ -23,7 +23,7 @@ public class BitShip_2 : GenericEnemy
     /* override base class Move() function */
     void Move()
     {
-        rigidbody.velocity = Vector3.down * baseForwardVelocity;
+        GetComponent<Rigidbody>().velocity = Vector3.down * baseForwardVelocity;
     }
 
     protected override void Death()

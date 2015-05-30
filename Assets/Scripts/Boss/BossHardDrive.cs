@@ -56,7 +56,7 @@ public class BossHardDrive : GenericBoss {
             DisplayHealthBar(true);
             if (!previousFrame)
             {
-                rigidbody.velocity = new Vector3(moveSpeed, 0, 0);
+                GetComponent<Rigidbody>().velocity = new Vector3(moveSpeed, 0, 0);
                 nextShot = Time.time + MAX_TIME_UNTIL_SHOT;
             }
         }
@@ -64,7 +64,7 @@ public class BossHardDrive : GenericBoss {
         {
             bossActive = false;
             DisplayHealthBar(false);
-            rigidbody.velocity = Vector3.zero;
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
 
         UpdateHealthBar();
@@ -92,23 +92,23 @@ public class BossHardDrive : GenericBoss {
     {
         if (transform.position.x > (rightLimit))
         {
-            rigidbody.velocity = new Vector3(-moveSpeed, 0, 0);
+            GetComponent<Rigidbody>().velocity = new Vector3(-moveSpeed, 0, 0);
         }
         else if (transform.position.x < leftLimit)
         {
-            rigidbody.velocity = new Vector3(moveSpeed, 0, 0);
+            GetComponent<Rigidbody>().velocity = new Vector3(moveSpeed, 0, 0);
         }
     }
 
     /* pause and shoot */
     IEnumerator PauseAndShoot(float duration, Vector3 playerPosition)
     {
-        Vector3 savedVelocity = rigidbody.velocity;
-        rigidbody.velocity = Vector3.zero;
+        Vector3 savedVelocity = GetComponent<Rigidbody>().velocity;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
         yield return new WaitForSeconds(duration);
         Shoot(playerPosition);
         yield return new WaitForSeconds(duration/2);
-        rigidbody.velocity = savedVelocity;
+        GetComponent<Rigidbody>().velocity = savedVelocity;
         nextShot = Time.time + Random.Range(MIN_TIME_UNTIL_SHOT, MAX_TIME_UNTIL_SHOT);
         canShoot = true;
     }
