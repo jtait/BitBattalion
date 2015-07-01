@@ -20,7 +20,6 @@ public class MusicManager : MonoBehaviour {
     private AudioClip menu;
 
     private AudioSource aSource;
-    private bool fadeIn = false;
     private string songName;
 
     private static MusicManager _instance;
@@ -82,12 +81,11 @@ public class MusicManager : MonoBehaviour {
     /* switch the song */
     public void NewSong(string song, bool fade)
     {
-        songName = song;
+        songName = song; // set global reference to song
 
         if (fade)
         {            
             StopCoroutine(ChangeSong());
-            fadeIn = false;
             StartCoroutine(ChangeSong());
         }
 
@@ -102,7 +100,7 @@ public class MusicManager : MonoBehaviour {
     /* handle crossfading */
     IEnumerator ChangeSong()
     {
-        while(aSource.volume > 0 && !fadeIn)
+        while(aSource.volume > 0)
         {
             aSource.volume -= FADE_INCREMENT;
             yield return new WaitForSeconds(FADE_RESOLUTION);
@@ -110,15 +108,13 @@ public class MusicManager : MonoBehaviour {
 
         aSource.clip = songList[songName];
         aSource.Play();
-        fadeIn = true;
 
-        while(aSource.volume < 1 && fadeIn)
+        while(aSource.volume < 1)
         {
             aSource.volume += FADE_INCREMENT;
             yield return new WaitForSeconds(FADE_RESOLUTION);
         }
-        
-        fadeIn = false;
+
     }
 
 }
