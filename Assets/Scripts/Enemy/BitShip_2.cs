@@ -26,8 +26,4 @@ public class BitShip_2 : GenericEnemy
         GetComponent<Rigidbody>().velocity = Vector3.down * baseForwardVelocity;
     }
 
-    protected override void Death()
-    {
-        base.Death();
-    }
 }

@@ -52,16 +52,11 @@ public class Turret_1 : GenericEnemy
     /* overriden in case the turrets are spawned in endless mode */
     protected override void Death()
     {
-        if (health <= 0)
+        if (gParams.endlessMode)
         {
-            if (gParams.endlessMode)
-            {
-                gParams.endlessModeTurrets--;
-            }
-            gParams.UpdateScore(pointValue);
-            GameObject.Instantiate(explosionParticles, transform.position, Quaternion.identity); // play explosion particles
-            Destroy(gameObject);
+            gParams.endlessModeTurrets--;
         }
+        base.Death();
     }
 
     /* used to set the time until the first shot */

@@ -34,11 +34,6 @@ public class BitShip_0 : GenericEnemy {
 
     }
 
-    protected override void Death()
-    {
-        base.Death();
-    }
-
     /* check for collisions with projectiles */
     protected override void OnCollisionEnter(Collision col)
     {

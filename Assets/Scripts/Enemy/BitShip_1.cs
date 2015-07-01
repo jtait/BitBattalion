@@ -30,8 +30,4 @@ public class BitShip_1 : GenericEnemy {
         transform.position = Vector3.MoveTowards(transform.position, targetTransform.position, step);
     }
 
-    protected override void Death()
-    {
-        base.Death();
-    }
 }

@@ -39,18 +39,15 @@ public abstract class GenericEnemy : MonoBehaviour {
 
     void Update()
     {
-        Death(); // check for death condition every frame
+        //Death(); // check for death condition every frame
     }
 
     /* check for death condition met */
     protected virtual void Death()
     {
-        if (health <= 0)
-        {
-            gParams.UpdateScore(pointValue);
-            GameObject.Instantiate(explosionParticles, transform.position, Quaternion.identity); // play explosion particles
-            Destroy(gameObject);
-        }
+        gParams.UpdateScore(pointValue);
+        GameObject.Instantiate(explosionParticles, transform.position, Quaternion.identity); // play explosion particles
+        Destroy(gameObject);
     }
 
     /* check for collisions with projectiles */
@@ -72,6 +69,12 @@ public abstract class GenericEnemy : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+
+        if (health <= 0)
+        {
+            Death();
+        }
+
     }
 
     /* set trigger values as they are encountered */

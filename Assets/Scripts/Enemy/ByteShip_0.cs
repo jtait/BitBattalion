@@ -51,9 +51,4 @@ public class ByteShip_0 : GenericEnemy
         }
     }
 
-    protected override void Death()
-    {
-        base.Death();
-    }
-
 }
