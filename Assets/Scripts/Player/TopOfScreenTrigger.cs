@@ -5,9 +5,9 @@ public class TopOfScreenTrigger : MonoBehaviour {
 
     GameParameters gParams;
 
-    void Awake()
+    void Start()
     {
-        gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
+        gParams = GameParameters.instance;
     }
 
     void OnTriggerEnter(Collider col)

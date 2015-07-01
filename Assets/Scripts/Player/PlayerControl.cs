@@ -66,12 +66,6 @@ public class PlayerControl : MonoBehaviour
     /* initialize parameters here */
     void Awake()
     {
-        /* game parameters */
-        gParams = GameParameters.instance;
-        pauseDisplay = GameObject.Find("PauseDisplay");
-        pauseDisplay.GetComponent<Renderer>().enabled = false;
-        gParams.lastCheckpoint = Vector3.zero;
-
         /* references to player objects */
         playerRenderer = GameObject.Find("PlayerShip_0").GetComponentsInChildren<MeshRenderer>();
         playerCollider = GameObject.Find("PlayerCollider").GetComponent<MeshCollider>();
@@ -104,6 +98,12 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
+        /* set game parameters */
+        gParams = GameParameters.instance;
+        pauseDisplay = GameObject.Find("PauseDisplay");
+        pauseDisplay.GetComponent<Renderer>().enabled = false;
+        gParams.lastCheckpoint = Vector3.zero;
+
         StartCoroutine(PauseLoop()); // start the loop for pause function
     }
     

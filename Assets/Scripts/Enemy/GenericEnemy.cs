@@ -18,6 +18,7 @@ public abstract class GenericEnemy : MonoBehaviour {
     protected bool triggered_1 = false;
     protected bool triggered_2 = false;
     protected bool triggered_3 = false;
+    protected bool on_screen = false;
 
     protected GameObject explosionParticles;
 
@@ -26,20 +27,14 @@ public abstract class GenericEnemy : MonoBehaviour {
 
     protected void Awake()
     {
-        gParams = GameParameters.instance;
         damageSound = Resources.Load<AudioClip>("SoundFX/hit/hit");
         explosionParticles = Resources.Load<GameObject>("Particles/EnemyExplosion");
-        difficulty = gParams.difficulty; // set the difficulty parameter of the enemy to the difficulty of the game when the enemy is created
     }
 
     protected virtual void Start()
     {
-        
-    }
-
-    void Update()
-    {
-        //Death(); // check for death condition every frame
+        gParams = GameParameters.instance;
+        difficulty = gParams.difficulty; // set the difficulty parameter of the enemy to the difficulty of the game when the enemy is created
     }
 
     /* check for death condition met */
@@ -94,5 +89,20 @@ public abstract class GenericEnemy : MonoBehaviour {
         {
             triggered_3 = true;
         }
+
+        if (col.name == "TopOfCameraView")
+        {
+            on_screen = true;
+        }
+
+        if (col.name == "BottomOfCameraView")
+        {
+            on_screen = false;
+        }
+    }
+
+    public bool OnScreen()
+    {
+        return on_screen;
     }
 }

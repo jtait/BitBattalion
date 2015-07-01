@@ -42,7 +42,7 @@ public class Turret_0 : GenericEnemy {
     /* basic shoot function - spawns new projectile */
     void Shoot()
     {
-        if (Time.time > nextShot)
+        if (Time.time > nextShot && OnScreen())
         {
             // generate a new object to fire, instantiate with velocity, power, etc.
             Vector3 launchFrom = transform.position + transform.forward * OFFSET_FROM_CENTER;
