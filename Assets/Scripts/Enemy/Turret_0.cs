@@ -15,6 +15,7 @@ public class Turret_0 : GenericEnemy {
 
     void Awake()
     {
+        base.Awake();
         ammunition = Resources.Load<GameObject>("Ammo/EnemyLaser");
     }
 

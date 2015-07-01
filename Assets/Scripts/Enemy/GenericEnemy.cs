@@ -24,7 +24,7 @@ public abstract class GenericEnemy : MonoBehaviour {
     /* sounds */
     AudioClip damageSound;
 
-    void Awake()
+    protected void Awake()
     {
         gParams = GameParameters.instance;
         damageSound = Resources.Load<AudioClip>("SoundFX/hit/hit");
