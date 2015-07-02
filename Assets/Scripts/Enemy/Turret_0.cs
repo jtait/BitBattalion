@@ -13,7 +13,7 @@ public class Turret_0 : GenericEnemy {
     private Transform target; // the transform of the target of the shot
     private float nextShot; // the time until the next shot
 
-    void Awake()
+    protected override void Awake()
     {
         base.Awake();
         ammunition = Resources.Load<GameObject>("Ammo/EnemyLaser");

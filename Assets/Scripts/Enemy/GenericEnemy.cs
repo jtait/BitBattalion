@@ -25,7 +25,7 @@ public abstract class GenericEnemy : MonoBehaviour {
     /* sounds */
     AudioClip damageSound;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         damageSound = Resources.Load<AudioClip>("SoundFX/hit/hit");
         explosionParticles = Resources.Load<GameObject>("Particles/EnemyExplosion");
