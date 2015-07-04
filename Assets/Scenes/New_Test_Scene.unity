@@ -1176,11 +1176,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: c56a6b2c29b4142ae94920daa41e5c3a, type: 2}
       propertyPath: randomType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: c56a6b2c29b4142ae94920daa41e5c3a, type: 2}
       propertyPath: predeterminedType
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c56a6b2c29b4142ae94920daa41e5c3a, type: 2}

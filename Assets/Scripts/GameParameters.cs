@@ -6,7 +6,6 @@ public class GameParameters : MonoBehaviour {
     public int playerLives;
     public int difficulty;
     private long playerScore;
-    private const long maxScore = 999999999999L;
     public Vector3 lastCheckpoint;
     public float speedMultiplier = 1; // global speed multiplier for enemy movement
 
@@ -133,21 +132,18 @@ public class GameParameters : MonoBehaviour {
     /* destroy all the enemies in the list */
     public void CallDeathOnAllEnemiesInList()
     {
+        /* copy list */
+        ArrayList listToKill = new ArrayList();
+        listToKill.AddRange(enemyList);
         /* loop through list and destroy all enemies in the list */
-        foreach (GameObject enemy in enemyList)
+        foreach (GameObject enemy in listToKill)
         {
-            enemy.SendMessage("Death", null, SendMessageOptions.DontRequireReceiver);
+            if (enemy != null)
+            {
+                enemyList.Remove(enemy);
+                enemy.SendMessage("Death", null, SendMessageOptions.DontRequireReceiver);
+            }
         }
-        enemyList = new ArrayList(); // reset the list
-    }
-
-
-
-    /* called when the player loses all lives */
-    public void GameOver()
-    {
-
-
     }
 
     /* pause the game */
