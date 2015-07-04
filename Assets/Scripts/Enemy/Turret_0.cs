@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Turret_0 : GenericEnemy {
+public class Turret_0 : GenericEnemy, IGenericEnemy {
 
     private const float MIN_FIRE_RATE = 1f; // the base fire rate of the turret.  Lower is faster.
     private const float OFFSET_FROM_CENTER = 3.5f; // the offset so the turret shoots from the end of the barrel instead of the center of the transform
@@ -24,8 +24,8 @@ public class Turret_0 : GenericEnemy {
         base.Start();
 
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        nextShot = StartOffset();
-        fireRate = StartFireRate();
+        nextShot = Random.Range(0, MAX_START_DELAY);
+        fireRate = Random.Range(MIN_FIRE_RATE + MIN_FIRE_DELAY, MAX_FIRE_DELAY);
 	}
 	
     void FixedUpdate()
@@ -34,27 +34,37 @@ public class Turret_0 : GenericEnemy {
         Shoot();
     }
 
-    void Move()
+    public void Move()
     {
         transform.LookAt(target, Vector3.back);
     }
 
     /* basic shoot function - spawns new projectile */
-    void Shoot()
+    public void Shoot()
     {
-        if (Time.time > nextShot && OnScreen())
+        if (Time.time > nextShot && Active())
         {
             // generate a new object to fire, instantiate with velocity, power, etc.
             Vector3 launchFrom = transform.position + transform.forward * OFFSET_FROM_CENTER;
             GameObject clone = GameObject.Instantiate(ammunition, launchFrom, Quaternion.identity) as GameObject;
             GenericAmmo ammo = clone.GetComponent<GenericAmmo>();
-            ammo.shotVelocity = (target.position - transform.position).normalized * TURRET_AMMO_BASE_SPEED * difficulty;
-            ammo.timeToLive = ammo.timeToLive * difficulty;
+            ammo.shotVelocity = (target.position - transform.position).normalized * TURRET_AMMO_BASE_SPEED * gParams.difficulty;
+            ammo.timeToLive = ammo.timeToLive * gParams.difficulty;
             nextShot = Time.time + fireRate;
         }
     }
 
-    protected override void Death()
+    public bool Active()
+    {
+        return onScreen;
+    }
+
+    public bool Enabled()
+    {
+        return true;
+    }
+
+    public new void Death()
     {
         if (gParams.endlessMode)
         {
@@ -62,15 +72,4 @@ public class Turret_0 : GenericEnemy {
         }
         base.Death();
     }
-
-    private float StartOffset()
-    {
-        return Random.Range(0, MAX_START_DELAY);
-    }
-
-    private float StartFireRate()
-    {
-        return Random.Range(MIN_FIRE_RATE + MIN_FIRE_DELAY, MAX_FIRE_DELAY);
-    }
-
 }

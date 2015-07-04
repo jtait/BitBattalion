@@ -8,8 +8,7 @@ public abstract class GenericEnemy : MonoBehaviour {
     public int health = 1; // how many shots does it take to kill this ship, with modifiers
 
     protected float baseForwardVelocity; // the base speed of the ship, before modifiers
-    protected GameParameters gParams;
-    protected int difficulty; // the difficulty modifier of the enemy - useful for endless mode or repeating levels at higher difficulty
+    protected GameParameters gParams; // reference to the game parameters object
     protected GameObject ammunition; // the type of projectile the ship fires
     protected float fireRate = 1; // how often the BitShip fires, after modifiers
 
@@ -18,7 +17,7 @@ public abstract class GenericEnemy : MonoBehaviour {
     protected bool triggered_1 = false;
     protected bool triggered_2 = false;
     protected bool triggered_3 = false;
-    protected bool on_screen = false;
+    public bool onScreen = false;
 
     protected GameObject explosionParticles;
 
@@ -34,7 +33,6 @@ public abstract class GenericEnemy : MonoBehaviour {
     protected virtual void Start()
     {
         gParams = GameParameters.instance;
-        difficulty = gParams.difficulty; // set the difficulty parameter of the enemy to the difficulty of the game when the enemy is created
     }
 
     /* check for death condition met */
@@ -75,34 +73,24 @@ public abstract class GenericEnemy : MonoBehaviour {
     /* set trigger values as they are encountered */
     void OnTriggerEnter(Collider col)
     {
-        if (col.name == "Trigger1")
+        switch (col.name)
         {
-            triggered_1 = true;
-        }
-
-        if (col.name == "Trigger2")
-        {
-            triggered_2 = true;
-        }
-
-        if (col.name == "Trigger3")
-        {
-            triggered_3 = true;
-        }
-
-        if (col.name == "TopOfCameraView")
-        {
-            on_screen = true;
-        }
-
-        if (col.name == "BottomOfCameraView")
-        {
-            on_screen = false;
+            case "Trigger1":
+                triggered_1 = true;
+                break;
+            case "Trigger2":
+                triggered_2 = true;
+                break;
+            case "Trigger3":
+                triggered_3 = true;
+                break;
+            case "TopOfCameraView":
+                onScreen = true;
+                break;
+            case "BottomOfCameraView":
+                onScreen = false;
+                break;
         }
     }
 
-    public bool OnScreen()
-    {
-        return on_screen;
-    }
 }
