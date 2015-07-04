@@ -11,12 +11,13 @@ public class PlayerBomb : GenericAmmo {
 
     void Awake()
     {
-        gParams = GameObject.FindGameObjectWithTag("GameParameters").GetComponent<GameParameters>();
         bombSound = Resources.Load<AudioClip>("SoundFX/bomb/103014__zgump__club-kick-0711");
     }
 
-	protected override void Start () {
+	protected override void Start()
+    {
         base.Start();
+        gParams = GameParameters.instance;
         shotVelocity = Vector3.up * baseSpeed;
         GetComponent<Rigidbody>().AddForce(shotVelocity);
 	}
