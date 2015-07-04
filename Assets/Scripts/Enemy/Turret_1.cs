@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Turret_1 : GenericEnemy
+public class Turret_1 : GenericEnemy, IGenericEnemy
 {
     private const float OFFSET_FROM_CENTER = 1.5f; // the offset so the turret shoots from the end of the barrel instead of the center of the transform
     private const float MAX_START_DELAY = 5f;
@@ -14,14 +14,19 @@ public class Turret_1 : GenericEnemy
 
     private float nextShot; // keeps track of the next shot time
     private float angleOfRotation; // the angle of rotation between shots
-    
+
+    protected override void Awake()
+    {
+        base.Awake();
+        ammunition = Resources.Load<GameObject>("Ammo/EnemyLaser");
+    }
+
     protected override void Start()
     {
         base.Start();
 
-        ammunition = Resources.Load<GameObject>("Ammo/EnemyLaser");
-        nextShot = StartOffset();
-        fireRate = StartFireRate();
+        nextShot = Random.Range(0, MAX_START_DELAY);
+        fireRate = Random.Range(MIN_FIRE_DELAY, MAX_FIRE_DELAY);
         angleOfRotation = DEGREES_IN_CIRCLE / NUMBER_OF_PROJECTILES;
     }
 
@@ -31,9 +36,9 @@ public class Turret_1 : GenericEnemy
     }
 
     /* basic shoot function - spawns new projectiles in 6 directions */
-    void Shoot()
+    public void Shoot()
     {
-        if (Time.time > nextShot)
+        if (Time.time > nextShot && Active())
         {
             /* generate new objects to fire, instantiate with velocity, power, etc. */
             for (int i = 0; i < NUMBER_OF_PROJECTILES; i++)
@@ -41,8 +46,8 @@ public class Turret_1 : GenericEnemy
                 Vector3 launchFrom = transform.position + (transform.right * OFFSET_FROM_CENTER);
                 GameObject clone = GameObject.Instantiate(ammunition, launchFrom, Quaternion.identity) as GameObject;
                 GenericAmmo ammo = clone.GetComponent<GenericAmmo>();
-                ammo.shotVelocity = (ammo.transform.position - transform.position) * ammo.baseSpeed * 0.5f * difficulty * BASE_SHOT_VELOCITY;
-                ammo.timeToLive = ammo.timeToLive * 0.5f * difficulty + BASE_SHOT_TTL;
+                ammo.shotVelocity = (ammo.transform.position - transform.position) * ammo.baseSpeed * 0.5f * gParams.difficulty * BASE_SHOT_VELOCITY;
+                ammo.timeToLive = ammo.timeToLive * 0.5f * gParams.difficulty + BASE_SHOT_TTL;
                 transform.RotateAround(transform.position, Vector3.forward, angleOfRotation); // actually rotates the transform around its center
             }
             nextShot = Time.time + fireRate;
@@ -50,7 +55,7 @@ public class Turret_1 : GenericEnemy
     }
 
     /* overriden in case the turrets are spawned in endless mode */
-    protected override void Death()
+    public new void Death()
     {
         if (gParams.endlessMode)
         {
@@ -59,16 +64,18 @@ public class Turret_1 : GenericEnemy
         base.Death();
     }
 
-    /* used to set the time until the first shot */
-    private float StartOffset()
+    public bool Active()
     {
-        return Random.Range(0, MAX_START_DELAY);
+        return onScreen;
     }
 
-    /* used to set the fire rate */
-    private float StartFireRate()
+    public bool Enabled()
     {
-        return Random.Range(MIN_FIRE_DELAY, MAX_FIRE_DELAY);
+        throw new System.NotImplementedException();
     }
 
+    public void Move()
+    {
+        throw new System.NotImplementedException();
+    }
 }

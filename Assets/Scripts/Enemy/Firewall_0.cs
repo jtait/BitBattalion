@@ -16,8 +16,8 @@ public class Firewall_0 : GenericEnemy {
     {
         base.Start();
 
-        wallInactiveTime = BASE_WALL_INACTIVE_TIME / difficulty;
-        wallActiveTime = BASE_WALL_ACTIVE_TIME * difficulty;
+        wallInactiveTime = BASE_WALL_INACTIVE_TIME / gParams.difficulty;
+        wallActiveTime = BASE_WALL_ACTIVE_TIME * gParams.difficulty;
         wallCollider = GetComponent<BoxCollider>();
         fireParticles = GetComponentsInChildren<ParticleSystem>();
 

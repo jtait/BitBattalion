@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BitShip_1 : GenericEnemy {
+public class BitShip_1 : GenericEnemy, IGenericEnemy {
 
     private Transform targetTransform;
 
@@ -13,8 +13,8 @@ public class BitShip_1 : GenericEnemy {
         
         /* set all basic parameters */
         health = 1;
-        pointValue = 200 * difficulty;
-        fireRate = fireRate * difficulty;
+        pointValue = 200 * gParams.difficulty;
+        fireRate = fireRate * gParams.difficulty;
         baseForwardVelocity = 4 * gParams.speedMultiplier;
     }
 
@@ -24,10 +24,31 @@ public class BitShip_1 : GenericEnemy {
     }
 
     /* override base class Move() function */
-    void Move()
+    public void Move()
     {
         float step = baseForwardVelocity * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, targetTransform.position, step);
+    }
+
+
+    public bool Active()
+    {
+        return true;
+    }
+
+    public bool Enabled()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public new void Death()
+    {
+        base.Death();
+    }
+
+    public void Shoot()
+    {
+        throw new System.NotImplementedException();
     }
 
 }
