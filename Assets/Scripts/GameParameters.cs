@@ -130,6 +130,19 @@ public class GameParameters : MonoBehaviour {
         enemyList = new ArrayList(); // reset the list
     }
 
+    /* destroy all the enemies in the list */
+    public void CallDeathOnAllEnemiesInList()
+    {
+        /* loop through list and destroy all enemies in the list */
+        foreach (GameObject enemy in enemyList)
+        {
+            enemy.SendMessage("Death", null, SendMessageOptions.DontRequireReceiver);
+        }
+        enemyList = new ArrayList(); // reset the list
+    }
+
+
+
     /* called when the player loses all lives */
     public void GameOver()
     {

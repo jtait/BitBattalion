@@ -41,7 +41,7 @@ public class PlayerBomb : GenericAmmo {
     private void Explode()
     {
         AudioSource.PlayClipAtPoint(bombSound, transform.position, 1f);
-        gParams.DestroyAllEnemiesInList();
+        gParams.CallDeathOnAllEnemiesInList();
         Destroy(gameObject);
     }
 }
