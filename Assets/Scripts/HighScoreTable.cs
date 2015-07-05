@@ -23,7 +23,6 @@ public class HighScoreTable : MonoBehaviour {
             if (_instance == null)
             {
                 _instance = GameObject.FindObjectOfType<HighScoreTable>();
-                DontDestroyOnLoad(_instance.gameObject);
             }
 
             return _instance;
@@ -37,7 +36,6 @@ public class HighScoreTable : MonoBehaviour {
             _instance = this;
             FILE_PATH = Application.persistentDataPath + "/highScoreTable.dat";
             Load();
-            DontDestroyOnLoad(this);
         }
         else
         {
@@ -112,9 +110,7 @@ public class HighScoreTable : MonoBehaviour {
     {
 #if UNITY_STANDALONE
         SaveLocal();
-#endif
-
-#if UNITY_EDITOR
+#elif UNITY_EDITOR
         SaveLocal();
 #endif
     }
@@ -130,13 +126,9 @@ public class HighScoreTable : MonoBehaviour {
     {
 #if UNITY_STANDALONE
         LoadLocal();
-#endif
-
-#if UNITY_EDITOR
+#elif UNITY_EDITOR
         LoadLocal();
-#endif
-
-#if UNITY_WEBPLAYER
+#else
         CreateEmptyTables();
 #endif
     }
