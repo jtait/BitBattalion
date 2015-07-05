@@ -18,8 +18,14 @@ public class Capacitor : MonoBehaviour
 
     void Start()
     {
-        if (randomType) type = RandomPowerUp();
-        else type = predeterminedType;
+        if (randomType)
+        {
+            type = RandomPowerUp();
+        }
+        else
+        {
+            type = predeterminedType;
+        }
         spawnPosition = (transform.position + Vector3.back * SPAWN_OFFSET);
     }
 
