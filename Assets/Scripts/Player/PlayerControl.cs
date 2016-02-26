@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -59,9 +60,10 @@ public class PlayerControl : MonoBehaviour
     /* shield */
     private ParticleSystem shieldParticles;
     private ParticleSystem engineParticles;
+    private ParticleSystem.EmissionModule engineParticleEmission;
 
     /* particles */
-    private GameObject explosionParticles;
+    private ParticleSystem explosionParticles;
 
     /* initialize parameters here */
     void Awake()
@@ -76,7 +78,7 @@ public class PlayerControl : MonoBehaviour
         laserSound = Resources.Load<AudioClip>("SoundFX/laser/railgun");
         missile = Resources.Load<GameObject>("Ammo/Missile");
         bomb = Resources.Load<GameObject>("Ammo/Bomb");
-        explosionParticles = Resources.Load<GameObject>("Particles/Explosion");
+        explosionParticles = Resources.Load<ParticleSystem>("Particles/Explosion");
 
         /* regular weapons */
         ammo = laser;
@@ -103,6 +105,9 @@ public class PlayerControl : MonoBehaviour
         pauseDisplay = GameObject.Find("PauseDisplay");
         pauseDisplay.GetComponent<Renderer>().enabled = false;
         gParams.lastCheckpoint = Vector3.zero;
+
+        /* set up particle systems */
+        engineParticleEmission = engineParticles.emission;
 
         StartCoroutine(PauseLoop()); // start the loop for pause function
     }
@@ -370,7 +375,7 @@ public class PlayerControl : MonoBehaviour
         canShoot = false;
         SetRenderers(false);
         playerCollider.enabled = false;
-        engineParticles.enableEmission = false;
+        engineParticleEmission.enabled = false;
     }
 
     /* enable player features when respawning */
@@ -380,7 +385,7 @@ public class PlayerControl : MonoBehaviour
         transform.position = gParams.lastCheckpoint;
         SetRenderers(true);
         playerCollider.enabled = true;
-        engineParticles.enableEmission = true;
+        engineParticleEmission.enabled = true;
         canShoot = true;
     }
 
@@ -426,7 +431,7 @@ public class PlayerControl : MonoBehaviour
             {
                 gParams.ResumeGame();
                 pauseDisplay.GetComponent<Renderer>().enabled = false;
-                Application.LoadLevel("Menu_Game_Over");
+                SceneManager.LoadScene("Menu_Game_Over");
             }
             if (Input.GetKeyDown(KeyCode.N) && gParams.paused)
             {

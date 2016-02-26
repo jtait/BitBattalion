@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PressAnyKey : MonoBehaviour {
 
@@ -7,14 +8,14 @@ public class PressAnyKey : MonoBehaviour {
 
     void OnMouseDown()
     {
-        Application.LoadLevel(sceneToLoad);
+        SceneManager.LoadScene(sceneToLoad);
     }
 
     void Update()
     {
         if (Input.anyKeyDown)
         {
-            Application.LoadLevel(sceneToLoad);
+            SceneManager.LoadScene(sceneToLoad);
         }
     }
 }
