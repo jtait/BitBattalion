@@ -77,6 +77,11 @@ public class MusicManager : MonoBehaviour {
         }
     }
 
+    void Start()
+    {
+        aSource.volume = SettingsManager.instance.musicVolume;
+    }
+
     /* switch the song */
     public void NewSong(string song, bool fade)
     {
@@ -108,7 +113,7 @@ public class MusicManager : MonoBehaviour {
         aSource.clip = songList[songName];
         aSource.Play();
 
-        while(aSource.volume < 1)
+        while (aSource.volume < SettingsManager.instance.musicVolume)
         {
             aSource.volume += FADE_INCREMENT;
             yield return new WaitForSeconds(FADE_RESOLUTION);
