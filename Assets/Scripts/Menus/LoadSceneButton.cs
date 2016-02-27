@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class LoadSceneButton : MonoBehaviour {
 
@@ -7,6 +8,11 @@ public class LoadSceneButton : MonoBehaviour {
 
     void OnMouseDown()
     {
-        Application.LoadLevel(sceneToLoad);
+        this.LoadScene(sceneToLoad);
+    }
+
+    public void LoadScene(string scene)
+    {
+        SceneManager.LoadScene(sceneToLoad);
     }
 }

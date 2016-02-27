@@ -77,6 +77,11 @@ public class MusicManager : MonoBehaviour {
         }
     }
 
+    void Update()
+    {
+        aSource.volume = SettingsManager.instance.musicVolume;
+    }
+
 
     /* switch the song */
     public void NewSong(string song, bool fade)

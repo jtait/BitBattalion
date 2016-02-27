@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu_Splash.unity
   - enabled: 1
     path: Assets/Scenes/Menu_Main.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menu_Options.unity
   - enabled: 1
     path: Assets/Scenes/Story_Level_01.unity
@@ -23,3 +23,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu_Game_Over.unity
   - enabled: 1
     path: Assets/Scenes/Menu_Highscores.unity
+  - enabled: 1
+    path: Assets/Scenes/Menu_Settings.unity
