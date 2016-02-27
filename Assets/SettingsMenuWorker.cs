@@ -12,6 +12,7 @@ public class SettingsMenuWorker : MonoBehaviour {
 
     public void setMusicVolume(float volume)
     {
+        MusicManager.instance.aSource.volume = volume;
         SettingsManager.instance.musicVolume = volume;
         saveSettings();
     }

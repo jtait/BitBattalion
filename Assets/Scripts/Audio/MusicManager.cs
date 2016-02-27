@@ -19,7 +19,7 @@ public class MusicManager : MonoBehaviour {
     private AudioClip endlessMode2;
     private AudioClip menu;
 
-    private AudioSource aSource;
+    public AudioSource aSource;
     private string songName;
 
     private static MusicManager _instance;
@@ -76,12 +76,6 @@ public class MusicManager : MonoBehaviour {
                 Destroy(this.gameObject);
         }
     }
-
-    void Update()
-    {
-        aSource.volume = SettingsManager.instance.musicVolume;
-    }
-
 
     /* switch the song */
     public void NewSong(string song, bool fade)
