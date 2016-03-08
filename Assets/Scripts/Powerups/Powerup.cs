@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum PowerUpType { RapidFire, Shield, ExtraLife, Scatter, Bomb, None };
+
 public class Powerup : MonoBehaviour {
 
     public PowerUpType type;
