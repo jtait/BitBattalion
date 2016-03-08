@@ -22,6 +22,7 @@ public class EnemyLaser : GenericAmmo {
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+        GetComponent<Rigidbody>().velocity = shotVelocity;
     }
 
     protected override void OnCollisionEnter(Collision col)
