@@ -22,7 +22,6 @@ public class PlayerControl : MonoBehaviour
     public Vector3 movementOverrideVector;
 
     /* weapons */
-    private GameObject ammo; // the ammo the player ship will fire
     private GameObject specialWeapon; // the special weapon (bomb, missile, etc.) that the player ship has
     private float fireRate; // delay between regular shots
     private float nextShot; // delay until next regualer shot can be fired
@@ -36,9 +35,8 @@ public class PlayerControl : MonoBehaviour
     private bool invincible = false; // is the player invincible
 
     /* types of available ammo */
-    private enum WeaponType { laser, scatter, bomb, none };
     private GameObject laser;
-    private GameObject missile;
+    private GameObject scatter;
     private GameObject bomb;
 
     /* special weapons */
@@ -75,12 +73,11 @@ public class PlayerControl : MonoBehaviour
         playerExplosionSound = Resources.Load<AudioClip>("SoundFX/playerExplosion/explodey");
         laser = Resources.Load<GameObject>("Ammo/LaserShot");
         laserSound = Resources.Load<AudioClip>("SoundFX/laser/railgun");
-        missile = Resources.Load<GameObject>("Ammo/PlayerScatterLaser");
+        scatter = Resources.Load<GameObject>("Ammo/PlayerScatterLaser");
         bomb = Resources.Load<GameObject>("Ammo/Bomb");
         explosionParticles = Resources.Load<ParticleSystem>("Particles/Explosion");
 
         /* regular weapons */
-        ammo = laser;
         nextShot = 0f;
         fireRate = BASE_FIRE_RATE;
 
@@ -203,7 +200,7 @@ public class PlayerControl : MonoBehaviour
         {
             // generate a new object to fire, instantiate with velocity, power, etc.
             Vector3 launchFrom = new Vector3(transform.position.x, transform.position.y + SHOT_OFFSET, transform.position.z);
-            GameObject clone = GameObject.Instantiate(ammo, launchFrom, Quaternion.identity) as GameObject;
+            GameObject clone = GameObject.Instantiate(laser, launchFrom, Quaternion.identity) as GameObject;
             clone.GetComponent<GenericAmmo>().shotVelocity += new Vector3(0, GetComponent<Rigidbody>().velocity.y, 0);
             nextShot = Time.time + fireRate;
             AudioSource.PlayClipAtPoint(laserSound, transform.position, 0.4f);
@@ -282,19 +279,19 @@ public class PlayerControl : MonoBehaviour
     }
 
     /* set the special weapon parameters to the specified WeaponType */
-    private void SetSpecialWeapon(WeaponType weapon)
+    private void SetSpecialWeapon(PowerUpType weapon)
     {
         switch (weapon)
         {
-            case WeaponType.none:
+            case PowerUpType.None:
                 specialWeapon = null;
                 specialWeaponAmmoCount = 0;
                 break;
-            case WeaponType.scatter:
-                specialWeapon = missile;
+            case PowerUpType.Scatter:
+                specialWeapon = scatter;
                 specialWeaponAmmoCount = 6;
                 break;
-            case WeaponType.bomb:
+            case PowerUpType.Bomb:
                 specialWeapon = bomb;
                 specialWeaponAmmoCount = 1;
                 break;
@@ -322,18 +319,17 @@ public class PlayerControl : MonoBehaviour
     {
         switch(type){
             case PowerUpType.None:
-                ammo = laser;
-                SetSpecialWeapon(WeaponType.none);
+                SetSpecialWeapon(type);
                 shielded = false;
                 SetRapidFire(false);
                 break;
             case PowerUpType.Scatter:
-                SetSpecialWeapon(WeaponType.scatter);
+                SetSpecialWeapon(type);
                 specialFireRate = BASE_FIRE_RATE;
                 shielded = false;
                 break;
             case PowerUpType.Bomb:
-                SetSpecialWeapon(WeaponType.bomb);
+                SetSpecialWeapon(type);
                 shielded = false;
                 break;
             case PowerUpType.ExtraLife:
