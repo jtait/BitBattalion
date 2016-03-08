@@ -227,8 +227,7 @@ public class PlayerControl : MonoBehaviour
                 {
                     launchFrom = new Vector3(transform.position.x, transform.position.y + SHOT_OFFSET, transform.position.z);
                 }
-                GameObject clone = GameObject.Instantiate(type, launchFrom, Quaternion.identity) as GameObject;
-                //clone.GetComponent<GenericAmmo>().shotVelocity += new Vector3(0, GetComponent<Rigidbody>().velocity.y, 0);
+                GameObject.Instantiate(type, launchFrom, Quaternion.identity);
                 nextSpecial = Time.time + specialFireRate;
                 specialWeaponAmmoCount--;
                 if (specialWeaponAmmoCount <= 0)
