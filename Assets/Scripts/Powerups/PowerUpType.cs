@@ -1,1 +1,1 @@
-﻿public enum PowerUpType { RapidFire, Shield, ExtraLife, Missile, Bomb, None };
+﻿public enum PowerUpType { RapidFire, Shield, ExtraLife, Scatter, Bomb, None };

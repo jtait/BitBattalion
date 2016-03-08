@@ -5,7 +5,7 @@ public class HUDPowerUp : MonoBehaviour {
 
     private Renderer tile;
 
-    private Material missile;
+    private Material scatter;
     private Material bomb;
     private Material rapidfire;
     private Material shield;
@@ -15,7 +15,7 @@ public class HUDPowerUp : MonoBehaviour {
     {
         tile = GetComponent<MeshRenderer>();
         none = Resources.Load<Material>("Powerups/pu_none");
-        missile = Resources.Load<Material>("Powerups/pu_missile");
+        scatter = Resources.Load<Material>("Powerups/pu_scatter");
         bomb = Resources.Load<Material>("Powerups/pu_bomb");
         rapidfire = Resources.Load<Material>("Powerups/pu_rapidfire");
         shield = Resources.Load<Material>("Powerups/pu_shield");
@@ -24,8 +24,8 @@ public class HUDPowerUp : MonoBehaviour {
 	public void DisplayPowerUp(PowerUpType type){
         switch (type)
         {
-            case PowerUpType.Missile:
-                tile.material = missile;
+            case PowerUpType.Scatter:
+                tile.material = scatter;
                 break;
             case PowerUpType.Bomb:
                 tile.material = bomb;

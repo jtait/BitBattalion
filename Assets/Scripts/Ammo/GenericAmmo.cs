@@ -16,18 +16,11 @@ public abstract class GenericAmmo : MonoBehaviour {
 	
 	protected virtual void FixedUpdate ()
     {
-        GetComponent<Rigidbody>().velocity = shotVelocity;
-
         if (Time.time > destructionTime)
         {
             Destroy(gameObject);
         }
 	}
-
-    protected virtual void Update()
-    {
-
-    }
 
     protected virtual void OnCollisionEnter(Collision col)
     {

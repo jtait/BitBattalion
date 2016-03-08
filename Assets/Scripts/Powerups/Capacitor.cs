@@ -47,7 +47,7 @@ public class Capacitor : MonoBehaviour
         int random = Random.Range(0, 58);
         if (random < 15) return PowerUpType.RapidFire;
         if (random < 30) return PowerUpType.Shield;
-        if (random < 45) return PowerUpType.Missile;
+        if (random < 45) return PowerUpType.Scatter;
         if (random < 55) return PowerUpType.Bomb;
         if (random < 58) return PowerUpType.ExtraLife;
         else return PowerUpType.None;
@@ -71,8 +71,8 @@ public class Capacitor : MonoBehaviour
         {
             case PowerUpType.None:
                 break;
-            case PowerUpType.Missile:
-                powerUp = Resources.Load<GameObject>("Powerups/PowerUp_Missile");
+            case PowerUpType.Scatter:
+                powerUp = Resources.Load<GameObject>("Powerups/PowerUp_Scatter");
                 break;
             case PowerUpType.Bomb:
                 powerUp = Resources.Load<GameObject>("Powerups/PowerUp_Bomb");

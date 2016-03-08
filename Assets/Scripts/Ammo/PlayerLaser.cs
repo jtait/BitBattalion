@@ -6,8 +6,10 @@ public class PlayerLaser : GenericAmmo {
 
     protected override void Start()
     {
+        Vector3 localVelocity = transform.InverseTransformDirection(GetComponent<Rigidbody>().velocity);
+        localVelocity.y = baseSpeed;
+        GetComponent<Rigidbody>().velocity = transform.TransformDirection(localVelocity);
         base.Start();
-        shotVelocity = Vector3.up * baseSpeed;
     }
 
     protected override void FixedUpdate()
@@ -17,7 +19,10 @@ public class PlayerLaser : GenericAmmo {
 
     protected override void OnCollisionEnter(Collision col)
     {
-        if (col.collider.tag != "Enemy" && col.collider.name != "LaserShot") Destroy(gameObject); // destroy self if it collides with anything except enemy or another laser
+        if (col.collider.tag != "Enemy")
+        {
+            Destroy(gameObject); // destroy self if it collides with anything except an enemy
+        }
     }
 
 }

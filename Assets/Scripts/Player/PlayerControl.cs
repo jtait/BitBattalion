@@ -7,7 +7,6 @@ public class PlayerControl : MonoBehaviour
     /* constants */
     private const float BASE_FIRE_RATE = 0.3f; // the base fire rate of the ship.  Lower is faster.
     private const float FIRE_RATE_PERK = 0.1f; // the rapid fire rate of the ship
-    private const float MISSILE_FIRE_RATE = 1f; // the missile fire rate
     private const float SHOT_OFFSET = 1.5f; // the offset from the center of the transform (where the shot originates from)
     private const float RAPID_FIRE_TIMER = 10f; // the length of time for rapid fire to last
     private const float INVINCIBLE_TIME = 1f; // the time the player is invincible for after respawning
@@ -37,7 +36,7 @@ public class PlayerControl : MonoBehaviour
     private bool invincible = false; // is the player invincible
 
     /* types of available ammo */
-    private enum WeaponType { laser, missile, bomb, none };
+    private enum WeaponType { laser, scatter, bomb, none };
     private GameObject laser;
     private GameObject missile;
     private GameObject bomb;
@@ -76,7 +75,7 @@ public class PlayerControl : MonoBehaviour
         playerExplosionSound = Resources.Load<AudioClip>("SoundFX/playerExplosion/explodey");
         laser = Resources.Load<GameObject>("Ammo/LaserShot");
         laserSound = Resources.Load<AudioClip>("SoundFX/laser/railgun");
-        missile = Resources.Load<GameObject>("Ammo/Missile");
+        missile = Resources.Load<GameObject>("Ammo/PlayerScatterLaser");
         bomb = Resources.Load<GameObject>("Ammo/Bomb");
         explosionParticles = Resources.Load<ParticleSystem>("Particles/Explosion");
 
@@ -229,7 +228,7 @@ public class PlayerControl : MonoBehaviour
                     launchFrom = new Vector3(transform.position.x, transform.position.y + SHOT_OFFSET, transform.position.z);
                 }
                 GameObject clone = GameObject.Instantiate(type, launchFrom, Quaternion.identity) as GameObject;
-                clone.GetComponent<GenericAmmo>().shotVelocity += new Vector3(0, GetComponent<Rigidbody>().velocity.y, 0);
+                //clone.GetComponent<GenericAmmo>().shotVelocity += new Vector3(0, GetComponent<Rigidbody>().velocity.y, 0);
                 nextSpecial = Time.time + specialFireRate;
                 specialWeaponAmmoCount--;
                 if (specialWeaponAmmoCount <= 0)
@@ -292,7 +291,7 @@ public class PlayerControl : MonoBehaviour
                 specialWeapon = null;
                 specialWeaponAmmoCount = 0;
                 break;
-            case WeaponType.missile:
+            case WeaponType.scatter:
                 specialWeapon = missile;
                 specialWeaponAmmoCount = 6;
                 break;
@@ -329,9 +328,9 @@ public class PlayerControl : MonoBehaviour
                 shielded = false;
                 SetRapidFire(false);
                 break;
-            case PowerUpType.Missile:
-                SetSpecialWeapon(WeaponType.missile);
-                specialFireRate = MISSILE_FIRE_RATE;
+            case PowerUpType.Scatter:
+                SetSpecialWeapon(WeaponType.scatter);
+                specialFireRate = BASE_FIRE_RATE;
                 shielded = false;
                 break;
             case PowerUpType.Bomb:
