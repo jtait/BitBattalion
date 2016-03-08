@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class LeaveGameOver : MonoBehaviour {
 
@@ -37,7 +38,7 @@ public class LeaveGameOver : MonoBehaviour {
     {
         if (gParams != null)
             Destroy(gParams.gameObject);
-        Application.LoadLevel(sceneToLoad);
+        SceneManager.LoadScene(sceneToLoad);
     }
 
 }

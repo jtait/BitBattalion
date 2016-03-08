@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameParameters : MonoBehaviour {
 
@@ -172,7 +173,7 @@ public class GameParameters : MonoBehaviour {
     public static IEnumerator WaitForLevelLoad(float waitTime, string level)
     {
         yield return new WaitForSeconds(waitTime);
-        Application.LoadLevel(level);
+        SceneManager.LoadScene(level);
     }
 
 }

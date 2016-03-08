@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 /* handles keyboard input on main menu */
 public class MainMenuKeyInput : MonoBehaviour {
@@ -13,19 +14,19 @@ public class MainMenuKeyInput : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Application.LoadLevel(CAMPAIGN);
+            SceneManager.LoadScene(CAMPAIGN);
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
-            Application.LoadLevel(ENDLESS);
+            SceneManager.LoadScene(ENDLESS);
         }
         else if (Input.GetKeyDown(KeyCode.H))
         {
-            Application.LoadLevel(HIGH_SCORE);
+            SceneManager.LoadScene(HIGH_SCORE);
         }
         else if (Input.GetKeyDown(KeyCode.O))
         {
-            Application.LoadLevel(OPTIONS);
+            SceneManager.LoadScene(OPTIONS);
         }
         else if (Input.GetKeyDown(KeyCode.Q))
         {
