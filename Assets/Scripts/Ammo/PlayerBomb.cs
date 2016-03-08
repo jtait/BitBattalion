@@ -40,7 +40,7 @@ public class PlayerBomb : GenericAmmo {
     /* explode and destroy all enemies on screen */
     private void Explode()
     {
-        AudioSource.PlayClipAtPoint(bombSound, transform.position, 1f);
+        AudioSource.PlayClipAtPoint(bombSound, transform.position, SettingsManager.instance.soundEffectVolume);
         gParams.CallDeathOnAllEnemiesInList();
         Destroy(this.gameObject);
     }

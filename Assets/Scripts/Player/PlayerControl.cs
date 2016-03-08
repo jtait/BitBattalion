@@ -54,12 +54,10 @@ public class PlayerControl : MonoBehaviour
     private AudioClip playerExplosionSound;
     private AudioClip laserSound;
 
-    /* shield */
+    /* particles */
     private ParticleSystem shieldParticles;
     private ParticleSystem engineParticles;
     private ParticleSystem.EmissionModule engineParticleEmission;
-
-    /* particles */
     private ParticleSystem explosionParticles;
 
     /* initialize parameters here */
@@ -236,7 +234,7 @@ public class PlayerControl : MonoBehaviour
     /* called when a player dies */
     public void PlayerDeath()
     {
-        AudioSource.PlayClipAtPoint(playerExplosionSound, transform.position, 1f); // play explosion sound
+        AudioSource.PlayClipAtPoint(playerExplosionSound, transform.position, SettingsManager.instance.soundEffectVolume); // play explosion sound
         GameObject.Instantiate(explosionParticles, transform.position, Quaternion.identity); // play explosion particles
 
         invincible = true;

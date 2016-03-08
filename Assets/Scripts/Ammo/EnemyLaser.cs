@@ -5,7 +5,7 @@ using System.Collections;
 public class EnemyLaser : GenericAmmo {
 
     AudioClip laserSound;
-    private const float soundVolume = 0.05f;
+    private float soundVolume;
 
     void Awake()
     {
@@ -15,6 +15,7 @@ public class EnemyLaser : GenericAmmo {
     protected override void Start()
     {
         base.Start();
+        soundVolume = SettingsManager.instance.soundEffectVolume * 0.05f;
         AudioSource.PlayClipAtPoint(laserSound, transform.position, soundVolume);
     }
 
